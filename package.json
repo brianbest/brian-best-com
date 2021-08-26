@@ -1,0 +1,24 @@
+{
+  "name": "brian-best-com",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/brianbest/brian-best-com.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/brianbest/brian-best-com/issues"
+  },
+  "homepage": "https://github.com/brianbest/brian-best-com#readme",
+  "devDependencies": {
+    "sass": "^1.38.1",
+    "sass-loader": "^12.1.0",
+    "webpack": "^5.51.1"
+  }
+}
