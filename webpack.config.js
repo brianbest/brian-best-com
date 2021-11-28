@@ -17,10 +17,5 @@ module.exports = {
     new HtmlWebpackPlugin({
       title: "Brian's Website"
     })
-  ],
-  moduel: {
-    rules: [
-      
-    ]
-  }
+  ]
 }
