@@ -5,7 +5,7 @@ class Contact extends Component {
   render(){
     return(
       <div className="">
-        <Nav />
+        <Nav activeRoute="/contact" />
         <div className="container">
           <h1>Contact</h1>
           <h2>This is where I'll put contact info</h2>

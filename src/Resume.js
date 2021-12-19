@@ -5,7 +5,7 @@ class Resume extends Component {
   render(){
     return(
       <div className="">
-        <Nav />
+        <Nav activeRoute="/resume" />
         <div className="container">
           <h1>Resume</h1>
           <h2>This is where I'll put my work experince</h2>

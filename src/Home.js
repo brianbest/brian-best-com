@@ -6,7 +6,7 @@ class Home extends Component {
   render(){
     return(
       <div className="home">
-        <Nav />
+        <Nav activeRoute="/" />
         <div className="container">
           <div className="row d-flex align-items-center">
             <div className="col">
