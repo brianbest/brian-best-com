@@ -9,7 +9,7 @@ module.exports = {
     filename: 'main.bundle.js',
     path: path.resolve(__dirname, 'dist')
   },
-  devServer:{
+  devServer: {
     static: "./dist",
     open: true
   },
@@ -18,9 +18,26 @@ module.exports = {
       title: "Brian's Website"
     })
   ],
-  moduel: {
+  module: {
     rules: [
-      
+      {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        use: {
+          loader: 'babel-loader',
+          options: {
+            presets: ['@babel/preset-env']
+          }
+        }
+      },
+      {
+        test: /\.s[ac]ss$/,
+        use: ['style-loader', 'css-loader', 'sass-loader']
+      },
+      {
+        test: /\.(gif|png|jpg|jpeg|svg)$/i,
+        type: 'asset/resource'
+      }
     ]
   }
 }
