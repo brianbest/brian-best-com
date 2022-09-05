@@ -1,14 +1,7 @@
-import component from "./component";
-
-//Images
-import item from './images/item.png';
-
-//Styles
-import './styles/style.scss';
-
-document.body.appendChild(component());
-
-
-const img = document.createElement('img');
-img.src = item;
-document.body.appendChild(img);
+import "./styles.scss";
+import "bootstrap/js/dist/collapse";
+import React from "react";
+import ReactDOM from "react-dom";
+import Site from "./Site.js";
+ReactDOM.render(<Site />, document.getElementById("root"));
+console.log('Sup small change 1');
