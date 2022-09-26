@@ -12,7 +12,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - run: cd brianbest
-      - run: npm install
+      - run: npm install -D
       - run: npm run build
       - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
