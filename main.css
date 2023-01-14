@@ -1,6 +1,6 @@
 body {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 1fr minmax(700px, 1fr) 1fr;
     grid-template-areas: ". content .";
 }
 .wrapper {
