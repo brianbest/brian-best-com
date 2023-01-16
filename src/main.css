@@ -1,0 +1,22 @@
+body {
+    background-color: blueviolet;
+}
+
+.wrapper {
+    display: grid;
+    grid-template-columns: 1fr minmax(400px, 1fr) minmax(400px, 1fr) 1fr;
+    grid-template-areas: ". photo content .";
+    column-gap: 75px;
+}
+
+.bio {
+    grid-area: content;
+}
+
+.photo {
+    grid-area: photo;
+}
+
+h1,h2 {
+    text-align: center;
+}
