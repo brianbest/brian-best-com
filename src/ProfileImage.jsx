@@ -9,7 +9,7 @@ export default function ProfileImage() {
         <Card className='photo'>
             <CardMedia
             sx={{width: 500, height: 700}}
-            image = "static/me.jpg"
+            image = "../static/me.jpg"
             />
         </Card>
     )
