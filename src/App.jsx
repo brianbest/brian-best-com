@@ -10,10 +10,10 @@ function App() {
         justifyContent="center"
         alignItems="center"
         className='main-grid'>
-            <Grid item xs={12} md={4}>
+            <Grid item sm={12} md={4}>
                 <ProfileImage className='photo' />
             </Grid>
-            <Grid item xs={12} md={4}>
+            <Grid item sm={12} md={4}>
                 <Bio className="bio" />
             </Grid>
         </Grid>
