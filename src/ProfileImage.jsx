@@ -4,14 +4,18 @@ import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import imgUrl from './static/me.jpg'; 
+import Paper from '@mui/material/Paper';
 
 export default function ProfileImage() {
     return(
-        <Card className='photo'>
-            <CardMedia
-            sx={{width: 500, height: 700}}
-            image = {imgUrl}
-            />
-        </Card>
+        <Paper className='photo' elevation={3}>
+            <Card>
+                <CardMedia
+                sx={{width: 400, height: 450}}
+                image = {imgUrl}
+                />
+            </Card>
+        </Paper>
+        
     )
 }
