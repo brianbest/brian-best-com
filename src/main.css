@@ -1,39 +1,29 @@
 body {
-    /* background-color: blueviolet; */
     min-height: 100vh;
 
     background-color: #4158D0;
     background-image: linear-gradient(43deg, #4158D0 0%, #C850C0 46%, #FFCC70 100%);
 
+    background-color: #FA8BFF;
+    background-image: linear-gradient(45deg, #FA8BFF 0%, #2BD2FF 52%, #2BFF88 90%);
 }
 
-/* .wrapper {
-    display: grid;
-    grid-template-columns: 1fr minmax(400px, 1fr) minmax(400px, 1fr) 1fr;
-    grid-template-areas: ". photo content .";
-    column-gap: 75px;
-}
-
-.bio {
-    grid-area: content;
-}
-*/
 #root{
     height: 100%;
     min-height: 100vh;
 }
 .main-grid {
     height: 100%;
-    min-height: 100vh;
+    min-height: 80vh;
 }
 @keyframes photos-animation {
-    0% {transform: rotate(10deg);}
-    50% {transform: rotate(8deg);}
-    100% {transform: rotate(10deg);}
+    0% {transform: rotate(0deg);}
+    50% {transform: rotate(2deg);}
+    100% {transform: rotate(0deg);}
     }
 
 @keyframes bio-animation {
-    0% {transform: rotate(-5deg);}
+    0% {transform: rotate(-0deg);}
     50% {transform: rotate(-2deg);}
     100% {transform: rotate(-5deg);}
     }
@@ -41,7 +31,6 @@ body {
 .photo {
     max-width: 400px;
     max-height: 600px;
-    transform: rotate(10deg);
     animation-name: photos-animation;
     animation-duration: 35s;
     animation-iteration-count: infinite;
@@ -49,7 +38,6 @@ body {
 } 
 
 .bio {
-    transform: rotate(-5deg);
     animation-name: bio-animation;
     animation-duration: 65s;
     animation-iteration-count: infinite;
@@ -65,7 +53,6 @@ h1,h2 {
     .photo {
         max-width: 200px;
         max-height: 200px;
-        transform: rotate(10deg);
         animation-name: photos-animation;
         animation-duration: 35s;
         animation-iteration-count: infinite;
