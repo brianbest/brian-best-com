@@ -11,10 +11,12 @@ const Header = () => {
         justifyContent="center"
         alignItems="center"
         className='main-grid'>
-            <Grid item sm={12}>
+            <Grid item sm={6} justifyContent="center"
+        alignItems="center">
                 <ProfileImage className='photo' />
             </Grid>
-            <Grid item sm={12}>
+            <Grid item sm={2} justifyContent="center"
+        alignItems="center">
                 <Bio className="bio" />
             </Grid>
         </Grid>
