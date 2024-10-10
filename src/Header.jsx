@@ -7,7 +7,7 @@ const Header = () => {
   return (
     <header>
       <Grid container 
-        spacing={2} 
+        spacing={4} 
         justifyContent="center"
         alignItems="center"
         className='main-grid'>
