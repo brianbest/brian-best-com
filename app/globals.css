@@ -1,0 +1,115 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --persona-red: #cc2c34;
+  --persona-maroon: #922526;
+  --persona-black: #000000;
+  --persona-white: #ffffff;
+  --persona-grey: #d9d0d1;
+}
+
+.dark {
+  --background: var(--persona-black);
+  --foreground: var(--persona-white);
+  --card: var(--persona-black);
+  --card-foreground: var(--persona-white);
+  --primary: var(--persona-red);
+  --primary-foreground: var(--persona-black);
+  --secondary: var(--persona-maroon);
+  --secondary-foreground: var(--persona-white);
+  --muted: var(--persona-black);
+  --muted-foreground: var(--persona-grey);
+  --accent: var(--persona-maroon);
+  --accent-foreground: var(--persona-white);
+  --destructive: #ff4d4f;
+  --destructive-foreground: var(--persona-white);
+  --border: var(--persona-maroon);
+  --input: var(--persona-maroon);
+  --ring: var(--persona-red);
+}
+
+.light {
+  --background: var(--persona-white);
+  --foreground: var(--persona-black);
+  --card: var(--persona-white);
+  --card-foreground: var(--persona-black);
+  --primary: var(--persona-red);
+  --primary-foreground: var(--persona-white);
+  --secondary: var(--persona-maroon);
+  --secondary-foreground: var(--persona-white);
+  --muted: var(--persona-grey);
+  --muted-foreground: var(--persona-black);
+  --accent: var(--persona-red);
+  --accent-foreground: var(--persona-white);
+  --destructive: #ff4d4f;
+  --destructive-foreground: var(--persona-white);
+  --border: var(--persona-red);
+  --input: var(--persona-red);
+  --ring: var(--persona-maroon);
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+.font-bungee {
+  font-family: var(--font-bungee), sans-serif;
+}
+
+.font-sans {
+  font-family: var(--font-inter), system-ui, sans-serif;
+}
+
+.shadow-thief {
+  box-shadow: 0 4px 0 0 #000;
+}
+
+.pattern-mask {
+  background-image: url("/mask.svg");
+  background-repeat: repeat;
+  background-size: 100px;
+}
+
+/* Prose styling overrides for dark mode */
+.prose {
+  max-width: 65ch;
+}
+
+.prose a {
+  @apply text-persona-red hover:text-persona-maroon transition-colors;
+}
+
+.prose h1,
+.prose h2,
+.prose h3,
+.prose h4 {
+  @apply font-bungee text-persona-red;
+}
+
+.prose code {
+  @apply bg-persona-maroon/30 text-persona-red px-1 py-0.5 rounded;
+}
+
+.prose pre {
+  @apply bg-persona-maroon/30 p-4 rounded-md overflow-x-auto;
+}
+
+.prose blockquote {
+  @apply border-l-4 border-persona-red pl-4 italic;
+}
+
+.prose img {
+  @apply my-8;
+}
+
+.prose-red {
+  --tw-prose-links: var(--persona-red);
+  --tw-prose-invert-links: var(--persona-red);
+}
