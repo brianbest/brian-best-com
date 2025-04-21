@@ -16,7 +16,7 @@ export default function AboutPage() {
           <div className="col-span-1">
             <div className="relative w-full aspect-square overflow-hidden border-4 border-persona-white transform rotate-2 shadow-thief">
               <Image
-                src="/placeholder.svg?height=400&width=400"
+                src="/brianabout.jpeg"
                 alt="Brian Best"
                 width={400}
                 height={400}
@@ -29,44 +29,43 @@ export default function AboutPage() {
           </div>
 
           <div className="col-span-2 prose prose-invert prose-red max-w-none">
+            <h1>Hey, I'm Brian Best</h1>
             <h2>Senior Software Developer @ Axonify</h2>
-            <p>
-              Hello! I'm Brian Best, a passionate senior software developer currently working at Axonify, where I help
-              build cutting-edge learning platforms that empower employees worldwide.
-            </p>
+            <p>I write code, untangle gnarly bugs, and sprinkle in some AI magic to make life easier for everyone.</p>
 
             <h3>My Journey</h3>
-            <p>
-              With over a decade of experience in software development, I've worked across various domains including
-              e-learning, fintech, and enterprise applications. My passion lies in creating intuitive, performant web
-              applications that solve real problems.
-            </p>
-
-            <h3>Tech Stack</h3>
-            <ul>
-              <li>
-                <strong>Frontend:</strong> React, Next.js, TypeScript, Tailwind CSS
-              </li>
-              <li>
-                <strong>Backend:</strong> Node.js, Express, NestJS
-              </li>
-              <li>
-                <strong>Database:</strong> PostgreSQL, MongoDB
-              </li>
-              <li>
-                <strong>DevOps:</strong> Docker, GitHub Actions, Vercel
-              </li>
-              <li>
-                <strong>Testing:</strong> Jest, React Testing Library, Cypress
-              </li>
+            <ul className="timeline">
+              <li><strong>Axonify</strong> – Senior Software Developer (Mar&nbsp;2020&nbsp;–&nbsp;Present)<br />
+                Keeping our customer‑care engine humming, leading system‑health initiatives, and weaving AI‑powered tooling into the workflow.</li>
+              <li><strong>Digicraft Software Consulting</strong> – Intermediate → Senior Dev (2016&nbsp;–&nbsp;2020)<br />
+                Built CMS‑driven websites &amp; apps, modernised legacy code, and mentored juniors.</li>
+              <li><strong>Combinaut / UBIQUE NETWORKS</strong> – Front‑End Developer (2014&nbsp;–&nbsp;2016)<br />
+                Crafted Angular UIs and responsive experiences.</li>
+              <li><strong>Phased.io</strong> – Co‑founder &amp; CTO (2013&nbsp;–&nbsp;2015)<br />
+                Took an idea from napkin to funded product, juggling pitching, building, &amp; shipping.</li>
             </ul>
 
-            <h3>Fun Facts</h3>
+            <h3>Tech Stack</h3>
+            <ul className="tech-stack">
+              <li className="chip">Java</li>
+              <li className="chip">JavaScript / TypeScript</li>
+              <li className="chip">Node.js</li>
+              <li className="chip">SQL</li>
+              <li className="chip">CSS / Tailwind</li>
+              <li className="chip">Next.js</li>
+              <li className="chip">Google Cloud Platform</li>
+              <li className="chip">Supabase</li>
+              <li className="chip">Kubernetes</li>
+            </ul>
+
+            <h3>Level‑Up with AI</h3>
+            <p>From automated issue triage to code‑review copilots and GPT‑powered test generators, I lean on AI to slice through repetitive tasks. That frees me up to focus on the fun stuff—architecting features and shipping delightful experiences faster than ever.</p>
+
+            <h3>Why Me?</h3>
             <ul>
-              <li>Avid Persona series fan (obviously!)</li>
-              <li>Amateur photographer on weekends</li>
-              <li>Collect vintage mechanical keyboards</li>
-              <li>Contribute to open-source projects in my spare time</li>
+              <li>15&nbsp;years of writing production code (and the scars to prove it).</li>
+              <li>Blend of people‑skills &amp; tech chops—I've been a radio DJ and a founder.</li>
+              <li>Continuous learning mindset—currently geeking out over edge AI &amp; LLM agents.</li>
             </ul>
           </div>
         </div>

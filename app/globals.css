@@ -72,7 +72,7 @@
 }
 
 .pattern-mask {
-  background-image: url("/mask.svg");
+  background-image: url("/tile.png");
   background-repeat: repeat;
   background-size: 100px;
 }

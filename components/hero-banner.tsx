@@ -14,7 +14,7 @@ export function HeroBanner() {
             <h1 className="font-bungee text-4xl md:text-5xl lg:text-6xl text-persona-red mb-4">Brian Best</h1>
             <p className="text-xl md:text-2xl text-persona-white mb-6">Senior Software Developer @ Axonify</p>
             <p className="text-persona-grey text-lg mb-8 max-w-md">
-              Crafting elegant solutions to complex problems with React, Next.js, and TypeScript.
+              Crafting elegant solutions to complex problems.
             </p>
             <div className="flex flex-wrap gap-4">
               <Button
@@ -36,7 +36,7 @@ export function HeroBanner() {
           <div className="order-1 md:order-2 flex justify-center md:justify-end">
             <div className="relative w-64 h-64 md:w-80 md:h-80 border-4 border-persona-white transform rotate-3 shadow-thief overflow-hidden">
               <Image
-                src="/placeholder.svg?height=400&width=400"
+                src="/brian.jpeg"
                 alt="Brian Best"
                 width={400}
                 height={400}
