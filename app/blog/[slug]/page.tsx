@@ -11,14 +11,14 @@ type Props = {
 }
 
 export async function generateStaticParams() {
-  const posts = getPosts()
+  const posts = await getPosts()
   return posts.map((post) => ({
     slug: post.slug,
   }))
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const post = getPosts().find((post) => post.slug === params.slug)
+  const post = (await getPosts()).find((post) => post.slug === params.slug)
 
   if (!post) {
     return {
@@ -32,8 +32,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   }
 }
 
-export default function BlogPostPage({ params }: Props) {
-  const post = getPosts().find((post) => post.slug === params.slug)
+export default async function BlogPostPage({ params }: Props) {
+  const post = (await getPosts()).find((post) => post.slug === params.slug)
 
   if (!post) {
     return <div>Post not found</div>

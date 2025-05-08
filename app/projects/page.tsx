@@ -6,8 +6,8 @@ export const metadata = {
   description: "Personal and open-source projects by Brian Best",
 }
 
-export default function ProjectsPage() {
-  const projects = getProjects()
+export default async function ProjectsPage() {
+  const projects = await getProjects()
 
   return (
     <main className="container mx-auto px-4 py-12">

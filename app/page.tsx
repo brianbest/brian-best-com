@@ -4,9 +4,9 @@ import { ProjectCard } from "@/components/project-card"
 import { getPosts } from "@/lib/posts"
 import { getProjects } from "@/lib/projects"
 
-export default function Home() {
-  const posts = getPosts().slice(0, 3)
-  const featuredProjects = getProjects().filter((project) => project.featured)
+export default async function Home() {
+  const posts = (await getPosts()).slice(0, 3)
+  const featuredProjects = (await getProjects()).filter((project) => project.featured)
 
   return (
     <main className="flex flex-col gap-16 pb-16">
