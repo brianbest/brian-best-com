@@ -3,6 +3,33 @@
 @tailwind utilities;
 
 :root {
+  /* Neo-Retro Cyber Palette - Primary Colors */
+  --pixel-cyan: #00F0FF;
+  --pixel-pink: #FF006E;
+  --pixel-amber: #FFBE0B;
+  
+  /* Background & Surfaces */
+  --pixel-navy: #0D1B2A;
+  --pixel-slate: #1B263B;
+  --pixel-dark-slate: #0A1628;
+  
+  /* Text */
+  --pixel-white: #E0E1DD;
+  --pixel-gray: #8D99AE;
+  --pixel-muted: #6C7A89;
+  
+  /* Semantic Colors */
+  --pixel-success: #06FFA5;
+  --pixel-warning: #FFBE0B;
+  --pixel-error: #FF006E;
+  --pixel-info: #00F0FF;
+  
+  /* Light Mode Variants */
+  --pixel-light-bg: #F8F9FA;
+  --pixel-light-surface: #FFFFFF;
+  --pixel-light-text: #212529;
+
+  /* Legacy Persona colors for backward compatibility */
   --persona-red: #cc2c34;
   --persona-maroon: #922526;
   --persona-black: #000000;
@@ -11,43 +38,45 @@
 }
 
 .dark {
-  --background: var(--persona-black);
-  --foreground: var(--persona-white);
-  --card: var(--persona-black);
-  --card-foreground: var(--persona-white);
-  --primary: var(--persona-red);
-  --primary-foreground: var(--persona-black);
-  --secondary: var(--persona-maroon);
-  --secondary-foreground: var(--persona-white);
-  --muted: var(--persona-black);
-  --muted-foreground: var(--persona-grey);
-  --accent: var(--persona-maroon);
-  --accent-foreground: var(--persona-white);
-  --destructive: #ff4d4f;
-  --destructive-foreground: var(--persona-white);
-  --border: var(--persona-maroon);
-  --input: var(--persona-maroon);
-  --ring: var(--persona-red);
+  --background: 13 27 42; /* pixel-navy */
+  --foreground: 224 225 221; /* pixel-white */
+  --card: 27 38 59; /* pixel-slate */
+  --card-foreground: 224 225 221; /* pixel-white */
+  --primary: 0 240 255; /* pixel-cyan */
+  --primary-foreground: 13 27 42; /* pixel-navy */
+  --secondary: 255 0 110; /* pixel-pink */
+  --secondary-foreground: 224 225 221; /* pixel-white */
+  --muted: 10 22 40; /* pixel-dark-slate */
+  --muted-foreground: 141 153 174; /* pixel-gray */
+  --accent: 255 190 11; /* pixel-amber */
+  --accent-foreground: 13 27 42; /* pixel-navy */
+  --destructive: 255 0 110; /* pixel-error */
+  --destructive-foreground: 224 225 221; /* pixel-white */
+  --border: 27 38 59; /* pixel-slate */
+  --input: 27 38 59; /* pixel-slate */
+  --ring: 0 240 255; /* pixel-cyan */
+  --radius: 0rem; /* Pixel style - no rounded corners by default */
 }
 
 .light {
-  --background: var(--persona-white);
-  --foreground: var(--persona-black);
-  --card: var(--persona-white);
-  --card-foreground: var(--persona-black);
-  --primary: var(--persona-red);
-  --primary-foreground: var(--persona-white);
-  --secondary: var(--persona-maroon);
-  --secondary-foreground: var(--persona-white);
-  --muted: var(--persona-grey);
-  --muted-foreground: var(--persona-black);
-  --accent: var(--persona-red);
-  --accent-foreground: var(--persona-white);
-  --destructive: #ff4d4f;
-  --destructive-foreground: var(--persona-white);
-  --border: var(--persona-red);
-  --input: var(--persona-red);
-  --ring: var(--persona-maroon);
+  --background: 248 249 250; /* pixel-light-bg */
+  --foreground: 33 37 41; /* pixel-light-text */
+  --card: 255 255 255; /* pixel-light-surface */
+  --card-foreground: 33 37 41; /* pixel-light-text */
+  --primary: 0 240 255; /* pixel-cyan */
+  --primary-foreground: 13 27 42; /* pixel-navy */
+  --secondary: 255 0 110; /* pixel-pink */
+  --secondary-foreground: 255 255 255; /* white */
+  --muted: 224 225 221; /* pixel-white as light muted */
+  --muted-foreground: 108 122 137; /* pixel-muted */
+  --accent: 255 190 11; /* pixel-amber */
+  --accent-foreground: 13 27 42; /* pixel-navy */
+  --destructive: 255 0 110; /* pixel-error */
+  --destructive-foreground: 255 255 255; /* white */
+  --border: 224 225 221; /* pixel-white */
+  --input: 224 225 221; /* pixel-white */
+  --ring: 0 240 255; /* pixel-cyan */
+  --radius: 0rem; /* Pixel style - no rounded corners by default */
 }
 
 @layer base {
@@ -59,6 +88,11 @@
   }
 }
 
+/* Font Families */
+.font-pixel {
+  font-family: var(--font-pixel), 'Press Start 2P', monospace;
+}
+
 .font-bungee {
   font-family: var(--font-bungee), sans-serif;
 }
@@ -67,49 +101,205 @@
   font-family: var(--font-inter), system-ui, sans-serif;
 }
 
+.font-mono {
+  font-family: var(--font-mono), 'JetBrains Mono', 'Fira Code', monospace;
+}
+
+/* Legacy shadow for backward compatibility */
 .shadow-thief {
   box-shadow: 0 4px 0 0 #000;
 }
 
+/* Pixel shadows */
+.shadow-pixel {
+  box-shadow: 4px 4px 0 0 var(--pixel-cyan);
+}
+
+.shadow-pixel-lg {
+  box-shadow: 6px 6px 0 0 rgba(0, 240, 255, 0.3);
+}
+
+.shadow-pixel-pink {
+  box-shadow: 4px 4px 0 0 var(--pixel-pink);
+}
+
+.shadow-pixel-amber {
+  box-shadow: 4px 4px 0 0 var(--pixel-amber);
+}
+
+/* Background patterns */
 .pattern-mask {
   background-image: url("/tile.png");
   background-repeat: repeat;
   background-size: 100px;
 }
 
-/* Prose styling overrides for dark mode */
+.pattern-pixel-grid {
+  background-image: 
+    linear-gradient(rgba(0, 240, 255, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 240, 255, 0.05) 1px, transparent 1px);
+  background-size: 16px 16px;
+}
+
+/* Pixel Component Styles */
+@layer components {
+  .pixel-button {
+    @apply font-pixel text-sm px-6 py-3 border-3 border-primary bg-card text-primary transition-all duration-100 ease-in-out;
+    box-shadow: 4px 4px 0 0 hsl(var(--primary));
+  }
+  
+  .pixel-button:hover {
+    transform: translate(2px, 2px);
+    box-shadow: 2px 2px 0 0 hsl(var(--primary));
+  }
+  
+  .pixel-button:active {
+    transform: translate(4px, 4px);
+    box-shadow: none;
+  }
+  
+  .pixel-button-primary {
+    @apply bg-primary text-primary-foreground border-primary;
+  }
+  
+  .pixel-button-secondary {
+    @apply bg-secondary text-secondary-foreground border-secondary;
+    box-shadow: 4px 4px 0 0 hsl(var(--secondary));
+  }
+  
+  .pixel-button-secondary:hover {
+    box-shadow: 2px 2px 0 0 hsl(var(--secondary));
+  }
+  
+  .pixel-card {
+    @apply bg-card border-3 border-primary p-6 transition-all duration-200;
+    box-shadow: 6px 6px 0 0 rgba(0, 240, 255, 0.3);
+  }
+  
+  .pixel-card:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 8px 8px 0 0 rgba(0, 240, 255, 0.5);
+  }
+  
+  .pixel-badge {
+    @apply inline-block font-pixel text-xs px-3 py-1 border-2 border-accent bg-muted text-accent uppercase;
+  }
+  
+  .pixel-input {
+    @apply font-sans text-base px-4 py-3 border-3 border-muted-foreground bg-muted text-foreground transition-all;
+  }
+  
+  .pixel-input:focus {
+    @apply outline-none border-primary;
+    box-shadow: 0 0 0 3px rgba(0, 240, 255, 0.2);
+  }
+  
+  .pixel-border {
+    @apply border-3 border-primary;
+  }
+}
+
+/* Pixel Animations */
+@keyframes pixelFadeIn {
+  from {
+    opacity: 0;
+    filter: blur(4px);
+  }
+  to {
+    opacity: 1;
+    filter: blur(0);
+  }
+}
+
+@keyframes glitch {
+  0% { transform: translate(0); }
+  20% { transform: translate(-2px, 2px); }
+  40% { transform: translate(-2px, -2px); }
+  60% { transform: translate(2px, 2px); }
+  80% { transform: translate(2px, -2px); }
+  100% { transform: translate(0); }
+}
+
+@keyframes pixelFloat {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+@keyframes blink {
+  0%, 50%, 100% { opacity: 1; }
+  25%, 75% { opacity: 0; }
+}
+
+@keyframes scanline {
+  0% { transform: translateY(-100%); }
+  100% { transform: translateY(100%); }
+}
+
+/* Animation utility classes */
+.animate-pixel-fade-in {
+  animation: pixelFadeIn 0.5s ease-out;
+}
+
+.animate-glitch {
+  animation: glitch 0.5s ease-in-out;
+}
+
+.animate-pixel-float {
+  animation: pixelFloat 3s ease-in-out infinite;
+}
+
+.animate-blink {
+  animation: blink 1.5s ease-in-out infinite;
+}
+
+/* Prose styling with pixel aesthetic */
 .prose {
   max-width: 65ch;
 }
 
 .prose a {
-  @apply text-persona-red hover:text-persona-maroon transition-colors;
+  @apply text-primary hover:text-secondary transition-colors;
 }
 
 .prose h1,
 .prose h2,
 .prose h3,
 .prose h4 {
-  @apply font-bungee text-persona-red;
+  @apply font-pixel text-primary;
 }
 
 .prose code {
-  @apply bg-persona-maroon/30 text-persona-red px-1 py-0.5 rounded;
+  @apply bg-muted text-primary px-2 py-1 font-mono text-sm;
+  border: 1px solid hsl(var(--primary) / 0.3);
 }
 
 .prose pre {
-  @apply bg-persona-maroon/30 p-4 rounded-md overflow-x-auto;
+  @apply bg-muted p-4 overflow-x-auto border-3 border-primary/30;
+}
+
+.prose pre code {
+  @apply bg-transparent border-0 p-0;
 }
 
 .prose blockquote {
-  @apply border-l-4 border-persona-red pl-4 italic;
+  @apply border-l-4 border-primary pl-4 italic text-muted-foreground;
 }
 
 .prose img {
-  @apply my-8;
+  @apply my-8 border-3 border-primary;
 }
 
+.prose strong {
+  @apply text-primary font-bold;
+}
+
+.prose ul,
+.prose ol {
+  @apply text-foreground;
+}
+
+/* Legacy prose class for backward compatibility */
 .prose-red {
-  --tw-prose-links: var(--persona-red);
-  --tw-prose-invert-links: var(--persona-red);
+  --tw-prose-links: var(--pixel-cyan);
+  --tw-prose-invert-links: var(--pixel-cyan);
 }
