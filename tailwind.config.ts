@@ -17,6 +17,24 @@ const config: Config = {
     },
     extend: {
       colors: {
+        pixel: {
+          cyan: "#00F0FF",
+          pink: "#FF006E",
+          amber: "#FFBE0B",
+          navy: "#0D1B2A",
+          slate: "#1B263B",
+          "dark-slate": "#0A1628",
+          white: "#E0E1DD",
+          gray: "#8D99AE",
+          muted: "#6C7A89",
+          success: "#06FFA5",
+          warning: "#FFBE0B",
+          error: "#FF006E",
+          info: "#00F0FF",
+          "light-bg": "#F8F9FA",
+          "light-surface": "#FFFFFF",
+          "light-text": "#212529",
+        },
         persona: {
           red: "#cc2c34",
           maroon: "#922526",
@@ -63,12 +81,21 @@ const config: Config = {
         md: "calc(var(--radius) - 2px)",
         sm: "calc(var(--radius) - 4px)",
       },
+      borderWidth: {
+        '3': '3px',
+      },
       fontFamily: {
         sans: ["var(--font-inter)"],
+        pixel: ["var(--font-pixel)"],
         bungee: ["var(--font-bungee)"],
+        mono: ["var(--font-mono)"],
       },
       skew: {
         "3": "3deg",
+      },
+      spacing: {
+        '18': '4.5rem',
+        '88': '22rem',
       },
       typography: {
         DEFAULT: {
@@ -76,6 +103,12 @@ const config: Config = {
             maxWidth: "65ch",
           },
         },
+      },
+      animation: {
+        'pixel-fade-in': 'pixelFadeIn 0.5s ease-out',
+        'glitch': 'glitch 0.5s ease-in-out',
+        'pixel-float': 'pixelFloat 3s ease-in-out infinite',
+        'blink': 'blink 1.5s ease-in-out infinite',
       },
     },
   },
