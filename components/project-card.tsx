@@ -1,5 +1,7 @@
 import Image from "next/image"
 import Link from "next/link"
+import { PixelBadge } from "@/components/pixel-badge"
+import { PixelButton } from "@/components/pixel-button"
 
 type Project = {
   id: string
@@ -17,36 +19,50 @@ type ProjectCardProps = {
 
 export function ProjectCard({ project }: ProjectCardProps) {
   return (
-    <div className="bg-persona-black border border-persona-maroon shadow-thief hover:transform hover:-translate-y-2 hover:rotate-1 transition-all duration-300">
-      <div className="relative aspect-video overflow-hidden">
+    <div className="bg-card border-3 border-primary shadow-pixel-lg hover:transform hover:translate-x-[-2px] hover:translate-y-[-2px] hover:shadow-pixel-lg transition-all duration-200">
+      <div className="relative aspect-video overflow-hidden border-b-3 border-primary">
         <Image
           src={project.image || "/placeholder.svg"}
           alt={project.title}
           width={600}
           height={340}
-          className="object-cover"
+          className="object-cover hover:scale-105 transition-transform duration-300"
         />
+        {/* Featured badge */}
+        {project.featured && (
+          <div className="absolute top-3 left-3">
+            <PixelBadge variant="warning">FEATURED</PixelBadge>
+          </div>
+        )}
+        {/* Pixel corner accents */}
+        <div className="absolute bottom-2 right-2 w-3 h-3 bg-secondary"></div>
       </div>
       <div className="p-6">
-        <h3 className="font-bungee text-xl text-persona-red mb-2">{project.title}</h3>
-        <p className="text-persona-white/80 mb-4 line-clamp-2">{project.description}</p>
+        <h3 className="font-pixel text-lg text-primary mb-3 leading-relaxed">{project.title}</h3>
+        <p className="text-foreground/80 mb-4 line-clamp-2 text-sm">{project.description}</p>
 
-        <div className="flex flex-wrap gap-2 mb-4">
+        <div className="flex flex-wrap gap-2 mb-6">
           {project.tags.map((tag) => (
-            <span key={tag} className="text-xs bg-persona-maroon text-persona-white px-2 py-1">
+            <PixelBadge key={tag} variant="default">
               {tag}
-            </span>
+            </PixelBadge>
           ))}
         </div>
 
-        <Link
-          href={project.url}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="inline-block font-bungee text-sm text-persona-white hover:text-persona-red transition-colors"
+        <PixelButton
+          asChild
+          variant="outline"
+          size="sm"
+          className="w-full"
         >
-          View Project →
-        </Link>
+          <Link
+            href={project.url}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            View Project →
+          </Link>
+        </PixelButton>
       </div>
     </div>
   )

@@ -1,47 +1,63 @@
 import Image from "next/image"
 import Link from "next/link"
-import { Button } from "@/components/ui/button"
+import { PixelButton } from "@/components/pixel-button"
 
 export function HeroBanner() {
   return (
-    <section className="relative overflow-hidden bg-persona-black py-16 md:py-24">
-      {/* Mask SVG Background Pattern */}
-      <div className="absolute inset-0 opacity-5 pattern-mask" aria-hidden="true"></div>
+    <section className="relative overflow-hidden bg-background py-16 md:py-24">
+      {/* Pixel Grid Background Pattern */}
+      <div className="absolute inset-0 opacity-30 pattern-pixel-grid" aria-hidden="true"></div>
 
-      <div className="container mx-auto px-4">
+      <div className="container mx-auto px-4 relative z-10">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-          <div className="order-2 md:order-1">
-            <h1 className="font-bungee text-4xl md:text-5xl lg:text-6xl text-persona-red mb-4">Brian Best</h1>
-            <p className="text-xl md:text-2xl text-persona-white mb-6">Senior Software Developer @ Axonify</p>
-            <p className="text-persona-grey text-lg mb-8 max-w-md">
-              Crafting elegant solutions to complex problems.
+          <div className="order-2 md:order-1 animate-pixel-fade-in">
+            <div className="inline-block mb-4 px-3 py-1 border-2 border-primary text-primary text-xs font-mono">
+              <span className="inline-block w-2 h-2 bg-pixel-success rounded-full mr-2 animate-blink"></span>
+              AVAILABLE FOR WORK
+            </div>
+            <h1 className="font-pixel text-3xl md:text-4xl lg:text-5xl text-primary mb-4 leading-tight">
+              Brian Best
+            </h1>
+            <p className="text-lg md:text-xl text-foreground mb-3 font-mono">
+              Senior Software Developer
+            </p>
+            <p className="text-sm md:text-base text-secondary mb-6 font-mono">
+              @ Axonify
+            </p>
+            <p className="text-muted-foreground text-base mb-8 max-w-md">
+              Crafting elegant solutions to complex problems. Building the web, one pixel at a time.
             </p>
             <div className="flex flex-wrap gap-4">
-              <Button
+              <PixelButton
                 asChild
-                className="bg-persona-red hover:bg-persona-maroon text-persona-black font-bungee shadow-thief"
+                variant="primary"
               >
                 <Link href="/projects">View Projects</Link>
-              </Button>
-              <Button
+              </PixelButton>
+              <PixelButton
                 asChild
                 variant="outline"
-                className="border-persona-red text-persona-red hover:bg-persona-red/10 font-bungee"
               >
                 <Link href="/about">About Me</Link>
-              </Button>
+              </PixelButton>
             </div>
           </div>
 
           <div className="order-1 md:order-2 flex justify-center md:justify-end">
-            <div className="relative w-64 h-64 md:w-80 md:h-80 border-4 border-persona-white transform rotate-3 shadow-thief overflow-hidden">
+            <div className="relative w-64 h-64 md:w-80 md:h-80 border-3 border-primary shadow-pixel-lg overflow-hidden animate-pixel-float">
               <Image
                 src="/brian.jpeg"
                 alt="Brian Best"
                 width={400}
                 height={400}
                 className="object-cover"
+                priority
               />
+              {/* Pixel corner decorations */}
+              <div className="absolute top-0 left-0 w-4 h-4 bg-primary"></div>
+              <div className="absolute top-0 right-0 w-4 h-4 bg-secondary"></div>
+              <div className="absolute bottom-0 left-0 w-4 h-4 bg-accent"></div>
+              <div className="absolute bottom-0 right-0 w-4 h-4 bg-primary"></div>
             </div>
           </div>
         </div>
