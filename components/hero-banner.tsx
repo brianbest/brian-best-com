@@ -11,10 +11,6 @@ export function HeroBanner() {
       <div className="container mx-auto px-4 relative z-10">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
           <div className="order-2 md:order-1 animate-pixel-fade-in">
-            <div className="inline-block mb-4 px-3 py-1 border-2 border-primary text-primary text-xs font-mono">
-              <span className="inline-block w-2 h-2 bg-pixel-success rounded-full mr-2 animate-blink"></span>
-              AVAILABLE FOR WORK
-            </div>
             <h1 className="font-pixel text-3xl md:text-4xl lg:text-5xl text-primary mb-4 leading-tight">
               Brian Best
             </h1>
