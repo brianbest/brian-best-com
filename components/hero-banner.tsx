@@ -21,7 +21,7 @@ export function HeroBanner() {
               @ Axonify
             </p>
             <p className="text-muted-foreground text-base mb-8 max-w-md">
-              Crafting elegant solutions to complex problems. Building the web, one pixel at a time.
+              Building AI-driven systems that transform customer care. Turning LLM research into production features that make support faster, smarter, and infinitely scalable.
             </p>
             <div className="flex flex-wrap gap-4">
               <PixelButton

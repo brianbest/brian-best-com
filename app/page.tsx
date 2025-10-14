@@ -4,8 +4,9 @@ import { Mail, MapPin, Phone, Star, Sparkles } from "lucide-react"
 
 export default function Home() {
   const techStack = {
-    software: ["Ps", "Ai", "Id", "Xd", "Pr"],
-    coding: ["Basic knowledge", "HTML", "CSS", "PHP", "SQL", "JavaScript"]
+    primary: ["Java", "JavaScript", "TypeScript", "Node.js"],
+    cloud: ["Google Cloud Platform (GCP)", "MySQL", "Kubernetes"],
+    ai: ["Large Language Models (LLM)", "LLM Operations (LLMOps)", "Model Context Protocol (MCP)"]
   }
 
   const languages = [
@@ -136,7 +137,7 @@ export default function Home() {
               </div>
               
               <p className="text-[#1A1A1A] text-base leading-relaxed">
-                I am a self-taught Senior Software Developer based in Canada with extensive experience in building robust applications and AI-powered solutions. I am currently living in Waterloo and working at Axonify.
+                I am a Senior Software Developer based in Waterloo, Canada, specializing in AI-driven systems and enterprise software solutions. At Axonify, I lead the development of LLM-powered support tools and system health initiatives that transform how we serve our customers.
               </p>
 
               <div className="inline-flex items-center gap-3 bg-[#E8944A] text-white px-6 py-3 rounded-full hover:bg-[#D17A2E] transition-colors cursor-pointer">
@@ -263,11 +264,15 @@ export default function Home() {
               </div>
               <div>
                 <div className="mb-2">
-                  <span className="font-bold text-[#1A1A1A] text-lg">2022</span>
+                  <span className="font-bold text-[#1A1A1A] text-lg">Feb 2022 - Present · 3 yrs 9 mos</span>
                   <h3 className="font-serif text-2xl text-[#1A1A1A] font-semibold">Senior Software Developer</h3>
+                  <p className="text-[#1A1A1A] text-sm font-semibold mt-1">Axonify · Waterloo, Ontario, Canada</p>
                 </div>
                 <p className="text-[#1A1A1A] text-sm leading-relaxed">
-                  Lead development of AI-powered features at Axonify. Build scalable solutions, mentor team members, and drive technical excellence.
+                  At Axonify I operate at the intersection of software engineering, customer success, and applied AI. I design and build AI-driven systems that keep our customers productive and our support team efficient. I lead the development of an LLM-powered support agent that triages issues, finds solutions, and files context-rich tickets, cutting turnaround times from days to hours.
+                </p>
+                <p className="text-[#1A1A1A] text-sm leading-relaxed mt-2">
+                  Beyond support-specific agents, I help implement broader AI strategy: automating log analysis, proposing auto-generated training content when regulatory changes hit, and preparing various 3rd party integrations so that routine customer-admin tasks can be automated. I'm also the technical owner for system-health tooling.
                 </p>
               </div>
             </div>
@@ -278,11 +283,12 @@ export default function Home() {
               </div>
               <div>
                 <div className="mb-2">
-                  <span className="font-bold text-[#1A1A1A] text-lg">2021</span>
-                  <h3 className="font-serif text-2xl text-[#1A1A1A] font-semibold">Freelancer</h3>
+                  <span className="font-bold text-[#1A1A1A] text-lg">Feb 2021 - Feb 2022 · 1 yr 1 mo</span>
+                  <h3 className="font-serif text-2xl text-[#1A1A1A] font-semibold">Intermediate Software Developer</h3>
+                  <p className="text-[#1A1A1A] text-sm font-semibold mt-1">Axonify · Waterloo, Ontario, Canada</p>
                 </div>
                 <p className="text-[#1A1A1A] text-sm leading-relaxed">
-                  Worked with various clients, created logos, posters, presentations based on their requirements.
+                  Contributed to core platform development, modernized legacy systems, and began exploring AI integration opportunities.
                 </p>
               </div>
             </div>
@@ -293,11 +299,12 @@ export default function Home() {
               </div>
               <div>
                 <div className="mb-2">
-                  <span className="font-bold text-[#1A1A1A] text-lg">2020</span>
+                  <span className="font-bold text-[#1A1A1A] text-lg">Mar 2020 - Feb 2021 · 1 yr</span>
                   <h3 className="font-serif text-2xl text-[#1A1A1A] font-semibold">Software Developer</h3>
+                  <p className="text-[#1A1A1A] text-sm font-semibold mt-1">Axonify · Waterloo, Ontario, Canada</p>
                 </div>
                 <p className="text-[#1A1A1A] text-sm leading-relaxed">
-                  Designed promotional materials for events in my country Viet Nam.
+                  Built and maintained features for the Axonify learning platform, working with Java, JavaScript, and cloud technologies.
                 </p>
               </div>
             </div>
@@ -305,10 +312,10 @@ export default function Home() {
 
           {/* Tags */}
           <div className="flex flex-wrap gap-3 mt-12">
-            <span className="bg-[#1A1A1A] text-white px-4 py-2 rounded-full text-sm">#Creativity</span>
-            <span className="bg-[#1A1A1A] text-white px-4 py-2 rounded-full text-sm">#Communication</span>
-            <span className="bg-[#1A1A1A] text-white px-4 py-2 rounded-full text-sm">#Detail-oriented</span>
-            <span className="bg-[#1A1A1A] text-white px-4 py-2 rounded-full text-sm">#Adaptability</span>
+            <span className="bg-[#1A1A1A] text-white px-4 py-2 rounded-full text-sm">#AI-Driven</span>
+            <span className="bg-[#1A1A1A] text-white px-4 py-2 rounded-full text-sm">#Technical-Leadership</span>
+            <span className="bg-[#1A1A1A] text-white px-4 py-2 rounded-full text-sm">#Problem-Solving</span>
+            <span className="bg-[#1A1A1A] text-white px-4 py-2 rounded-full text-sm">#Innovation</span>
           </div>
         </div>
       </section>
@@ -325,25 +332,37 @@ export default function Home() {
         <div className="container mx-auto px-6 relative z-10">
           <h2 className="font-serif text-4xl md:text-5xl font-bold text-[#E8944A] mb-12">Technical skills</h2>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 max-w-4xl">
-            {/* Software Skills */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-12 max-w-6xl">
+            {/* Primary Languages */}
             <div>
-              <h3 className="font-serif text-2xl font-semibold text-[#1A1A1A] mb-6">Software Skills</h3>
-              <div className="flex gap-3">
-                {techStack.software.map((skill) => (
-                  <div key={skill} className="w-12 h-12 bg-[#1A1A1A] text-white flex items-center justify-center font-bold text-sm">
+              <h3 className="font-serif text-2xl font-semibold text-[#1A1A1A] mb-6">Languages & Frameworks</h3>
+              <div className="space-y-2">
+                {techStack.primary.map((skill) => (
+                  <div key={skill} className="inline-block bg-white text-[#1A1A1A] px-4 py-2 mr-2 mb-2 text-sm border-2 border-[#1A1A1A]">
                     {skill}
                   </div>
                 ))}
               </div>
             </div>
 
-            {/* Coding Skills */}
+            {/* Cloud & Infrastructure */}
             <div>
-              <h3 className="font-serif text-2xl font-semibold text-[#1A1A1A] mb-6">Coding skills</h3>
+              <h3 className="font-serif text-2xl font-semibold text-[#1A1A1A] mb-6">Cloud & Data</h3>
               <div className="space-y-2">
-                {techStack.coding.map((skill) => (
-                  <div key={skill} className="inline-block bg-white text-[#1A1A1A] px-4 py-2 mr-2 mb-2 text-sm">
+                {techStack.cloud.map((skill) => (
+                  <div key={skill} className="inline-block bg-white text-[#1A1A1A] px-4 py-2 mr-2 mb-2 text-sm border-2 border-[#1A1A1A]">
+                    {skill}
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* AI/ML Skills */}
+            <div>
+              <h3 className="font-serif text-2xl font-semibold text-[#1A1A1A] mb-6">AI & Machine Learning</h3>
+              <div className="space-y-2">
+                {techStack.ai.map((skill) => (
+                  <div key={skill} className="inline-block bg-white text-[#1A1A1A] px-4 py-2 mr-2 mb-2 text-sm border-2 border-[#1A1A1A]">
                     {skill}
                   </div>
                 ))}
@@ -352,12 +371,14 @@ export default function Home() {
           </div>
 
           {/* Additional Skills */}
-          <div className="mt-12 max-w-4xl">
+          <div className="mt-12 max-w-6xl">
+            <h3 className="font-serif text-2xl font-semibold text-[#1A1A1A] mb-6">Specialties</h3>
             <div className="flex flex-wrap gap-3">
-              <span className="bg-[#1A1A1A] text-white px-4 py-2 rounded-full text-sm">Packaging</span>
-              <span className="bg-[#1A1A1A] text-white px-4 py-2 rounded-full text-sm">Visual design</span>
-              <span className="bg-[#1A1A1A] text-white px-4 py-2 rounded-full text-sm">UI/UX design</span>
-              <span className="bg-[#1A1A1A] text-white px-4 py-2 rounded-full text-sm">User Research</span>
+              <span className="bg-[#1A1A1A] text-white px-4 py-2 rounded-full text-sm">System Architecture</span>
+              <span className="bg-[#1A1A1A] text-white px-4 py-2 rounded-full text-sm">AI Integration</span>
+              <span className="bg-[#1A1A1A] text-white px-4 py-2 rounded-full text-sm">Vector Search</span>
+              <span className="bg-[#1A1A1A] text-white px-4 py-2 rounded-full text-sm">Enterprise Compliance</span>
+              <span className="bg-[#1A1A1A] text-white px-4 py-2 rounded-full text-sm">System Health Monitoring</span>
             </div>
           </div>
         </div>
