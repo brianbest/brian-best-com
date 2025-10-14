@@ -86,6 +86,8 @@ const config: Config = {
       },
       fontFamily: {
         sans: ["var(--font-inter)"],
+        'sans-modern': ["var(--font-sans-modern)"],
+        serif: ["var(--font-serif)"],
         pixel: ["var(--font-pixel)"],
         bungee: ["var(--font-bungee)"],
         mono: ["var(--font-mono)"],

@@ -3,33 +3,39 @@
 @tailwind utilities;
 
 :root {
-  /* Neo-Retro Cyber Palette - Primary Colors */
+  /* Modern Portfolio Palette */
+  --portfolio-dark-green: #2C4A3E;
+  --portfolio-green: #3D5A4C;
+  --portfolio-black: #1A1A1A;
+  --portfolio-beige: #E8DCC8;
+  --portfolio-cream: #F5F1E8;
+  --portfolio-orange: #E8944A;
+  --portfolio-dark-orange: #D17A2E;
+  --portfolio-yellow: #F4B942;
+  --portfolio-gold: #D4A854;
+  
+  /* Text */
+  --portfolio-text-dark: #1A1A1A;
+  --portfolio-text-light: #F5F1E8;
+  --portfolio-text-muted: #6C6C6C;
+  
+  /* Legacy colors for backward compatibility */
   --pixel-cyan: #00F0FF;
   --pixel-pink: #FF006E;
   --pixel-amber: #FFBE0B;
-  
-  /* Background & Surfaces */
   --pixel-navy: #0D1B2A;
   --pixel-slate: #1B263B;
   --pixel-dark-slate: #0A1628;
-  
-  /* Text */
   --pixel-white: #E0E1DD;
   --pixel-gray: #8D99AE;
   --pixel-muted: #6C7A89;
-  
-  /* Semantic Colors */
   --pixel-success: #06FFA5;
   --pixel-warning: #FFBE0B;
   --pixel-error: #FF006E;
   --pixel-info: #00F0FF;
-  
-  /* Light Mode Variants */
   --pixel-light-bg: #F8F9FA;
   --pixel-light-surface: #FFFFFF;
   --pixel-light-text: #212529;
-
-  /* Legacy Persona colors for backward compatibility */
   --persona-red: #cc2c34;
   --persona-maroon: #922526;
   --persona-black: #000000;
@@ -38,51 +44,56 @@
 }
 
 .dark {
-  --background: 13 27 42; /* pixel-navy */
-  --foreground: 224 225 221; /* pixel-white */
-  --card: 27 38 59; /* pixel-slate */
-  --card-foreground: 224 225 221; /* pixel-white */
-  --primary: 0 240 255; /* pixel-cyan */
-  --primary-foreground: 13 27 42; /* pixel-navy */
-  --secondary: 255 0 110; /* pixel-pink */
-  --secondary-foreground: 224 225 221; /* pixel-white */
-  --muted: 10 22 40; /* pixel-dark-slate */
-  --muted-foreground: 141 153 174; /* pixel-gray */
-  --accent: 255 190 11; /* pixel-amber */
-  --accent-foreground: 13 27 42; /* pixel-navy */
-  --destructive: 255 0 110; /* pixel-error */
-  --destructive-foreground: 224 225 221; /* pixel-white */
-  --border: 27 38 59; /* pixel-slate */
-  --input: 27 38 59; /* pixel-slate */
-  --ring: 0 240 255; /* pixel-cyan */
-  --radius: 0rem; /* Pixel style - no rounded corners by default */
+  --background: 44 74 62; /* portfolio-dark-green */
+  --foreground: 245 241 232; /* portfolio-cream */
+  --card: 61 90 76; /* portfolio-green */
+  --card-foreground: 245 241 232; /* portfolio-cream */
+  --primary: 244 185 66; /* portfolio-yellow */
+  --primary-foreground: 26 26 26; /* portfolio-black */
+  --secondary: 232 148 74; /* portfolio-orange */
+  --secondary-foreground: 26 26 26; /* portfolio-black */
+  --muted: 26 26 26; /* portfolio-black */
+  --muted-foreground: 232 220 200; /* portfolio-beige */
+  --accent: 212 168 84; /* portfolio-gold */
+  --accent-foreground: 26 26 26; /* portfolio-black */
+  --destructive: 209 122 46; /* portfolio-dark-orange */
+  --destructive-foreground: 245 241 232; /* portfolio-cream */
+  --border: 61 90 76; /* portfolio-green */
+  --input: 61 90 76; /* portfolio-green */
+  --ring: 244 185 66; /* portfolio-yellow */
+  --radius: 0.5rem;
 }
 
 .light {
-  --background: 248 249 250; /* pixel-light-bg */
-  --foreground: 33 37 41; /* pixel-light-text */
-  --card: 255 255 255; /* pixel-light-surface */
-  --card-foreground: 33 37 41; /* pixel-light-text */
-  --primary: 0 240 255; /* pixel-cyan */
-  --primary-foreground: 13 27 42; /* pixel-navy */
-  --secondary: 255 0 110; /* pixel-pink */
-  --secondary-foreground: 255 255 255; /* white */
-  --muted: 224 225 221; /* pixel-white as light muted */
-  --muted-foreground: 108 122 137; /* pixel-muted */
-  --accent: 255 190 11; /* pixel-amber */
-  --accent-foreground: 13 27 42; /* pixel-navy */
-  --destructive: 255 0 110; /* pixel-error */
+  --background: 245 241 232; /* portfolio-cream */
+  --foreground: 26 26 26; /* portfolio-black */
+  --card: 255 255 255; /* white */
+  --card-foreground: 26 26 26; /* portfolio-black */
+  --primary: 232 148 74; /* portfolio-orange */
+  --primary-foreground: 26 26 26; /* portfolio-black */
+  --secondary: 244 185 66; /* portfolio-yellow */
+  --secondary-foreground: 26 26 26; /* portfolio-black */
+  --muted: 232 220 200; /* portfolio-beige */
+  --muted-foreground: 108 108 108; /* portfolio-text-muted */
+  --accent: 212 168 84; /* portfolio-gold */
+  --accent-foreground: 26 26 26; /* portfolio-black */
+  --destructive: 209 122 46; /* portfolio-dark-orange */
   --destructive-foreground: 255 255 255; /* white */
-  --border: 224 225 221; /* pixel-white */
-  --input: 224 225 221; /* pixel-white */
-  --ring: 0 240 255; /* pixel-cyan */
-  --radius: 0rem; /* Pixel style - no rounded corners by default */
+  --border: 232 220 200; /* portfolio-beige */
+  --input: 232 220 200; /* portfolio-beige */
+  --ring: 232 148 74; /* portfolio-orange */
+  --radius: 0.5rem;
 }
 
 @layer base {
   * {
     @apply border-border;
   }
+  
+  html {
+    scroll-behavior: smooth;
+  }
+  
   body {
     @apply bg-background text-foreground;
   }
@@ -99,6 +110,14 @@
 
 .font-sans {
   font-family: var(--font-inter), system-ui, sans-serif;
+}
+
+.font-sans-modern {
+  font-family: var(--font-sans-modern), system-ui, sans-serif;
+}
+
+.font-serif {
+  font-family: var(--font-serif), Georgia, serif;
 }
 
 .font-mono {
