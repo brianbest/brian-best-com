@@ -14,7 +14,7 @@ export function Footer() {
               <p className="font-serif text-xl font-bold text-[#F4B942]">Brian Best</p>
             </div>
             <p className="text-[#E8DCC8] text-sm">Senior Software Developer @ Axonify</p>
-            <p className="text-[#E8DCC8] text-xs mt-2">Crafting elegant solutions to complex problems.</p>
+            <p className="text-[#E8DCC8] text-xs mt-2">Building AI-driven solutions for enterprise customer care.</p>
           </div>
 
           <div className="flex flex-col items-center md:items-end gap-4">

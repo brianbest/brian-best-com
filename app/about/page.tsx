@@ -5,13 +5,13 @@ import Image from "next/image"
 
 export const metadata = {
   title: "About | Brian Best",
-  description: "Learn more about Brian Best, Senior Software Developer at Axonify",
+  description: "Senior Software Developer at Axonify specializing in AI-driven systems, LLM integration, and enterprise software solutions. 5+ years of experience building scalable customer care platforms.",
 }
 
 export default function AboutPage() {
   const techStack = [
-    "Java", "JavaScript", "TypeScript", "Node.js", "SQL", 
-    "CSS", "Tailwind", "Next.js", "GCP", "Supabase", "Kubernetes"
+    "Java", "JavaScript", "TypeScript", "Node.js", "MySQL", 
+    "CSS", "Tailwind", "Next.js", "GCP", "MCP", "LLMOps", "LLM", "Kubernetes"
   ]
 
   return (
@@ -42,7 +42,7 @@ export default function AboutPage() {
               <div className="space-y-3">
                 <div className="flex justify-between items-center">
                   <span className="text-xs font-mono text-muted-foreground">Experience</span>
-                  <span className="text-sm font-pixel text-primary">15 YRS</span>
+                  <span className="text-sm font-pixel text-primary">5+ YRS</span>
                 </div>
                 <div className="flex justify-between items-center">
                   <span className="text-xs font-mono text-muted-foreground">Projects</span>
@@ -62,7 +62,7 @@ export default function AboutPage() {
             <section>
               <h2 className="font-pixel text-2xl text-primary mb-4">Hey, I'm Brian Best</h2>
               <p className="text-foreground mb-4">
-                I write code, untangle gnarly bugs, and sprinkle in some AI magic to make life easier for everyone.
+                I operate at the intersection of software engineering, customer success, and applied AI. My work focuses on designing and building AI-driven systems that keep customers productive and support teams efficient—turning large-language-model research into production features that make customer care faster, smarter, and infinitely more scalable.
               </p>
               <div className="inline-flex items-center gap-2 text-sm font-mono text-secondary border-2 border-secondary px-3 py-1">
                 <span className="inline-block w-2 h-2 bg-pixel-success rounded-full animate-blink"></span>
@@ -78,9 +78,9 @@ export default function AboutPage() {
                     <div className="flex-shrink-0 w-2 h-2 bg-primary mt-2"></div>
                     <div>
                       <p className="font-pixel text-sm text-primary mb-1">Axonify</p>
-                      <p className="text-xs text-muted-foreground mb-2">Senior Software Developer · Mar 2020 – Present</p>
+                      <p className="text-xs text-muted-foreground mb-2">Senior Software Developer · Feb 2022 – Present</p>
                       <p className="text-sm text-foreground">
-                        Keeping our customer‑care engine humming, leading system‑health initiatives, and weaving AI‑powered tooling into the workflow.
+                        Leading development of AI-driven systems at the intersection of software engineering, customer success, and applied AI. Building LLM-powered support agents that triage issues, find solutions, and file context-rich tickets—cutting turnaround times from days to hours. Integrating LLMs with MCP tooling and vector-search pipelines while orchestrating secure cloud workflows that respect enterprise compliance.
                       </p>
                     </div>
                   </div>
@@ -90,10 +90,10 @@ export default function AboutPage() {
                   <div className="flex gap-3">
                     <div className="flex-shrink-0 w-2 h-2 bg-secondary mt-2"></div>
                     <div>
-                      <p className="font-pixel text-sm text-primary mb-1">Digicraft Software</p>
-                      <p className="text-xs text-muted-foreground mb-2">Intermediate → Senior Dev · 2016 – 2020</p>
+                      <p className="font-pixel text-sm text-primary mb-1">Axonify</p>
+                      <p className="text-xs text-muted-foreground mb-2">Intermediate Software Developer · Feb 2021 – Feb 2022</p>
                       <p className="text-sm text-foreground">
-                        Built CMS‑driven websites & apps, modernised legacy code, and mentored juniors.
+                        Contributed to core platform development, implemented broader AI strategy including automated log analysis, auto-generated training content, and 3rd party integrations. Technical owner for system-health tooling.
                       </p>
                     </div>
                   </div>
@@ -103,10 +103,10 @@ export default function AboutPage() {
                   <div className="flex gap-3">
                     <div className="flex-shrink-0 w-2 h-2 bg-accent mt-2"></div>
                     <div>
-                      <p className="font-pixel text-sm text-primary mb-1">Combinaut / UBIQUE</p>
-                      <p className="text-xs text-muted-foreground mb-2">Front‑End Developer · 2014 – 2016</p>
+                      <p className="font-pixel text-sm text-primary mb-1">Axonify</p>
+                      <p className="text-xs text-muted-foreground mb-2">Software Developer · Mar 2020 – Feb 2021</p>
                       <p className="text-sm text-foreground">
-                        Crafted Angular UIs and responsive experiences.
+                        Built and maintained features for the Axonify learning platform using Java, JavaScript, and cloud technologies. Focused on delivering scalable solutions for enterprise customers.
                       </p>
                     </div>
                   </div>
@@ -128,7 +128,7 @@ export default function AboutPage() {
             <section>
               <h3 className="font-pixel text-xl text-primary mb-4">Level‑Up with AI</h3>
               <p className="text-foreground">
-                From automated issue triage to code‑review copilots and GPT‑powered test generators, I lean on AI to slice through repetitive tasks. That frees me up to focus on the fun stuff—architecting features and shipping delightful experiences faster than ever.
+                I'm in-house AI productizer at Axonify—turning large-language-model research into production features. Beyond support-specific agents, I help implement broader AI strategy: automating log analysis, proposing auto-generated training content when regulatory changes hit, and preparing various 3rd party integrations so that routine customer-admin tasks can be automated.
               </p>
             </section>
 
@@ -137,15 +137,15 @@ export default function AboutPage() {
               <ul className="space-y-2">
                 <li className="flex gap-3 text-foreground">
                   <span className="text-primary">▸</span>
-                  <span>15 years of writing production code (and the scars to prove it).</span>
+                  <span>5+ years of writing production code, with deep expertise in AI integration and system architecture.</span>
                 </li>
                 <li className="flex gap-3 text-foreground">
                   <span className="text-primary">▸</span>
-                  <span>Blend of people‑skills & tech chops—I've been a radio DJ and a founder.</span>
+                  <span>Technical owner for system-health tooling and AI integration initiatives.</span>
                 </li>
                 <li className="flex gap-3 text-foreground">
                   <span className="text-primary">▸</span>
-                  <span>Continuous learning mindset—currently geeking out over edge AI & LLM agents.</span>
+                  <span>Expert in LLMOps, vector search pipelines, and enterprise compliance workflows.</span>
                 </li>
               </ul>
             </section>
