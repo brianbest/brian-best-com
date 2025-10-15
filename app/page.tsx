@@ -26,26 +26,6 @@ export default function Home() {
     <main className="overflow-x-hidden">
       {/* Hero Section with Dark Green Background */}
       <section className="relative min-h-screen bg-[#2C4A3E] text-[#F5F1E8] overflow-hidden">
-        {/* Navigation */}
-        <div className="absolute top-0 right-0 p-6 md:p-8 z-20 flex items-center gap-6">
-          <Link href="/about" className="text-[#F5F1E8] hover:text-[#F4B942] transition-colors text-sm">
-            About me
-          </Link>
-          <Link href="/blog" className="text-[#F5F1E8] hover:text-[#F4B942] transition-colors text-sm">
-            Resume
-          </Link>
-          <Link href="/projects" className="text-[#F5F1E8] hover:text-[#F4B942] transition-colors text-sm">
-            Work
-          </Link>
-          <button className="bg-[#F4B942] text-[#1A1A1A] px-6 py-2 rounded-full font-medium hover:bg-[#D4A854] transition-colors text-sm">
-            Get in touch!
-          </button>
-        </div>
-
-        {/* Back Button */}
-        <button className="absolute top-6 left-6 md:top-8 md:left-8 z-20 w-12 h-12 rounded-full bg-[rgba(0,0,0,0.3)] backdrop-blur-sm flex items-center justify-center text-[#F5F1E8] hover:bg-[rgba(0,0,0,0.5)] transition-all">
-          <span className="text-2xl">←</span>
-        </button>
 
         <div className="container mx-auto px-6 py-16 md:py-24 relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
