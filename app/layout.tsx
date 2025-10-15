@@ -46,8 +46,9 @@ const dmSans = DM_Sans({
 
 export const metadata: Metadata = {
   title: "Brian Best | Senior Software Developer",
-  description: "Senior Software Developer at Axonify building AI-driven systems and LLM-powered solutions. Specializing in enterprise software, system architecture, and applied AI for customer care.",
-    generator: 'v0.dev'
+  description:
+    "Senior Software Developer at Axonify building AI-driven systems and LLM-powered solutions. Specializing in enterprise software, system architecture, and applied AI for customer care.",
+  generator: "v0.dev",
 }
 
 export default function RootLayout({

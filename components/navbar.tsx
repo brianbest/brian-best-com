@@ -24,7 +24,7 @@ export function Navbar() {
       <div className="container mx-auto px-6">
         <div className="flex items-center justify-between h-20">
           <Link href="/" className="flex items-center gap-2 group">
-            <Star className="h-6 w-6 text-primary fill-primary group-hover:animate-pulse" />
+            <Star aria-hidden="true" className="h-6 w-6 text-primary fill-primary group-hover:animate-pulse" />
             <span className="font-serif text-xl font-bold text-foreground group-hover:text-primary transition-colors">
               Brian Best
             </span>
@@ -42,9 +42,12 @@ export function Navbar() {
                 <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all group-hover:w-full"></span>
               </Link>
             ))}
-            <button className="bg-primary text-primary-foreground px-6 py-2 rounded-full font-medium hover:bg-primary/90 transition-colors text-sm">
+            <Link
+              href="/contact"
+              className="bg-primary text-primary-foreground px-6 py-2 rounded-full font-medium hover:bg-primary/90 transition-colors text-sm"
+            >
               Get in touch!
-            </button>
+            </Link>
             <ThemeToggle />
           </nav>
 
@@ -72,7 +75,7 @@ export function Navbar() {
         <div className="container mx-auto px-6 py-6">
           <div className="flex justify-between items-center mb-8 pb-6 border-b border-border">
             <Link href="/" className="flex items-center gap-2" onClick={() => setIsMenuOpen(false)}>
-              <Star className="h-6 w-6 text-primary fill-primary" />
+              <Star aria-hidden="true" className="h-6 w-6 text-primary fill-primary" />
               <span className="font-serif text-xl font-bold text-foreground">Brian Best</span>
             </Link>
             <button 
@@ -94,9 +97,13 @@ export function Navbar() {
                 {link.label}
               </Link>
             ))}
-            <button className="bg-primary text-primary-foreground px-6 py-3 rounded-full font-medium hover:bg-primary/90 transition-colors text-sm mt-4">
+            <Link
+              href="/contact"
+              className="bg-primary text-primary-foreground px-6 py-3 rounded-full font-medium hover:bg-primary/90 transition-colors text-sm mt-4 text-center"
+              onClick={() => setIsMenuOpen(false)}
+            >
               Get in touch!
-            </button>
+            </Link>
           </nav>
         </div>
       </div>
