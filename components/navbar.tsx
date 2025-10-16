@@ -82,7 +82,7 @@ export function Navbar() {
       {/* Mobile Navigation */}
       <div
         className={cn(
-          "md:hidden fixed inset-0 z-50 flex flex-col overflow-hidden bg-gradient-to-b from-[#1F3A33]/95 via-[#243F38]/98 to-[#1F3A33]/95 backdrop-blur-xl transition-all duration-300 ease-out",
+          "md:hidden fixed inset-x-0 top-0 z-50 flex min-h-dvh flex-col overflow-hidden bg-gradient-to-b from-[#1F3A33]/95 via-[#243F38]/98 to-[#1F3A33]/95 backdrop-blur-xl transition-all duration-300 ease-out",
           isMenuOpen ? "pointer-events-auto opacity-100" : "pointer-events-none opacity-0",
         )}
       >
