@@ -3,7 +3,11 @@
 @tailwind utilities;
 
 :root {
-  color-scheme: light dark;
+  color-scheme: light;
+}
+
+.dark {
+  color-scheme: dark;
 }
 
 * {
@@ -25,17 +29,10 @@ body {
   text-rendering: optimizeLegibility;
 }
 
-@media (prefers-color-scheme: dark) {
-  body {
-    --retro-link-contrast: #000000;
-    background-color: #000000;
-    color: #ffffff;
-  }
-
-  .profile-card {
-    background-color: #000000;
-    box-shadow: 0 0 0 4px #ffffff inset;
-  }
+.dark body {
+  --retro-link-contrast: #000000;
+  background-color: #000000;
+  color: #ffffff;
 }
 
 .retro-main {
@@ -49,6 +46,11 @@ body {
   text-align: center;
   background-color: #ffffff;
   transition: transform 200ms ease, box-shadow 200ms ease;
+}
+
+.dark .profile-card {
+  background-color: #000000;
+  box-shadow: 0 0 0 4px #ffffff inset;
 }
 
 .profile-card:hover {
