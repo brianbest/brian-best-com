@@ -14,9 +14,14 @@ const SUGGESTED_QUESTIONS = [
   "What's a technical decision you're proud of?",
 ]
 
+const MAX_FOLLOW_UP_QUESTIONS = 5
+
 export function AIChat() {
-  const { messages, status, sendMessage } = useChat()
+  const { messages, status, sendMessage, setMessages } = useChat()
   const isLoading = status === "streaming" || status === "submitted"
+  const userMessageCount = messages.filter((message) => message.role === "user").length
+  const followUpQuestionCount = Math.max(0, userMessageCount - 1)
+  const followUpLimitReached = followUpQuestionCount >= MAX_FOLLOW_UP_QUESTIONS
 
   const [inputValue, setInputValue] = useState("")
   const [showSuggestions, setShowSuggestions] = useState(true)
@@ -28,15 +33,22 @@ export function AIChat() {
   }, [messages.length, showSuggestions])
 
   const handleSuggestionClick = (question: string) => {
+    if (followUpLimitReached || isLoading) return
     setShowSuggestions(false)
     sendMessage?.({ text: question })
   }
 
   const handleFormSubmit = (e: React.FormEvent) => {
     e.preventDefault()
-    if (!inputValue.trim() || isLoading) return
+    if (!inputValue.trim() || isLoading || followUpLimitReached) return
     sendMessage?.({ text: inputValue })
     setInputValue("")
+  }
+
+  const clearChat = () => {
+    setMessages?.([])
+    setInputValue("")
+    setShowSuggestions(true)
   }
 
   return (
@@ -143,6 +155,20 @@ export function AIChat() {
           </div>
         )}
 
+        {followUpLimitReached && !isLoading && (
+          <div className="rounded-lg border border-persona-maroon bg-persona-maroon/20 p-4">
+            <p className="text-sm text-persona-white">
+              You&apos;ve reached the 5 follow-up question limit. Clear this chat to ask new questions.
+            </p>
+            <Button
+              type="button"
+              onClick={clearChat}
+              className="mt-3 bg-persona-red hover:bg-persona-maroon text-white"
+            >
+              Clear chat
+            </Button>
+          </div>
+        )}
       </div>
 
       {/* Input */}
@@ -156,11 +182,11 @@ export function AIChat() {
             className="flex-1 px-4 py-3 bg-persona-black border border-persona-maroon rounded-lg
                      text-persona-white placeholder:text-persona-grey/50
                      focus:outline-none focus:ring-2 focus:ring-persona-red focus:border-transparent"
-            disabled={isLoading}
+            disabled={isLoading || followUpLimitReached}
           />
           <Button
             type="submit"
-            disabled={isLoading || !inputValue.trim()}
+            disabled={isLoading || !inputValue.trim() || followUpLimitReached}
             className="px-4 bg-persona-red hover:bg-persona-maroon text-white"
           >
             <Send className="w-5 h-5" />

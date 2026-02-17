@@ -144,6 +144,37 @@ describe("AIChat", () => {
       expect(button).toBeDisabled()
     })
 
+    it("disables input and submit button when follow-up limit is reached", () => {
+      const messages = [
+        { id: "u1", role: "user", parts: [{ type: "text", text: "Initial question" }] },
+        { id: "a1", role: "assistant", parts: [{ type: "text", text: "Initial response" }] },
+        { id: "u2", role: "user", parts: [{ type: "text", text: "Follow-up 1" }] },
+        { id: "a2", role: "assistant", parts: [{ type: "text", text: "Response 1" }] },
+        { id: "u3", role: "user", parts: [{ type: "text", text: "Follow-up 2" }] },
+        { id: "a3", role: "assistant", parts: [{ type: "text", text: "Response 2" }] },
+        { id: "u4", role: "user", parts: [{ type: "text", text: "Follow-up 3" }] },
+        { id: "a4", role: "assistant", parts: [{ type: "text", text: "Response 3" }] },
+        { id: "u5", role: "user", parts: [{ type: "text", text: "Follow-up 4" }] },
+        { id: "a5", role: "assistant", parts: [{ type: "text", text: "Response 4" }] },
+        { id: "u6", role: "user", parts: [{ type: "text", text: "Follow-up 5" }] },
+      ]
+
+      vi.mocked(useChat).mockReturnValue({
+        ...createUseChatMock(),
+        messages,
+      } as ReturnType<typeof useChat>)
+
+      render(<AIChat />)
+
+      const input = screen.getByPlaceholderText("Ask me anything about my career...")
+      const button = getSubmitButton()
+
+      expect(input).toBeDisabled()
+      expect(button).toBeDisabled()
+      expect(screen.getByText("You've reached the 5 follow-up question limit. Clear this chat to ask new questions.")).toBeInTheDocument()
+      expect(screen.getByRole("button", { name: "Clear chat" })).toBeInTheDocument()
+    })
+
     it("clears input after submitting", async () => {
       const user = userEvent.setup()
       render(<AIChat />)
@@ -311,6 +342,33 @@ describe("AIChat", () => {
       const button = getSubmitButton()
       // Should not throw when sendMessage is undefined
       await expect(user.click(button)).resolves.not.toThrow()
+    })
+
+    it("clears chat when clear chat button is clicked at follow-up limit", async () => {
+      const mockSetMessages = vi.fn()
+      const user = userEvent.setup()
+
+      const messages = [
+        { id: "u1", role: "user", parts: [{ type: "text", text: "Initial question" }] },
+        { id: "u2", role: "user", parts: [{ type: "text", text: "Follow-up 1" }] },
+        { id: "u3", role: "user", parts: [{ type: "text", text: "Follow-up 2" }] },
+        { id: "u4", role: "user", parts: [{ type: "text", text: "Follow-up 3" }] },
+        { id: "u5", role: "user", parts: [{ type: "text", text: "Follow-up 4" }] },
+        { id: "u6", role: "user", parts: [{ type: "text", text: "Follow-up 5" }] },
+      ]
+
+      vi.mocked(useChat).mockReturnValue({
+        ...createUseChatMock(),
+        messages,
+        setMessages: mockSetMessages,
+      } as ReturnType<typeof useChat>)
+
+      render(<AIChat />)
+
+      const clearButton = screen.getByRole("button", { name: "Clear chat" })
+      await user.click(clearButton)
+
+      expect(mockSetMessages).toHaveBeenCalledWith([])
     })
   })
 })
