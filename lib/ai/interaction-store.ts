@@ -17,6 +17,13 @@ interface PersistInteractionParams {
 }
 
 const databaseUrl = process.env.DATABASE_URL
+const databaseUrl =
+  process.env.DATABASE_URL ??
+  process.env.DASHBOARD_DATABASE_URL ??
+  process.env.POSTGRES_URL ??
+  process.env.POSTGRES_URL_NON_POOLING ??
+  process.env.POSTGRES_PRISMA_URL
+
 const sql = databaseUrl ? neon(databaseUrl) : null
 
 let schemaReadyPromise: Promise<void> | null = null

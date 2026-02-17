@@ -20,7 +20,14 @@ const INJECTION_PATTERNS = [
   /output\s+your\s+(system\s+)?prompt/i,
 ]
 
-// Chat message schema
+type RawChatMessage = {
+  [key: string]: unknown
+}
+
+type RawChatInput = {
+  messages?: unknown
+}
+
 const chatMessageSchema = z.object({
   role: z.enum(["user", "assistant"]),
   content: z.string().max(4000, "Message too long (max 4000 characters)").optional(),
@@ -45,6 +52,112 @@ const chatMessageSchema = z.object({
     message: "Message must include text content",
   }
 )
+
+const chatPayloadSchema = z.object({
+  messages: z.array(chatMessageSchema).min(1, "At least one message is required").max(50, "Too many messages (max 50)"),
+})
+
+function coerceText(value: unknown): string | undefined {
+  if (typeof value === "string") {
+    return value
+  }
+  if (value == null) {
+    return undefined
+  }
+  if (typeof value === "number" || typeof value === "boolean") {
+    return String(value)
+  }
+  if (Array.isArray(value)) {
+    return value
+      .map((chunk) => {
+        if (typeof chunk === "string") return chunk
+        if (chunk && typeof chunk === "object" && "text" in chunk) {
+          const textValue = (chunk as RawChatMessage).text
+          if (typeof textValue === "string") return textValue
+        }
+        return ""
+      })
+      .join(" ")
+      .trim()
+  }
+  if (typeof value === "object") {
+    const asObj = value as RawChatMessage
+    if (typeof asObj.text === "string") return asObj.text
+    if (typeof asObj.value === "string") return asObj.value
+  }
+  return undefined
+}
+
+function coerceParts(value: unknown): Array<{ type: string; text: string }> | undefined {
+  if (!Array.isArray(value)) return undefined
+  if (value.length === 0) return undefined
+
+  const items = value
+    .map((item) => {
+      if (typeof item !== "object" || item == null) return null
+      const parsed = item as RawChatMessage
+      const type = typeof parsed.type === "string" ? parsed.type : "text"
+      const text = coerceText(parsed.text)
+      if (typeof text !== "string" || !text.trim()) return null
+      return { type, text }
+    })
+    .filter((item): item is { type: string; text: string } => Boolean(item))
+
+  return items.length ? items : undefined
+}
+
+function normalizeIncomingMessage(raw: RawChatMessage): RawChatMessage | null {
+  if (typeof raw !== "object" || raw == null) return null
+
+  const role = raw.role
+  if (role !== "user" && role !== "assistant") return null
+
+  const content = coerceText(raw.content)
+  const parts = coerceParts(raw.parts)
+  const legacyMessage = raw.message
+  const legacyText = coerceText(legacyMessage)
+  const normalized: RawChatMessage = { role }
+
+  if (typeof content === "string" && content.trim()) {
+    normalized.content = content
+  }
+
+  if (parts) {
+    normalized.parts = parts
+  }
+
+  if (!normalized.content && !normalized.parts && typeof legacyText === "string" && legacyText.trim()) {
+    normalized.content = legacyText
+  }
+
+  return normalized
+}
+
+function normalizeIncomingChatPayload(data: unknown): RawChatInput | null {
+  if (!data || typeof data !== "object") return null
+  const raw = data as RawChatInput
+
+  if (Array.isArray(raw.messages)) {
+    return {
+      messages: raw.messages
+        .map((message) => normalizeIncomingMessage(message as RawChatMessage))
+        .filter((item): item is RawChatMessage => item !== null),
+    }
+  }
+
+  if (typeof (raw as RawChatMessage).message === "string") {
+    return {
+      messages: [
+        {
+          role: "user",
+          content: coerceText((raw as RawChatMessage).message),
+        },
+      ],
+    }
+  }
+
+  return null
+}
 
 // Chat input schema
 export const chatInputSchema = z.object({
@@ -125,7 +238,8 @@ function extractMessageContent(
  * Validates chat input and checks for injection attempts
  */
 export function validateChatInput(data: unknown): ValidationResult {
-  const parseResult = chatInputSchema.safeParse(data)
+  const normalized = normalizeIncomingChatPayload(data)
+  const parseResult = normalized ? chatPayloadSchema.safeParse(normalized) : chatPayloadSchema.safeParse(data)
 
   if (!parseResult.success) {
     return {
