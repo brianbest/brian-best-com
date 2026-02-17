@@ -1,7 +1,7 @@
 "use client"
 
 import { useChat } from "@ai-sdk/react"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { Send, User, Bot, Sparkles } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { cn } from "@/lib/utils"
@@ -21,9 +21,11 @@ export function AIChat() {
   const [inputValue, setInputValue] = useState("")
   const [showSuggestions, setShowSuggestions] = useState(true)
 
-  if (messages.length > 0 && showSuggestions) {
-    setShowSuggestions(false)
-  }
+  useEffect(() => {
+    if (messages.length > 0 && showSuggestions) {
+      setShowSuggestions(false)
+    }
+  }, [messages.length, showSuggestions])
 
   const handleSuggestionClick = (question: string) => {
     setShowSuggestions(false)

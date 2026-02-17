@@ -98,7 +98,30 @@ This site is designed to be deployed on Vercel:
 
 1. Push your code to a GitHub repository
 2. Import the repository in Vercel
-3. Deploy
+3. Add required environment variables (see below)
+4. Deploy
+
+## AI Interaction Analytics (Postgres)
+
+The chat endpoint and job-fit analyzer can persist user prompts and model outputs to Postgres for later dashboarding.
+
+### Required environment variables
+
+- `DATABASE_URL` - Neon/Postgres connection string
+- `OPENAI_API_KEY` - OpenAI API key for the AI endpoints
+
+### Schema setup
+
+Run the SQL in `spec/ai-interactions-schema.sql` against your database once:
+
+```sql
+-- spec/ai-interactions-schema.sql
+```
+
+Notes:
+
+- In production, this app also auto-creates the same table/indexes on first write.
+- Stored data includes request text, response text, endpoint (`chat` or `job_fit`), model, timestamp, and status.
 
 ## License
 

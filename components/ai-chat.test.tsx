@@ -17,6 +17,27 @@ vi.mock("@ai-sdk/react", () => ({
 // Import after mock setup
 import { useChat } from "@ai-sdk/react"
 
+function createUseChatMock(
+  overrides: Partial<ReturnType<typeof useChat>> = {}
+): ReturnType<typeof useChat> {
+  return {
+    id: "test-chat",
+    messages: [],
+    status: "ready",
+    sendMessage: mockSendMessage,
+    regenerate: vi.fn(),
+    stop: vi.fn(),
+    resumeStream: vi.fn(),
+    addToolResult: vi.fn(),
+    addToolOutput: vi.fn(),
+    addToolApprovalResponse: vi.fn(),
+    setMessages: vi.fn(),
+    clearError: vi.fn(),
+    error: undefined,
+    ...overrides,
+  } as unknown as ReturnType<typeof useChat>
+}
+
 // Helper to get the submit button (it only has an icon, no text)
 const getSubmitButton = () => screen.getByRole("button", { name: "" })
 
@@ -24,11 +45,7 @@ describe("AIChat", () => {
   beforeEach(() => {
     vi.clearAllMocks()
     // Reset to default mock
-    vi.mocked(useChat).mockReturnValue({
-      messages: [],
-      status: "ready",
-      sendMessage: mockSendMessage,
-    } as ReturnType<typeof useChat>)
+    vi.mocked(useChat).mockReturnValue(createUseChatMock())
   })
 
   describe("Initial render", () => {
@@ -107,10 +124,9 @@ describe("AIChat", () => {
 
     it("disables input when loading", () => {
       vi.mocked(useChat).mockReturnValue({
-        messages: [],
+        ...createUseChatMock(),
         status: "streaming",
-        sendMessage: mockSendMessage,
-      })
+      } as ReturnType<typeof useChat>)
 
       render(<AIChat />)
       const input = screen.getByPlaceholderText("Ask me anything about my career...")
@@ -119,10 +135,9 @@ describe("AIChat", () => {
 
     it("disables submit button when loading", () => {
       vi.mocked(useChat).mockReturnValue({
-        messages: [],
+        ...createUseChatMock(),
         status: "streaming",
-        sendMessage: mockSendMessage,
-      })
+      } as ReturnType<typeof useChat>)
 
       render(<AIChat />)
       const button = getSubmitButton()
@@ -214,10 +229,9 @@ describe("AIChat", () => {
 
       // Simulate messages being added after append
       vi.mocked(useChat).mockReturnValue({
+        ...createUseChatMock(),
         messages: [{ id: "1", role: "user", parts: [{ type: "text", text: "What is your leadership style?" }] }],
-        status: "ready",
-        sendMessage: mockSendMessage,
-      })
+      } as ReturnType<typeof useChat>)
 
       rerender(<AIChat />)
 
@@ -229,12 +243,11 @@ describe("AIChat", () => {
   describe("Messages display", () => {
     it("renders user messages correctly", () => {
       vi.mocked(useChat).mockReturnValue({
+        ...createUseChatMock(),
         messages: [
           { id: "1", role: "user", parts: [{ type: "text", text: "Hello, tell me about yourself" }] },
         ],
-        status: "ready",
-        sendMessage: mockSendMessage,
-      })
+      } as ReturnType<typeof useChat>)
 
       render(<AIChat />)
       expect(screen.getByText("Hello, tell me about yourself")).toBeInTheDocument()
@@ -242,13 +255,12 @@ describe("AIChat", () => {
 
     it("renders assistant messages correctly", () => {
       vi.mocked(useChat).mockReturnValue({
+        ...createUseChatMock(),
         messages: [
           { id: "1", role: "user", parts: [{ type: "text", text: "Hello" }] },
           { id: "2", role: "assistant", parts: [{ type: "text", text: "Hi! I'm Brian's AI assistant." }] },
         ],
-        status: "ready",
-        sendMessage: mockSendMessage,
-      })
+      } as ReturnType<typeof useChat>)
 
       render(<AIChat />)
       expect(screen.getByText("Hi! I'm Brian's AI assistant.")).toBeInTheDocument()
@@ -256,10 +268,10 @@ describe("AIChat", () => {
 
     it("shows loading indicator when isLoading is true", () => {
       vi.mocked(useChat).mockReturnValue({
+        ...createUseChatMock(),
         messages: [{ id: "1", role: "user", parts: [{ type: "text", text: "Hello" }] }],
         status: "streaming",
-        sendMessage: mockSendMessage,
-      })
+      } as ReturnType<typeof useChat>)
 
       render(<AIChat />)
       // Loading indicator has animated bouncing dots
@@ -271,10 +283,9 @@ describe("AIChat", () => {
   describe("Edge cases", () => {
     it("handles sendMessage being undefined", async () => {
       vi.mocked(useChat).mockReturnValue({
-        messages: [],
-        isLoading: false,
+        ...createUseChatMock(),
         sendMessage: undefined as unknown as typeof mockSendMessage,
-      })
+      } as ReturnType<typeof useChat>)
 
       const user = userEvent.setup()
       render(<AIChat />)
@@ -287,10 +298,9 @@ describe("AIChat", () => {
 
     it("handles form submit when append is undefined", async () => {
       vi.mocked(useChat).mockReturnValue({
-        messages: [],
-        isLoading: false,
+        ...createUseChatMock(),
         sendMessage: undefined as unknown as typeof mockSendMessage,
-      })
+      } as ReturnType<typeof useChat>)
 
       const user = userEvent.setup()
       render(<AIChat />)
