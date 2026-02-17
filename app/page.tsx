@@ -42,8 +42,7 @@ export default function Home() {
               </div>
 
               <p className="text-persona-grey text-lg mb-6 max-w-lg">
-                Welcome to my <span className="text-persona-red font-semibold">Un-Resume</span> -
-                an AI-powered interface that lets you explore my career in depth.
+                Welcome. This AI interface lets you explore my career in depth.
                 Ask questions, review my experience, or assess my fit for your role.
               </p>
 
