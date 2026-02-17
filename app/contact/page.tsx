@@ -14,10 +14,10 @@ export default function ContactPage() {
         <p className="text-xl mb-8">Have a question or want to work together? Feel free to drop me a line!</p>
 
         <a
-          href="mailto:brian@example.com"
+          href="https://www.linkedin.com/in/brianbest"
           className="inline-block font-bungee text-xl bg-persona-red text-persona-black px-8 py-4 shadow-thief hover:transform hover:-translate-y-1 hover:rotate-1 transition-transform"
         >
-          Email Me
+          Message Me on LinkedIn
         </a>
 
         <div className="mt-12">

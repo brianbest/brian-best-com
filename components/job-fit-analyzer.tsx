@@ -191,9 +191,9 @@ export function JobFitAnalyzer() {
                     asChild
                     className="bg-green-600 hover:bg-green-700 text-white"
                   >
-                    <a href="mailto:brian@brianbest.com?subject=Job Opportunity">
+                    <a href="https://www.linkedin.com/in/brianbest">
                       <Mail className="w-4 h-4 mr-2" />
-                      Get in Touch
+                      Message Me on LinkedIn
                     </a>
                   </Button>
                 </div>
