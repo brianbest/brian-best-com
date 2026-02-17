@@ -16,7 +16,6 @@ interface PersistInteractionParams {
   errorMessage?: string
 }
 
-const databaseUrl = process.env.DATABASE_URL
 const databaseUrl =
   process.env.DATABASE_URL ??
   process.env.DASHBOARD_DATABASE_URL ??
