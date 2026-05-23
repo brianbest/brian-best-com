@@ -1,8 +1,9 @@
 import { MDXContent } from "@/components/mdx-content"
-import { getPosts } from "@/lib/posts"
+import { getPost, getPosts } from "@/lib/posts"
 import { formatDate } from "@/lib/utils"
 import type { Metadata } from "next"
-import Image from "next/image"
+import Link from "next/link"
+import { notFound } from "next/navigation"
 
 type Props = {
   params: Promise<{
@@ -19,7 +20,7 @@ export async function generateStaticParams() {
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params
-  const post = (await getPosts()).find((post) => post.slug === slug)
+  const post = await getPost(slug)
 
   if (!post) {
     return {
@@ -29,38 +30,43 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
   return {
     title: `${post.title} | Brian Best`,
-    description: post.excerpt,
+    description: post.summary,
   }
 }
 
 export default async function BlogPostPage({ params }: Props) {
   const { slug } = await params
-  const post = (await getPosts()).find((post) => post.slug === slug)
+  const post = await getPost(slug)
 
   if (!post) {
-    return <div>Post not found</div>
+    notFound()
   }
 
   return (
     <main className="container mx-auto px-4 py-12">
       <article className="max-w-4xl mx-auto">
-        <div className="mb-8">
-          <h1 className="font-bungee text-3xl md:text-4xl lg:text-5xl text-persona-red mb-4">{post.title}</h1>
-          <div className="flex items-center gap-4 text-persona-grey mb-8">
-            <time dateTime={post.date}>{formatDate(post.date)}</time>
-            <span>•</span>
-            <span>{post.readingTime} min read</span>
-          </div>
+        <Link
+          href="/blog"
+          className="font-bungee text-sm text-persona-grey hover:text-persona-red transition-colors"
+        >
+          ← Back to blog
+        </Link>
 
-          {post.coverImage && (
-            <div className="relative w-full aspect-video mb-8 border-4 border-persona-white transform -rotate-1 shadow-thief overflow-hidden">
-              <Image
-                src={post.coverImage || "/placeholder.svg"}
-                alt={post.title}
-                width={1200}
-                height={630}
-                className="object-cover"
-              />
+        <div className="mt-6 mb-8">
+          <h1 className="font-bungee text-3xl md:text-4xl lg:text-5xl text-persona-red mb-4">{post.title}</h1>
+          <div className="flex items-center gap-4 text-persona-grey mb-4">
+            <time dateTime={post.date}>{formatDate(post.date)}</time>
+          </div>
+          {post.tags.length > 0 && (
+            <div className="flex flex-wrap gap-2">
+              {post.tags.map((tag) => (
+                <span
+                  key={tag}
+                  className="font-bungee text-xs px-2 py-1 border border-persona-maroon text-persona-grey"
+                >
+                  {tag}
+                </span>
+              ))}
             </div>
           )}
         </div>

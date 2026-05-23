@@ -3,7 +3,7 @@ import { getPosts } from "@/lib/posts"
 
 export const metadata = {
   title: "Blog | Brian Best",
-  description: "Articles and thoughts by Brian Best on software development and technology",
+  description: "Articles and thoughts by Brian Best on agentic AI, LLMs, and shipping software",
 }
 
 export default async function BlogPage() {
@@ -11,13 +11,20 @@ export default async function BlogPage() {
 
   return (
     <main className="container mx-auto px-4 py-12">
-      <h1 className="font-bungee text-4xl md:text-5xl text-persona-red mb-12">Blog</h1>
+      <h1 className="font-bungee text-4xl md:text-5xl text-persona-red mb-4">Blog</h1>
+      <p className="text-persona-white/80 mb-12 max-w-2xl">
+        Notes on agentic AI, LLMs, the Model Context Protocol, and what it&apos;s like to ship software with them.
+      </p>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        {posts.map((post) => (
-          <PostCard key={post.slug} post={post} />
-        ))}
-      </div>
+      {posts.length === 0 ? (
+        <p className="text-persona-grey">No posts yet. Check back soon.</p>
+      ) : (
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {posts.map((post) => (
+            <PostCard key={post.slug} post={post} />
+          ))}
+        </div>
+      )}
     </main>
   )
 }

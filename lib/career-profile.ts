@@ -161,7 +161,7 @@ and entrepreneurial experience.`,
   currentFocus: {
     tagline: "Agentic engineering - Building the system that builds the system",
     areas: [
-      "Building Agent Teams and Agent Swarms"
+      "Building Agent Teams and Agent Swarms",
       "LLM-powered support agents for enterprise customers",
       "MCP (Model Context Protocol) tooling for AI integration",
       "Vector search pipelines for semantic retrieval",
