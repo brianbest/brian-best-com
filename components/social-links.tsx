@@ -1,7 +1,14 @@
+"use client"
+
 import { Github, Linkedin, Youtube } from "lucide-react"
 import Link from "next/link"
+import { track } from "@vercel/analytics"
 
-export function SocialLinks() {
+type SocialLinksProps = {
+  location?: string
+}
+
+export function SocialLinks({ location = "global" }: SocialLinksProps) {
   const socialLinks = [
     {
       name: "GitHub",
@@ -48,6 +55,13 @@ export function SocialLinks() {
           rel="noopener noreferrer"
           aria-label={link.name}
           className="text-persona-grey hover:text-persona-red transition-colors"
+          onClick={() =>
+            track("social_click", {
+              location,
+              label: link.name,
+              destination: link.url,
+            })
+          }
         >
           {link.icon}
         </Link>

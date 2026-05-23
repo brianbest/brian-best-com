@@ -1,5 +1,8 @@
+"use client"
+
 import Image from "next/image"
 import Link from "next/link"
+import { track } from "@vercel/analytics"
 import { Button } from "@/components/ui/button"
 
 export function HeroBanner() {
@@ -21,14 +24,26 @@ export function HeroBanner() {
                 asChild
                 className="bg-persona-red hover:bg-persona-maroon text-persona-black font-bungee shadow-thief"
               >
-                <Link href="/projects">View Projects</Link>
+                <Link
+                  href="/projects"
+                  onClick={() =>
+                    track("cta_click", { location: "hero", label: "View Projects", destination: "/projects" })
+                  }
+                >
+                  View Projects
+                </Link>
               </Button>
               <Button
                 asChild
                 variant="outline"
                 className="border-persona-red text-persona-red hover:bg-persona-red/10 font-bungee"
               >
-                <Link href="/about">About Me</Link>
+                <Link
+                  href="/about"
+                  onClick={() => track("cta_click", { location: "hero", label: "About Me", destination: "/about" })}
+                >
+                  About Me
+                </Link>
               </Button>
             </div>
           </div>

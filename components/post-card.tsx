@@ -1,6 +1,9 @@
+"use client"
+
 import { formatDate } from "@/lib/utils"
 import Image from "next/image"
 import Link from "next/link"
+import { track } from "@vercel/analytics"
 
 type Post = {
   slug: string
@@ -20,6 +23,13 @@ export function PostCard({ post }: PostCardProps) {
     <Link
       href={`/blog/${post.slug}`}
       className="group block bg-persona-black border border-persona-maroon shadow-thief hover:transform hover:-translate-y-2 hover:rotate-1 transition-all duration-300"
+      onClick={() =>
+        track("post_open", {
+          location: "post_card",
+          postSlug: post.slug,
+          label: post.title,
+        })
+      }
     >
       <div className="relative aspect-video overflow-hidden">
         <Image

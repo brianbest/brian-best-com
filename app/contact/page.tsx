@@ -1,3 +1,4 @@
+import { ContactLinkedInCta } from "@/components/contact-linkedin-cta"
 import { SocialLinks } from "@/components/social-links"
 
 export const metadata = {
@@ -13,17 +14,12 @@ export default function ContactPage() {
 
         <p className="text-xl mb-8">Have a question or want to work together? Feel free to drop me a line!</p>
 
-        <a
-          href="https://www.linkedin.com/in/brianbest"
-          className="inline-block font-bungee text-xl bg-persona-red text-persona-black px-8 py-4 shadow-thief hover:transform hover:-translate-y-1 hover:rotate-1 transition-transform"
-        >
-          Message Me on LinkedIn
-        </a>
+        <ContactLinkedInCta />
 
         <div className="mt-12">
           <h2 className="font-bungee text-2xl text-persona-white mb-4">Or find me on</h2>
           <div className="flex justify-center">
-            <SocialLinks />
+            <SocialLinks location="contact_page" />
           </div>
         </div>
       </div>

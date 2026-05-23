@@ -3,6 +3,7 @@
 import { useState } from "react"
 import Link from "next/link"
 import { Frame, Menu, X } from "lucide-react"
+import { track } from "@vercel/analytics"
 import { ThemeToggle } from "./theme-toggle"
 import { cn } from "@/lib/utils"
 
@@ -16,12 +17,15 @@ const navLinks = [
 
 export function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const trackNavClick = (label: string, href: string, location: "desktop" | "mobile" | "brand") => {
+    track("cta_click", { location, label, destination: href })
+  }
 
   return (
     <header className="bg-persona-black border-b border-persona-maroon">
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16">
-          <Link href="/" className="flex items-center gap-2">
+          <Link href="/" className="flex items-center gap-2" onClick={() => trackNavClick("Home", "/", "brand")}>
             <Frame className="h-8 w-8 text-persona-red" />
             <span className="font-bungee text-xl text-persona-white">Brian Best</span>
           </Link>
@@ -33,6 +37,7 @@ export function Navbar() {
                 key={link.href}
                 href={link.href}
                 className="font-bungee text-sm text-persona-white hover:text-persona-red transition-colors"
+                onClick={() => trackNavClick(link.label, link.href, "desktop")}
               >
                 {link.label}
               </Link>
@@ -63,7 +68,14 @@ export function Navbar() {
       >
         <div className="container mx-auto px-4 py-6">
           <div className="flex justify-between items-center mb-8">
-            <Link href="/" className="flex items-center gap-2" onClick={() => setIsMenuOpen(false)}>
+            <Link
+              href="/"
+              className="flex items-center gap-2"
+              onClick={() => {
+                trackNavClick("Home", "/", "mobile")
+                setIsMenuOpen(false)
+              }}
+            >
               <Frame className="h-8 w-8 text-persona-red" />
               <span className="font-bungee text-xl text-persona-white">Brian Best</span>
             </Link>
@@ -77,7 +89,10 @@ export function Navbar() {
                 key={link.href}
                 href={link.href}
                 className="font-bungee text-xl text-persona-white hover:text-persona-red transition-colors"
-                onClick={() => setIsMenuOpen(false)}
+                onClick={() => {
+                  trackNavClick(link.label, link.href, "mobile")
+                  setIsMenuOpen(false)
+                }}
               >
                 {link.label}
               </Link>

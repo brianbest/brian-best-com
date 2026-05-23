@@ -122,6 +122,7 @@ and entrepreneurial experience.`,
       "Comfortable presenting to diverse audiences from technical teams to executives",
       "Skilled at translating complex technical concepts into accessible explanations",
       "Experience with live, unscripted communication under pressure",
+      "Has proven experince in effective communication that other engineers struggle with"
     ],
     workingStyle: [
       "Collaborative problem solver who values diverse perspectives",
@@ -130,6 +131,7 @@ and entrepreneurial experience.`,
       "Comfortable leading or contributing as individual contributor",
     ],
     values: [
+      "Is a builder at heart - he loves to build things and see them come to life",
       "Technical excellence balanced with pragmatism",
       "Continuous learning and growth mindset",
       "Transparency and honest communication",
@@ -159,6 +161,7 @@ and entrepreneurial experience.`,
   currentFocus: {
     tagline: "Agentic engineering - Building the system that builds the system",
     areas: [
+      "Building Agent Teams and Agent Swarms"
       "LLM-powered support agents for enterprise customers",
       "MCP (Model Context Protocol) tooling for AI integration",
       "Vector search pipelines for semantic retrieval",
@@ -210,6 +213,7 @@ across the stack from React frontends to Node.js services to cloud infrastructur
     longTerm: "Lead engineering organizations building AI-powered products, potentially exploring startup opportunities again",
     preferences: [
       "Remote or hybrid work environment",
+      "Willing to work from an office in Kitchener-Waterloo, ON",
       "AI/LLM focused engineering work",
       "Product-focused engineering culture",
       "Opportunities for technical leadership",
@@ -289,7 +293,7 @@ across the stack from React frontends to Node.js services to cloud infrastructur
       endDate: "Jun 2020",
       summary: "Full-stack development across various client projects using CMS platforms and modern frontend frameworks.",
       highlights: [
-        "Built CMS solutions and custom web applications",
+        "Built CMS solutions for HIPPA compliant websites and custom web applications",
         "Worked with Rails, React, and Vue.js",
         "Delivered projects across diverse client requirements",
       ],
@@ -307,6 +311,7 @@ across the stack from React frontends to Node.js services to cloud infrastructur
       highlights: [
         "Led web development team",
         "Built applications using Angular and Node.js",
+        "Built cross-integration APIs for connecting games like Minecraft and Counter-Strike to the web",
         "Established development practices for the team",
       ],
       starNarratives: [],
