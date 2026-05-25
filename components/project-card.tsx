@@ -1,15 +1,6 @@
 import Image from "next/image"
 import Link from "next/link"
-
-type Project = {
-  id: string
-  title: string
-  description: string
-  image: string
-  tags: string[]
-  url: string
-  featured: boolean
-}
+import type { Project } from "@/lib/projects"
 
 type ProjectCardProps = {
   project: Project
@@ -39,14 +30,16 @@ export function ProjectCard({ project }: ProjectCardProps) {
           ))}
         </div>
 
-        <Link
-          href={project.url}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="inline-block font-bungee text-sm text-persona-white hover:text-persona-red transition-colors"
-        >
-          View Project →
-        </Link>
+        {project.url && (
+          <Link
+            href={project.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-block font-bungee text-sm text-persona-white hover:text-persona-red transition-colors"
+          >
+            View Project →
+          </Link>
+        )}
       </div>
     </div>
   )

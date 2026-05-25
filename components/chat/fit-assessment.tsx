@@ -263,7 +263,7 @@ export function FitAssessment({
           </div>
           <div className="mt-3 flex flex-wrap gap-2">
             <a
-              href="https://www.linkedin.com/in/brianbest"
+              href="https://www.linkedin.com/in/brianbest101"
               target="_blank"
               rel="noopener noreferrer"
               className="font-mono text-[12px] px-[14px] py-2 bg-term-accent text-term-bg font-bold no-underline hover:opacity-90 transition-opacity"

@@ -30,8 +30,8 @@ const bungee = Bungee({
 })
 
 export const metadata: Metadata = {
-  title: "Brian Best | Senior Software Developer",
-  description: "Personal website and blog of Brian Best, Senior Software Developer",
+  title: "Brian Best | Principal Software Developer",
+  description: "Personal website and blog of Brian Best, Principal Software Developer",
   generator: "v0.dev",
 }
 

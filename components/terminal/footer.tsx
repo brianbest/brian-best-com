@@ -23,7 +23,7 @@ export function TerminalFooter() {
             github
           </a>
           <a
-            href="https://www.linkedin.com/in/brianbest"
+            href="https://www.linkedin.com/in/brianbest101"
             target="_blank"
             rel="noopener noreferrer"
             className="hover:text-term-fg transition-colors"
@@ -54,7 +54,7 @@ export function TerminalFooter() {
             github
           </a>
           <a
-            href="https://www.linkedin.com/in/brianbest"
+            href="https://www.linkedin.com/in/brianbest101"
             target="_blank"
             rel="noopener noreferrer"
             className="hover:text-term-fg transition-colors"

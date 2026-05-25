@@ -1,7 +1,11 @@
-// This is a mock implementation for static generation
-// In a real project, you would fetch this data from a CMS or file system
+import fs from "fs"
+import path from "path"
+import matter from "gray-matter"
 
-import { sanityClient } from "./sanity";
+// Projects are markdown files in content/projects/*.md — same content model as
+// the blog (see lib/posts.ts). The filename (minus ".md") is the project id.
+
+const projectsDir = path.join(process.cwd(), "content/projects")
 
 export type Project = {
   id: string
@@ -11,18 +15,40 @@ export type Project = {
   tags: string[]
   url: string
   featured: boolean
+  content: string // raw markdown body (optional longer write-up)
+}
+
+function readProjectFile(filename: string): Project {
+  const id = filename.replace(/\.md$/, "")
+  const raw = fs.readFileSync(path.join(projectsDir, filename), "utf8")
+  const { data, content } = matter(raw)
+
+  return {
+    id,
+    title: (data.title as string) ?? id,
+    description: (data.description as string) ?? "",
+    image: (data.image as string) ?? "",
+    tags: (data.tags as string[]) ?? [],
+    url: (data.url as string) ?? "",
+    featured: (data.featured as boolean) ?? false,
+    content,
+  }
 }
 
 export async function getProjects(): Promise<Project[]> {
-  const query = `*[_type == "project"] | order(title asc){
-    "id": _id,
-    title,
-    description,
-    "image": image.asset->url,
-    tags,
-    url,
-    featured
-  }`;
-  const projects = await sanityClient.fetch<Project[]>(query);
-  return projects;
+  if (!fs.existsSync(projectsDir)) return []
+  const files = fs.readdirSync(projectsDir).filter((f) => f.endsWith(".md"))
+  const projects = files.map(readProjectFile)
+
+  // Featured first, then alphabetical by title.
+  return projects.sort((a, b) => {
+    if (a.featured !== b.featured) return a.featured ? -1 : 1
+    return a.title.localeCompare(b.title)
+  })
+}
+
+export async function getProject(id: string): Promise<Project | null> {
+  const fullPath = path.join(projectsDir, `${id}.md`)
+  if (!fs.existsSync(fullPath)) return null
+  return readProjectFile(`${id}.md`)
 }

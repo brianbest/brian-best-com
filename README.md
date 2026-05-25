@@ -1,6 +1,6 @@
 # brian.best
 
-Personal site and blog for Brian Best, Senior Software Developer. A statically-generated
+Personal site and blog for Brian Best, Principal Software Developer. A statically-generated
 Next.js app with a markdown-backed blog and an AI "Chat with Brian's AI" feature
 (general Q&A + job-description fit assessment).
 
@@ -118,6 +118,11 @@ Syntax highlighting lives in `lib/highlight.tsx` (`highlight(src, theme)` → Re
   - `getAdjacentPosts(slug)` → `{ prev, next }` (prev = newer, next = older).
   - `extractHeadings(content)` → `{ id, text, level }[]` for the post outline (ids via `slugify`).
   - `PostMeta` includes computed `readingTime` and `wordCount`.
+- **`lib/projects.ts`** — reads `content/projects/*.md` via `gray-matter` (same model as the blog).
+  - `getProjects()` → `Project[]` (featured first, then title A–Z), `getProject(id)` → `Project | null`.
+  - Frontmatter: `title`, `description`, `tags`, `url`, `featured`, `image`; the filename is the `id`.
+    Body markdown is kept on `content` for a future project detail page. Blank `url` hides the card's
+    "View Project" link; blank `image` falls back to `/placeholder.svg`.
 - **`lib/utils.ts`** — `cn`, `formatDate`, `formatTerminalDate` (lowercase, **UTC** so date-only
   frontmatter never shifts a day), `slugify` (shared by `extractHeadings` and the heading renderer
   so outline anchors line up).
@@ -228,7 +233,8 @@ components/
   layout.tsx              # nav + footer wrapper
   ui/                     # shadcn/ui primitives
 content/blog/*.md         # the blog posts (source of truth)
-lib/                      # posts, utils, highlight, ai/*, career-profile
+content/projects/*.md     # the projects (source of truth)
+lib/                      # posts, projects, utils, highlight, ai/*, career-profile
 ```
 
 ---

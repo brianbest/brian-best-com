@@ -191,7 +191,7 @@ export function JobFitAnalyzer() {
                     asChild
                     className="bg-green-600 hover:bg-green-700 text-white"
                   >
-                    <a href="https://www.linkedin.com/in/brianbest">
+                    <a href="https://www.linkedin.com/in/brianbest101">
                       <Mail className="w-4 h-4 mr-2" />
                       Message Me on LinkedIn
                     </a>

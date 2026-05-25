@@ -17,7 +17,7 @@ export function SocialLinks({ location = "global" }: SocialLinksProps) {
     },
     {
       name: "LinkedIn",
-      url: "https://linkedin.com/in/brianbest",
+      url: "https://linkedin.com/in/brianbest101",
       icon: <Linkedin className="h-5 w-5" />,
     },
     {

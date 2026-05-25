@@ -4,15 +4,14 @@ import { careerProfile } from "@/lib/career-profile"
 import { getPosts } from "@/lib/posts"
 import { formatTerminalDate } from "@/lib/utils"
 
-// Select the 5 most relevant / chronologically recent experiences for the CV panel.
-// We collapse the 3 Axonify roles into the Senior one (current) and show the
-// 4 following roles, giving a clean 5-row CV read.
+// Select the most relevant / chronologically recent experiences for the CV panel.
+// We collapse the Axonify roles into the current Principal one and show the
+// following roles, giving a clean CV read that mirrors the résumé.
 const ROLES_TO_SHOW = [
-  "axonify-senior",
-  "digicraft",
+  "axonify-principal",
+  "combinaut",
   "ubique",
   "phased",
-  "bang-creative",
 ]
 
 function formatYears(startDate: string, endDate: string | null): string {
@@ -39,7 +38,7 @@ export default async function Home() {
         {/* whoami */}
         <Prompt>whoami</Prompt>
         <div className="pl-6 text-term-fg-muted font-mono text-[13px] mt-1 mb-8">
-          brian-best (uid=1000, gid=1000, groups=senior, staff, builders)
+          brian-best (uid=1000, gid=1000, groups=principal, staff, builders)
         </div>
 
         {/* cat ./about.md */}
@@ -54,14 +53,14 @@ export default async function Home() {
           {/* # tagline */}
           <div className="mt-3 font-mono text-[13px] md:text-[15px] text-term-fg-soft">
             <span className="text-term-accent"># </span>
-            {careerProfile.personal.title.toLowerCase()} · agent tooling &amp; LLM systems · ontario, canada
+            {careerProfile.personal.title.toLowerCase()} · agentic AI &amp; LLM systems · kitchener, ontario
           </div>
 
           {/* Intro paragraph */}
           <p className="mt-6 md:mt-8 font-sans font-normal text-term-fg-soft leading-[1.45] text-[17px] md:text-[22px] max-w-[880px]">
             I build resilient software with a craftsman&rsquo;s care — the kind that holds up
-            when the demo ends. Lately: LLM-powered support agents, MCP tooling, and the
-            plumbing that makes AI reliable in production.
+            when the demo ends. Lately: an in-house agentic AI &ldquo;code factory,&rdquo; MCP
+            integrations, and the plumbing that makes AI reliable in production.
           </p>
         </div>
 
@@ -84,7 +83,7 @@ export default async function Home() {
               <div>
                 <span className="text-term-accent mr-2">●</span>
                 <span className="text-term-fg-muted">shipping </span>
-                <span className="text-term-fg">LLM agent + MCP tooling at Axonify</span>
+                <span className="text-term-fg">agentic AI platform + MCP tooling at Axonify</span>
               </div>
               <div>
                 <span className="text-term-yellow mr-2">●</span>
@@ -109,7 +108,7 @@ export default async function Home() {
             <span className="text-term-accent">●</span>
             <span>
               <span className="text-term-fg-muted">shipping     </span>
-              <span className="text-term-fg">= &quot;LLM agent + MCP tooling at Axonify&quot;</span>
+              <span className="text-term-fg">= &quot;agentic AI platform + MCP tooling at Axonify&quot;</span>
             </span>
 
             <span className="text-term-yellow">●</span>
@@ -222,8 +221,8 @@ export default async function Home() {
           </span>
         </div>
         <p className="font-sans font-normal text-term-fg-soft text-[15px] leading-[1.5] max-w-[720px] mt-2 mb-7">
-          Five years at Axonify — growing from developer to senior leading AI initiatives — plus
-          consulting, a startup, and everything in between. Full résumé on request.
+          Six years at Axonify — developer to principal, now leading AI initiatives — plus
+          a healthcare-frontend stint and a startup I co-founded. Full résumé on request.
         </p>
 
         {/* Roles panel */}
