@@ -1,26 +1,27 @@
 "use client"
 
-import { formatDate } from "@/lib/utils"
 import Link from "next/link"
 import { track } from "@vercel/analytics"
+import { cn } from "@/lib/utils"
+import { formatTerminalDate } from "@/lib/utils"
+import type { PostMeta } from "@/lib/posts"
 
-type Post = {
-  slug: string
-  title: string
-  date: string
-  summary: string
-  tags: string[]
+interface PostCardProps {
+  post: PostMeta
+  index: number
 }
 
-type PostCardProps = {
-  post: Post
-}
+export function PostCard({ post, index }: PostCardProps) {
+  const displayIndex = String(index + 1).padStart(2, "0")
+  const primaryTag = post.tags[0] ?? "misc"
 
-export function PostCard({ post }: PostCardProps) {
   return (
     <Link
       href={`/blog/${post.slug}`}
-      className="group block bg-persona-black border border-persona-maroon shadow-thief hover:transform hover:-translate-y-2 hover:rotate-1 transition-all duration-300 p-6"
+      className={cn(
+        "group flex flex-col bg-term-bg md:min-h-[460px]",
+        "hover:bg-term-bg-2 transition-colors duration-150",
+      )}
       onClick={() =>
         track("post_open", {
           location: "post_card",
@@ -29,23 +30,70 @@ export function PostCard({ post }: PostCardProps) {
         })
       }
     >
-      <h3 className="font-bungee text-xl text-persona-red mb-2 group-hover:text-persona-white transition-colors">
-        {post.title}
-      </h3>
-      <div className="text-sm text-persona-grey mb-3">{formatDate(post.date)}</div>
-      <p className="text-persona-white/80 line-clamp-3 mb-4">{post.summary}</p>
-      {post.tags.length > 0 && (
-        <div className="flex flex-wrap gap-2">
-          {post.tags.map((tag) => (
-            <span
-              key={tag}
-              className="font-bungee text-xs px-2 py-1 border border-persona-maroon text-persona-grey"
-            >
-              {tag}
-            </span>
-          ))}
+      {/* Card header bar */}
+      <div className="flex items-center justify-between px-4 py-[10px] bg-term-bg-2 border-b border-term-rule font-mono text-[11px] text-term-fg-muted">
+        <span className="inline-flex items-center gap-[10px]">
+          <span className="text-term-accent">{displayIndex}</span>
+          <span>{primaryTag}</span>
+        </span>
+        <span>{post.readingTime}</span>
+      </div>
+
+      {/* Cover area — numbered placeholder (no real cover images yet).
+          Hidden on mobile to match the compact BBlogMobile card. */}
+      <div className="mx-5 mt-5 hidden md:block">
+        <div
+          className="relative bg-term-bg-2 border border-term-rule-soft overflow-hidden flex flex-col justify-between p-5"
+          style={{ height: 140 }}
+        >
+          {/* Big faded index number */}
+          <div
+            className="font-sans font-extrabold leading-none tracking-[-0.04em] select-none"
+            style={{ fontSize: 72, color: "#1c1916", lineHeight: 0.9 }}
+            aria-hidden="true"
+          >
+            {displayIndex}
+          </div>
+          {/* Word count bottom-right */}
+          <div className="font-mono text-[11px] text-term-fg-muted text-right">
+            {post.wordCount.toLocaleString()} words
+          </div>
         </div>
-      )}
+      </div>
+
+      {/* Card body */}
+      <div className="flex flex-col gap-[14px] flex-1 px-5 pt-5 pb-5">
+        {/* Date · reading time */}
+        <div className="flex gap-[10px] font-mono text-[11px] text-term-fg-muted">
+          <span>{formatTerminalDate(post.date)}</span>
+          <span>·</span>
+          <span>{post.readingTime}</span>
+        </div>
+
+        {/* Title */}
+        <h2 className="font-sans font-bold text-term-fg text-[22px] leading-[1.15] tracking-[-0.02em] m-0">
+          {post.title}
+        </h2>
+
+        {/* Dek / summary */}
+        <p className="font-sans text-[14px] text-term-fg-soft leading-relaxed m-0 flex-1 font-normal">
+          {post.summary}
+        </p>
+
+        {/* Footer: tags + open link */}
+        <div className="flex items-center justify-between pt-3 border-t border-term-rule-soft">
+          <div className="flex gap-2">
+            {post.tags.map((t) => (
+              <span key={t} className="font-mono text-[11px] text-term-accent">
+                #{t}
+              </span>
+            ))}
+          </div>
+          <span className="font-mono text-[12px] text-term-fg group-hover:text-term-accent transition-colors">
+            open ›
+          </span>
+        </div>
+      </div>
     </Link>
   )
 }

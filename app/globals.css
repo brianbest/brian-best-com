@@ -2,6 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
+/* ── Persona vars (legacy pages still rely on these) ── */
 :root {
   --persona-red: #cc2c34;
   --persona-maroon: #922526;
@@ -59,12 +60,9 @@
   }
 }
 
+/* ── Legacy font helpers ── */
 .font-bungee {
   font-family: var(--font-bungee), sans-serif;
-}
-
-.font-sans {
-  font-family: var(--font-inter), system-ui, sans-serif;
 }
 
 .shadow-thief {
@@ -77,36 +75,93 @@
   background-size: 100px;
 }
 
-/* Prose styling overrides for dark mode */
+/* ── Terminal Notebook prose theme ──
+   Used by blog post bodies rendered via .prose.
+   Dark terminal aesthetic: Geist body, JetBrains Mono code.
+   All colours are term-* tokens so they match the design system. */
 .prose {
   max-width: 65ch;
+  font-size: 17px;
+  line-height: 1.7;
+  color: #b8b0a6; /* term-fg-soft */
 }
 
-.prose a {
-  @apply text-persona-red hover:text-persona-maroon transition-colors;
+.prose p,
+.prose li {
+  color: #b8b0a6; /* term-fg-soft */
 }
 
 .prose h1,
 .prose h2,
 .prose h3,
-.prose h4 {
-  @apply font-bungee text-persona-red;
+.prose h4,
+.prose h5,
+.prose h6 {
+  font-family: var(--font-geist-sans), system-ui, sans-serif;
+  color: #ece6dd; /* term-fg */
+  font-weight: 700;
+  letter-spacing: -0.02em;
 }
 
+/* Inline code */
 .prose code {
-  @apply bg-persona-maroon/30 text-persona-red px-1 py-0.5 rounded;
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 0.88em;
+  background: #161311; /* term-bg-2 */
+  border: 1px solid #2a2622; /* term-rule */
+  color: #ece6dd; /* term-fg */
+  padding: 1px 6px;
+  border-radius: 0;
 }
 
+/* Don't double-style inside <pre> */
+.prose pre code {
+  background: transparent;
+  border: none;
+  padding: 0;
+  font-size: inherit;
+}
+
+/* Code blocks */
 .prose pre {
-  @apply bg-persona-maroon/30 p-4 rounded-md overflow-x-auto;
+  font-family: var(--font-mono), ui-monospace, monospace;
+  background: #161311; /* term-bg-2 */
+  border: 1px solid #2a2622; /* term-rule */
+  padding: 1.25rem 1.5rem;
+  overflow-x: auto;
+  border-radius: 0;
+  line-height: 1.65;
 }
 
+/* Links */
+.prose a {
+  color: #ef4444; /* term-accent */
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.prose a:hover {
+  color: #b91c1c; /* term-accent-deep */
+}
+
+/* Blockquote */
 .prose blockquote {
-  @apply border-l-4 border-persona-red pl-4 italic;
+  border-left: 3px solid #ef4444; /* term-accent */
+  padding-left: 1.25rem;
+  margin-left: 0;
+  color: #b8b0a6; /* term-fg-soft */
+  font-style: normal;
 }
 
+/* Images */
 .prose img {
-  @apply my-8;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+
+/* Strong */
+.prose strong {
+  color: #ece6dd; /* term-fg */
+  font-weight: 700;
 }
 
 .prose-red {
