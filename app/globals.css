@@ -2,77 +2,13 @@
 @tailwind components;
 @tailwind utilities;
 
-/* ── Persona vars (legacy pages still rely on these) ── */
-:root {
-  --persona-red: #cc2c34;
-  --persona-maroon: #922526;
-  --persona-black: #000000;
-  --persona-white: #ffffff;
-  --persona-grey: #d9d0d1;
-}
-
-.dark {
-  --background: var(--persona-black);
-  --foreground: var(--persona-white);
-  --card: var(--persona-black);
-  --card-foreground: var(--persona-white);
-  --primary: var(--persona-red);
-  --primary-foreground: var(--persona-black);
-  --secondary: var(--persona-maroon);
-  --secondary-foreground: var(--persona-white);
-  --muted: var(--persona-black);
-  --muted-foreground: var(--persona-grey);
-  --accent: var(--persona-maroon);
-  --accent-foreground: var(--persona-white);
-  --destructive: #ff4d4f;
-  --destructive-foreground: var(--persona-white);
-  --border: var(--persona-maroon);
-  --input: var(--persona-maroon);
-  --ring: var(--persona-red);
-}
-
-.light {
-  --background: var(--persona-white);
-  --foreground: var(--persona-black);
-  --card: var(--persona-white);
-  --card-foreground: var(--persona-black);
-  --primary: var(--persona-red);
-  --primary-foreground: var(--persona-white);
-  --secondary: var(--persona-maroon);
-  --secondary-foreground: var(--persona-white);
-  --muted: var(--persona-grey);
-  --muted-foreground: var(--persona-black);
-  --accent: var(--persona-red);
-  --accent-foreground: var(--persona-white);
-  --destructive: #ff4d4f;
-  --destructive-foreground: var(--persona-white);
-  --border: var(--persona-red);
-  --input: var(--persona-red);
-  --ring: var(--persona-maroon);
-}
-
 @layer base {
   * {
-    @apply border-border;
+    border-color: theme("colors.term.rule");
   }
   body {
-    @apply bg-background text-foreground;
+    @apply bg-term-bg text-term-fg;
   }
-}
-
-/* ── Legacy font helpers ── */
-.font-bungee {
-  font-family: var(--font-bungee), sans-serif;
-}
-
-.shadow-thief {
-  box-shadow: 0 4px 0 0 #000;
-}
-
-.pattern-mask {
-  background-image: url("/tile.png");
-  background-repeat: repeat;
-  background-size: 100px;
 }
 
 /* ── Terminal Notebook prose theme ──
@@ -162,9 +98,4 @@
 .prose strong {
   color: #ece6dd; /* term-fg */
   font-weight: 700;
-}
-
-.prose-red {
-  --tw-prose-links: var(--persona-red);
-  --tw-prose-invert-links: var(--persona-red);
 }

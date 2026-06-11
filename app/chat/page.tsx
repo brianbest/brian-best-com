@@ -2,7 +2,7 @@ import { ChatExperience } from "@/components/chat/chat-experience"
 import { getPosts } from "@/lib/posts"
 
 export const metadata = {
-  title: "Chat with Brian's AI | Brian Best",
+  title: "Chat with Brian's AI",
   description:
     "Ask Brian's AI about his background, or paste a job description for an honest fit assessment. Trained on this site only.",
 }

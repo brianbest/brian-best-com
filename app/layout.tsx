@@ -1,9 +1,8 @@
 import type React from "react"
 import type { Metadata } from "next"
-import { Bungee, JetBrains_Mono, Newsreader } from "next/font/google"
+import { JetBrains_Mono } from "next/font/google"
 import { GeistSans } from "geist/font/sans"
 import "./globals.css"
-import { ThemeProvider } from "@/components/theme-provider"
 import Layout from "@/components/layout"
 import { Analytics } from "@vercel/analytics/next"
 
@@ -16,23 +15,22 @@ const jetbrainsMono = JetBrains_Mono({
   display: "swap",
 })
 
-const newsreader = Newsreader({
-  subsets: ["latin"],
-  variable: "--font-serif",
-  display: "swap",
-})
-
-const bungee = Bungee({
-  weight: "400",
-  subsets: ["latin"],
-  variable: "--font-bungee",
-  display: "swap",
-})
-
 export const metadata: Metadata = {
-  title: "Brian Best | Principal Software Developer",
-  description: "Personal website and blog of Brian Best, Principal Software Developer",
-  generator: "v0.dev",
+  metadataBase: new URL("https://brianbest.com"),
+  title: {
+    default: "Brian Best | Principal Software Developer",
+    template: "%s | Brian Best",
+  },
+  description:
+    "Personal website and blog of Brian Best — Principal Software Developer building agentic AI, MCP integrations, and production LLM systems.",
+  openGraph: {
+    type: "website",
+    siteName: "Brian Best",
+    locale: "en_US",
+  },
+  twitter: {
+    card: "summary_large_image",
+  },
 }
 
 export default function RootLayout({
@@ -41,14 +39,12 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en">
       <body
-        className={`${GeistSans.variable} ${jetbrainsMono.variable} ${newsreader.variable} ${bungee.variable} bg-term-bg text-term-fg font-sans min-h-screen`}
+        className={`${GeistSans.variable} ${jetbrainsMono.variable} bg-term-bg text-term-fg font-sans min-h-screen`}
       >
-        <ThemeProvider attribute="class" defaultTheme="dark" enableSystem={false}>
-          <Layout>{children}</Layout>
-          <Analytics />
-        </ThemeProvider>
+        <Layout>{children}</Layout>
+        <Analytics />
       </body>
     </html>
   )

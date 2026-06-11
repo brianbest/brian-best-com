@@ -105,3 +105,7 @@ dist
 .DS_Store
 .env.local
 local-dashboard/
+
+# Playwright artifacts
+playwright-report/
+test-results/

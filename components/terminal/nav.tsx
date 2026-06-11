@@ -104,7 +104,7 @@ export function TerminalNav({ active, postCount = 4 }: TerminalNavProps) {
             <div className="w-8 h-8 bg-term-accent text-term-bg font-mono font-bold text-[15px] grid place-items-center flex-shrink-0">
               $
             </div>
-            <span className="font-mono font-semibold text-term-fg text-[14px]">brian.best</span>
+            <span className="font-mono font-semibold text-term-fg text-[14px]">brianbest.com</span>
           </Link>
         </div>
 
@@ -146,7 +146,7 @@ export function TerminalNav({ active, postCount = 4 }: TerminalNavProps) {
             <div className="w-7 h-7 bg-term-accent text-term-bg font-mono font-bold text-[14px] grid place-items-center">
               $
             </div>
-            <span className="font-mono font-semibold text-term-fg text-[13px]">brian.best</span>
+            <span className="font-mono font-semibold text-term-fg text-[13px]">brianbest.com</span>
           </Link>
         </div>
 
@@ -183,7 +183,7 @@ export function TerminalNav({ active, postCount = 4 }: TerminalNavProps) {
               <div className="w-7 h-7 bg-term-accent text-term-bg font-mono font-bold text-[14px] grid place-items-center">
                 $
               </div>
-              <span className="font-mono font-semibold text-term-fg text-[13px]">brian.best</span>
+              <span className="font-mono font-semibold text-term-fg text-[13px]">brianbest.com</span>
             </Link>
             <button
               type="button"

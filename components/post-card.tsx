@@ -48,8 +48,8 @@ export function PostCard({ post, index }: PostCardProps) {
         >
           {/* Big faded index number */}
           <div
-            className="font-sans font-extrabold leading-none tracking-[-0.04em] select-none"
-            style={{ fontSize: 72, color: "#1c1916", lineHeight: 0.9 }}
+            className="font-sans font-extrabold leading-none tracking-[-0.04em] select-none text-term-bg-3"
+            style={{ fontSize: 72, lineHeight: 0.9 }}
             aria-hidden="true"
           >
             {displayIndex}

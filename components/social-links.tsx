@@ -54,7 +54,7 @@ export function SocialLinks({ location = "global" }: SocialLinksProps) {
           target="_blank"
           rel="noopener noreferrer"
           aria-label={link.name}
-          className="text-persona-grey hover:text-persona-red transition-colors"
+          className="text-term-fg-muted hover:text-term-accent transition-colors"
           onClick={() =>
             track("social_click", {
               location,

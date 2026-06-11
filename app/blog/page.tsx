@@ -2,7 +2,7 @@ import { getPosts } from "@/lib/posts"
 import { BlogIndex } from "@/components/blog-index"
 
 export const metadata = {
-  title: "~/writing | Brian Best",
+  title: "~/writing",
   description:
     "Working notes on building with LLMs — patterns, harnesses, evals, the parts nobody puts in the demo.",
 }

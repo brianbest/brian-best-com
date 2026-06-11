@@ -12,7 +12,7 @@ interface CoverPlaceholderProps {
 export function CoverPlaceholder({ label, height = 200 }: CoverPlaceholderProps) {
   return (
     <div
-      className="w-full flex items-center justify-center font-mono text-[12px] tracking-[0.06em] uppercase border border-term-rule text-[#a8a098]"
+      className="w-full flex items-center justify-center font-mono text-[12px] tracking-[0.06em] uppercase border border-term-rule text-term-fg-soft"
       style={{
         height,
         background: "repeating-linear-gradient(135deg, #1c1916 0 14px, #23201c 14px 28px)",

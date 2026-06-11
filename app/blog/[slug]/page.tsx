@@ -25,12 +25,17 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const post = await getPost(slug)
 
   if (!post) {
-    return { title: "Post Not Found | Brian Best" }
+    return { title: "Post Not Found" }
   }
 
   return {
-    title: `${post.title} | Brian Best`,
+    title: post.title,
     description: post.summary,
+    openGraph: {
+      type: "article",
+      publishedTime: post.date,
+      tags: post.tags,
+    },
   }
 }
 

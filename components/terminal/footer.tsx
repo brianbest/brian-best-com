@@ -30,6 +30,9 @@ export function TerminalFooter() {
           >
             linkedin
           </a>
+          <a href="/contact" className="hover:text-term-fg transition-colors">
+            contact
+          </a>
           <a href="/rss.xml" className="hover:text-term-fg transition-colors">
             rss.xml
           </a>
@@ -60,6 +63,9 @@ export function TerminalFooter() {
             className="hover:text-term-fg transition-colors"
           >
             linkedin
+          </a>
+          <a href="/contact" className="hover:text-term-fg transition-colors">
+            contact
           </a>
           <a href="/rss.xml" className="hover:text-term-fg transition-colors">
             rss
