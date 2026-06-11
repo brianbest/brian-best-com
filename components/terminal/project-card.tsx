@@ -67,7 +67,7 @@ export function TerminalProjectCard({ project, index }: TerminalProjectCardProps
   )
 
   const className = cn(
-    "group flex flex-col bg-term-bg md:min-h-[420px]",
+    "group flex flex-col bg-term-bg md:min-h-[420px] h-full",
     "hover:bg-term-bg-2 transition-colors duration-150",
   )
 

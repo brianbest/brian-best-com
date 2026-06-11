@@ -105,6 +105,24 @@ renderer — satori can't read woff2.
 Syntax highlighting lives in `lib/highlight.tsx` (`highlight(src, theme)` → React nodes), used by
 `CodeBlock` and the markdown renderer.
 
+### Interactions
+
+The terminal chrome is functional, not just decorative:
+
+- **⌘K / Ctrl+K command palette** (`components/terminal/command-palette.tsx`) — fuzzy-finds every
+  page, post, and project, and doubles as a toy shell (`help`, `ls`, `cd`, `cat`, `whoami`,
+  `clear`, `exit`, plus easter eggs — try `sudo hire-brian`). Mounted globally by
+  `components/layout.tsx`; the nav chip and the blog "fuzzy-find" box open it via the
+  `open-command-palette` window event.
+- **j/k/↵ keyboard navigation** on the blog index, with a visible focus ring.
+- **Boot-sequence hero** — home hero lines flush in sequentially (`.boot-line` CSS, staggered via
+  `--boot-delay`); headline cursors blink (`.cursor-blink`). All motion is gated behind
+  `prefers-reduced-motion`.
+- **3D card tilt** (`components/terminal/tilt.tsx`) — pointer-tracked perspective tilt on blog and
+  project cards; rAF-driven with no React re-renders, disabled for touch and reduced motion.
+- **Terminal 404** (`app/not-found.tsx`) — `bash: No such file or directory` with an `ls` of real
+  routes.
+
 ### Data layer
 
 - **`lib/posts.ts`** — reads `content/blog/*.md` via `gray-matter`.

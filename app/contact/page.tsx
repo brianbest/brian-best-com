@@ -19,7 +19,7 @@ export default function ContactPage() {
         </div>
 
         <h1 className="font-sans font-extrabold text-term-fg tracking-[-0.04em] leading-[0.95] mt-0 mb-3 text-[48px] md:text-[88px]">
-          Get in touch<span className="text-term-accent">_</span>
+          Get in touch<span className="text-term-accent cursor-blink">_</span>
         </h1>
 
         <p className="font-sans text-term-fg-soft leading-relaxed font-normal mt-4 mb-0 max-w-[800px] text-[15px] md:text-[19px]">

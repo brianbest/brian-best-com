@@ -70,7 +70,7 @@ export function ContactChannels() {
           href="https://www.linkedin.com/in/brianbest101"
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-block bg-term-accent text-term-bg font-mono text-[13px] font-bold tracking-[0.02em] px-[18px] py-[12px] hover:bg-term-accent-deep transition-colors"
+          className="inline-block bg-term-accent text-term-bg font-mono text-[13px] font-bold tracking-[0.02em] px-[18px] py-[12px] hover:bg-term-accent-deep transition-colors glow-accent"
           onClick={() =>
             trackContactClick("Message Me on LinkedIn", "https://www.linkedin.com/in/brianbest101")
           }

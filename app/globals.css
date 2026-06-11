@@ -9,6 +9,89 @@
   body {
     @apply bg-term-bg text-term-fg;
   }
+
+  /* Text selection in the accent red — small, everywhere, unmistakably ours. */
+  ::selection {
+    background: #ef4444; /* term-accent */
+    color: #0f0d0c; /* term-bg */
+  }
+
+  /* Thin dark scrollbar to match the terminal chrome. */
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: #2a2622 transparent; /* term-rule */
+  }
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #2a2622; /* term-rule */
+    border: 2px solid #0f0d0c; /* term-bg */
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #7a7166; /* term-fg-muted */
+  }
+}
+
+/* ── Terminal liveliness ──────────────────────────────────────────────
+   Blinking block cursor, boot-sequence reveal, soft status pulse.
+   All motion is gated behind prefers-reduced-motion. */
+
+@media (prefers-reduced-motion: no-preference) {
+  .cursor-blink {
+    animation: cursor-blink 1.15s steps(2, start) infinite;
+  }
+
+  /* Hero lines flush in sequentially like terminal output.
+     Stagger via --boot-delay on each line. */
+  .boot-line {
+    opacity: 0;
+    animation: boot-in 0.5s ease-out forwards;
+    animation-delay: var(--boot-delay, 0ms);
+  }
+
+  .pulse-soft {
+    animation: pulse-soft 2.4s ease-in-out infinite;
+  }
+}
+
+@keyframes cursor-blink {
+  50% {
+    opacity: 0;
+  }
+}
+
+@keyframes boot-in {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes pulse-soft {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.35;
+  }
+}
+
+/* Red glow for primary CTAs on hover — restrained neon. */
+.glow-accent {
+  transition: box-shadow 0.2s ease;
+}
+.glow-accent:hover {
+  box-shadow: 0 0 24px rgba(239, 68, 68, 0.28);
 }
 
 /* ── Terminal Notebook prose theme ──

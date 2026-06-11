@@ -124,13 +124,23 @@ export function TerminalNav({ active, postCount = 4 }: TerminalNavProps) {
         {/* Spacer */}
         <div className="flex-1 border-r border-term-rule" />
 
+        {/* Command palette chip */}
+        <button
+          type="button"
+          onClick={() => window.dispatchEvent(new CustomEvent("open-command-palette"))}
+          aria-label="Open command palette"
+          className="flex items-center gap-2 px-[14px] font-mono text-[11px] text-term-fg-muted hover:text-term-fg border-r border-term-rule transition-colors cursor-pointer"
+        >
+          <span className="px-[7px] py-[2px] bg-term-bg border border-term-rule">⌘ K</span>
+        </button>
+
         {/* Chat CTA */}
         <Link
           href="/chat"
           onClick={() => handleNavClick("chat", "/chat")}
           className="flex items-center gap-2 px-[18px] font-mono text-[13px] text-term-fg hover:text-term-accent transition-colors no-underline"
         >
-          <span className="w-[7px] h-[7px] bg-term-accent rounded-full" />
+          <span className="w-[7px] h-[7px] bg-term-accent rounded-full pulse-soft" />
           <span>Chat with Brian&rsquo;s AI</span>
           <span className="ml-2 px-2 py-0.5 bg-term-accent text-term-bg text-[10px] font-bold tracking-[0.06em]">
             LIVE
@@ -155,9 +165,9 @@ export function TerminalNav({ active, postCount = 4 }: TerminalNavProps) {
           <Link
             href="/chat"
             onClick={() => handleNavClick("chat", "/chat")}
-            className="inline-flex items-center gap-[6px] px-[11px] py-[7px] bg-term-accent text-term-bg font-mono text-[12px] font-semibold no-underline"
+            className="inline-flex items-center gap-[6px] px-[11px] py-[7px] bg-term-accent text-term-bg font-mono text-[12px] font-semibold no-underline glow-accent"
           >
-            <span className="w-[5px] h-[5px] bg-term-bg rounded-full" />
+            <span className="w-[5px] h-[5px] bg-term-bg rounded-full pulse-soft" />
             Chat with Brian&rsquo;s AI
           </Link>
 
@@ -230,6 +240,18 @@ export function TerminalNav({ active, postCount = 4 }: TerminalNavProps) {
                 LIVE
               </span>
             </Link>
+
+            <button
+              type="button"
+              onClick={() => {
+                setMobileOpen(false)
+                window.dispatchEvent(new CustomEvent("open-command-palette"))
+              }}
+              className="font-mono text-[18px] py-4 border-b border-term-rule text-term-fg-soft flex items-center gap-3 text-left"
+            >
+              <span className="text-term-fg-muted text-[14px]">›</span>
+              search / terminal
+            </button>
           </nav>
         </div>
       )}

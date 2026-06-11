@@ -1,4 +1,5 @@
 import { TerminalProjectCard } from "@/components/terminal/project-card"
+import { Tilt } from "@/components/terminal/tilt"
 import { getProjects } from "@/lib/projects"
 
 export const metadata = {
@@ -48,7 +49,9 @@ export default async function ProjectsPage() {
         {/* 1px gap panel grid — gap-px on bg-term-rule creates 1px dividers */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-px bg-term-rule border border-term-rule">
           {projects.map((project, i) => (
-            <TerminalProjectCard key={project.id} project={project} index={i} />
+            <Tilt key={project.id} className="h-full">
+              <TerminalProjectCard project={project} index={i} />
+            </Tilt>
           ))}
         </div>
       </section>

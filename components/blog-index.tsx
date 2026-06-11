@@ -1,7 +1,9 @@
 "use client"
 
-import { useState, useMemo } from "react"
+import { useEffect, useMemo, useRef, useState } from "react"
+import { useRouter } from "next/navigation"
 import { TagPill } from "@/components/terminal/tag-pill"
+import { Tilt } from "@/components/terminal/tilt"
 import { PostCard } from "@/components/post-card"
 import type { PostMeta } from "@/lib/posts"
 
@@ -10,7 +12,10 @@ interface BlogIndexProps {
 }
 
 export function BlogIndex({ posts }: BlogIndexProps) {
+  const router = useRouter()
   const [activeTag, setActiveTag] = useState<string>("*")
+  const [focusedIdx, setFocusedIdx] = useState(-1)
+  const gridRef = useRef<HTMLDivElement>(null)
 
   // Derive sorted unique tags from all posts
   const allTags = useMemo(() => {
@@ -28,6 +33,45 @@ export function BlogIndex({ posts }: BlogIndexProps) {
     if (activeTag === "*") return posts
     return posts.filter((p) => p.tags.includes(activeTag))
   }, [posts, activeTag])
+
+  // The footer promises j/k/↵ navigation — keep that promise.
+  useEffect(() => {
+    const onKey = (e: KeyboardEvent) => {
+      if (e.defaultPrevented || e.metaKey || e.ctrlKey || e.altKey) return
+      const target = e.target as HTMLElement | null
+      if (target && (target.tagName === "INPUT" || target.tagName === "TEXTAREA" || target.isContentEditable)) {
+        return
+      }
+
+      if (e.key === "j") {
+        e.preventDefault()
+        setFocusedIdx((i) => Math.min(i + 1, filtered.length - 1))
+      } else if (e.key === "k") {
+        e.preventDefault()
+        setFocusedIdx((i) => Math.max(i - 1, 0))
+      } else if (e.key === "Enter") {
+        setFocusedIdx((i) => {
+          if (i >= 0 && filtered[i]) router.push(`/blog/${filtered[i].slug}`)
+          return i
+        })
+      } else if (e.key === "Escape") {
+        setFocusedIdx(-1)
+      }
+    }
+    window.addEventListener("keydown", onKey)
+    return () => window.removeEventListener("keydown", onKey)
+  }, [filtered, router])
+
+  // Keep the focused card in view.
+  useEffect(() => {
+    if (focusedIdx < 0) return
+    gridRef.current?.children[focusedIdx]?.scrollIntoView({ block: "nearest", behavior: "smooth" })
+  }, [focusedIdx])
+
+  // Reset keyboard focus when the filter changes.
+  useEffect(() => {
+    setFocusedIdx(-1)
+  }, [activeTag])
 
   return (
     <>
@@ -74,16 +118,20 @@ export function BlogIndex({ posts }: BlogIndexProps) {
             </div>
           </div>
 
-          {/* Search box — decorative */}
-          <div className="hidden md:flex items-center gap-2 font-mono text-[12px] text-term-fg-muted px-[14px] py-2 bg-term-bg-2 border border-term-rule shrink-0">
+          {/* Search box — opens the command palette */}
+          <button
+            type="button"
+            onClick={() => window.dispatchEvent(new CustomEvent("open-command-palette"))}
+            className="hidden md:flex items-center gap-2 font-mono text-[12px] text-term-fg-muted px-[14px] py-2 bg-term-bg-2 border border-term-rule shrink-0 hover:border-term-accent hover:text-term-fg transition-colors cursor-pointer"
+          >
             <span className="text-term-accent">/</span>
             <span>fuzzy-find...</span>
             <span className="ml-3 px-[6px] py-[1px] bg-term-bg border border-term-rule text-[10px]">
               ⌘ K
             </span>
-          </div>
+          </button>
 
-          {/* RSS chip — decorative */}
+          {/* RSS chip */}
           <a
             href="/rss.xml"
             className="hidden md:block font-mono text-[11px] text-term-fg-muted px-[14px] py-2 bg-term-bg-2 border border-term-rule hover:text-term-fg hover:border-term-accent transition-colors shrink-0"
@@ -91,7 +139,7 @@ export function BlogIndex({ posts }: BlogIndexProps) {
             ↓ rss
           </a>
 
-          {/* llms.txt chip — decorative */}
+          {/* llms.txt chip */}
           <a
             href="/llms-full.txt"
             className="hidden md:block font-mono text-[11px] text-term-fg-muted px-[14px] py-2 bg-term-bg-2 border border-term-rule hover:text-term-fg hover:border-term-accent transition-colors shrink-0"
@@ -118,9 +166,14 @@ export function BlogIndex({ posts }: BlogIndexProps) {
           </div>
         ) : (
           /* 1px gap panel grid — gap-px on bg-term-rule creates 1px dividers */
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-px bg-term-rule border border-term-rule">
+          <div
+            ref={gridRef}
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-px bg-term-rule border border-term-rule"
+          >
             {filtered.map((post, i) => (
-              <PostCard key={post.slug} post={post} index={i} />
+              <Tilt key={post.slug} className="h-full">
+                <PostCard post={post} index={i} focused={i === focusedIdx} />
+              </Tilt>
             ))}
           </div>
         )}

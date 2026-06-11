@@ -9,9 +9,11 @@ import type { PostMeta } from "@/lib/posts"
 interface PostCardProps {
   post: PostMeta
   index: number
+  /** Keyboard (j/k) focus state, driven by the blog index. */
+  focused?: boolean
 }
 
-export function PostCard({ post, index }: PostCardProps) {
+export function PostCard({ post, index, focused = false }: PostCardProps) {
   const displayIndex = String(index + 1).padStart(2, "0")
   const primaryTag = post.tags[0] ?? "misc"
 
@@ -19,8 +21,9 @@ export function PostCard({ post, index }: PostCardProps) {
     <Link
       href={`/blog/${post.slug}`}
       className={cn(
-        "group flex flex-col bg-term-bg md:min-h-[460px]",
+        "group flex flex-col bg-term-bg md:min-h-[460px] h-full",
         "hover:bg-term-bg-2 transition-colors duration-150",
+        focused && "ring-1 ring-inset ring-term-accent bg-term-bg-2",
       )}
       onClick={() =>
         track("post_open", {

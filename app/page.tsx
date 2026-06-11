@@ -1,3 +1,4 @@
+import type { CSSProperties } from "react"
 import Link from "next/link"
 import { Prompt } from "@/components/terminal/prompt"
 import { careerProfile } from "@/lib/career-profile"
@@ -33,21 +34,33 @@ export default async function Home() {
     <div className="max-w-[1440px] mx-auto">
 
       {/* ─── HERO BASH SESSION ──────────────────────────────────────── */}
+      {/* boot-line: lines flush in sequentially like terminal output
+          (CSS-only; stagger via --boot-delay; static under reduced motion) */}
       <section className="px-5 md:px-14 pt-10 md:pt-12 pb-8">
 
         {/* whoami */}
-        <Prompt>whoami</Prompt>
-        <div className="pl-6 text-term-fg-muted font-mono text-[13px] mt-1 mb-8">
+        <div className="boot-line">
+          <Prompt>whoami</Prompt>
+        </div>
+        <div
+          className="boot-line pl-6 text-term-fg-muted font-mono text-[13px] mt-1 mb-8"
+          style={{ "--boot-delay": "150ms" } as CSSProperties}
+        >
           brian-best (uid=1000, gid=1000, groups=principal, staff, builders)
         </div>
 
         {/* cat ./about.md */}
-        <Prompt>cat ./about.md</Prompt>
-        <div className="pl-6 mt-3 mb-10">
+        <div className="boot-line" style={{ "--boot-delay": "300ms" } as CSSProperties}>
+          <Prompt>cat ./about.md</Prompt>
+        </div>
+        <div
+          className="boot-line pl-6 mt-3 mb-10"
+          style={{ "--boot-delay": "450ms" } as CSSProperties}
+        >
           {/* Big name headline */}
           <h1 className="font-sans font-extrabold text-term-fg leading-none tracking-[-0.04em] text-[48px] md:text-[88px] m-0">
             {careerProfile.personal.name}
-            <span className="text-term-accent">_</span>
+            <span className="text-term-accent cursor-blink">_</span>
           </h1>
 
           {/* # tagline */}
@@ -65,10 +78,15 @@ export default async function Home() {
         </div>
 
         {/* ─── STATUS BLOCK ──────────────────────────────────────────── */}
-        <Prompt>./status --short</Prompt>
+        <div className="boot-line" style={{ "--boot-delay": "650ms" } as CSSProperties}>
+          <Prompt>./status --short</Prompt>
+        </div>
 
         {/* Desktop: inline grid. Mobile: bg panel card (BHomeMobile style) */}
-        <div className="pl-6 mt-3 mb-10">
+        <div
+          className="boot-line pl-6 mt-3 mb-10"
+          style={{ "--boot-delay": "800ms" } as CSSProperties}
+        >
           {/* Mobile card */}
           <div className="md:hidden bg-term-bg-2 border border-term-rule px-[18px] py-4">
             <div className="font-mono text-[11px] text-term-fg-muted uppercase tracking-[0.05em] mb-3">
@@ -128,8 +146,13 @@ export default async function Home() {
         </div>
 
         {/* ─── LATEST WRITING ────────────────────────────────────────── */}
-        <Prompt>ls ./writing | head -3</Prompt>
-        <div className="pl-6 mt-3 mb-2">
+        <div className="boot-line" style={{ "--boot-delay": "1000ms" } as CSSProperties}>
+          <Prompt>ls ./writing | head -3</Prompt>
+        </div>
+        <div
+          className="boot-line pl-6 mt-3 mb-2"
+          style={{ "--boot-delay": "1150ms" } as CSSProperties}
+        >
 
           {/* Mobile: stacked list (BHomeMobile "Latest writing") */}
           <div className="md:hidden">
