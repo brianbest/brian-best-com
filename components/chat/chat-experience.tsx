@@ -20,7 +20,7 @@ const ASK_MAX = 4000
 const JD_MAX = 15000
 const JD_MIN = 50
 const KNOWLEDGE_DATE = "2026-05-25"
-const MODEL_LABEL = "claude-haiku-4.5"
+const MODEL_LABEL = "gpt-4.1"
 
 const STARTER_PROMPTS = [
   "What languages does Brian work in?",

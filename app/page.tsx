@@ -401,7 +401,7 @@ export default async function Home() {
               </div>
               <div className="flex-1" />
               <div className="px-[18px] py-3 font-mono text-[11px] text-term-fg-muted inline-flex items-center gap-2">
-                powered by <span className="text-term-fg">claude-haiku-4.5</span>
+                powered by <span className="text-term-fg">gpt-4.1</span>
               </div>
             </div>
 
