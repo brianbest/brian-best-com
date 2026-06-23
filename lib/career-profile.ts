@@ -106,15 +106,15 @@ export const careerProfile: CareerProfile = {
     title: "Principal Software Developer",
     location: "Kitchener, Ontario, Canada",
     email: "brian.best.contact@pm.me",
-    linkedin: "linkedin.com/in/brianbest101",
-    github: "github.com/brianbest",
-    website: "brianbest.com",
+    linkedin: "https://linkedin.com/in/brianbest101",
+    github: "https://github.com/brianbest",
+    website: "https://brianbest.com",
     summary: `Principal Software Developer at Axonify with 12+ years of full-stack engineering experience and 3+ years architecting production AI systems —
 agentic AI, LLM-powered applications, multi-agent orchestration, and Model Context Protocol (MCP) integrations. Currently co-leads an internal agentic AI
 "code factory" and drives LLM-powered capabilities into the customer-facing Axonify platform, spanning RAG and retrieval pipelines, secure tool-calling for
 AI agents, and conversational interfaces that operate within enterprise compliance boundaries. Advanced from Software Developer to Principal in six years.
 Former startup co-founder (raised CAD $75k, Propel ICT accelerator) with a non-traditional path from radio broadcasting into AI/LLM engineering.`,
-    tagline: "Agentic engineering - Building the system that builds the system",
+    tagline: "Agentic engineering — Building the system that builds the system",
   },
 
   personality: {
@@ -123,7 +123,7 @@ Former startup co-founder (raised CAD $75k, Propel ICT accelerator) with a non-t
       "Comfortable presenting to diverse audiences from technical teams to executives",
       "Skilled at translating complex technical concepts into accessible explanations",
       "Experience with live, unscripted communication under pressure",
-      "Has proven experince in effective communication that other engineers struggle with"
+      "Has proven experience in effective communication that other engineers struggle with"
     ],
     workingStyle: [
       "Collaborative problem solver who values diverse perspectives",
@@ -160,7 +160,7 @@ Former startup co-founder (raised CAD $75k, Propel ICT accelerator) with a non-t
   ],
 
   currentFocus: {
-    tagline: "Agentic engineering - Building the system that builds the system",
+    tagline: "Agentic engineering — Building the system that builds the system",
     areas: [
       "Co-leading an internal agentic AI development platform — an in-house \"code factory\" of LLM-powered coding agents",
       "Productizing LLM capabilities into customer-facing enterprise features",
@@ -532,10 +532,10 @@ ${p.education.map((edu) => `- ${edu.degree}, ${edu.school} (${edu.year})${edu.hi
 ${p.awards.map((award) => `- ${award.name} (${award.context})`).join("\n")}
 
 ## Career Trajectory Highlights
-- **Growth at Axonify:** Software Developer -> Intermediate -> Senior -> Principal Software Developer (Mar 2020 - Present)
+- **Growth at Axonify:** Software Developer → Intermediate → Senior → Principal Software Developer (Mar 2020 - Present)
 - **Startup Experience:** Co-founded Phased.io, raised CAD $75k, completed Propel ICT accelerator
 - **Leadership at Scale:** Student Union Chairman overseeing 14,000 students and $3.1M budget
-- **Non-traditional Path:** Radio broadcasting -> Web development -> AI/LLM engineering
+- **Non-traditional Path:** Radio broadcasting → Web development → AI/LLM engineering
 `
 }
 

@@ -3,8 +3,8 @@ import { getProfileAsText, getPublicProfileAsText, careerProfile } from "@/lib/c
 export function getChatSystemPrompt(): string {
   const profileText = getPublicProfileAsText()
 
-  return `You are an AI assistant representing ${careerProfile.personal.name}, a ${careerProfile.personal.title}.
-Your role is to answer questions about ${careerProfile.personal.name}'s professional background, skills, experience, and career goals.
+  return `You are ${careerProfile.personal.name}'s AI assistant, answering questions about ${careerProfile.personal.name}'s professional background, skills, experience, and career goals on his behalf.
+You speak in first person as Brian ("I", "my", "me") when discussing his experience, because you are representing him directly.
 
 ## SECURITY RULES (HIGHEST PRIORITY)
 
@@ -81,7 +81,7 @@ ${profileText}
 
 - **Off-topic requests**: "I'm here specifically to help you learn about Brian's professional background and experience. What would you like to know about his skills or career?"
 
-Remember: Your purpose is to give hiring managers an authentic, in-depth view of this candidate that they couldn't get from a traditional resume. Always stay in character as Brian's professional representative.`
+Remember: Your purpose is to give hiring managers an authentic, in-depth view of this candidate that they couldn't get from a traditional resume. Stay in character as Brian speaking about himself.`
 }
 
 export function getJobFitSystemPrompt(): string {

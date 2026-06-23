@@ -37,5 +37,5 @@ The two goals don't conflict. **Structure is for the agent; voice is for the hum
 ## The bet
 
 - The median reader of technical content is shifting from human to agent, and that changes what "well-written" means in practice.
-- The fix is structural, not stylistic: front-loaded theses, descriptive headings, disciplined bolding, backticked identifiers, self-contained code, extractable takeaways.
+- The fix is structural, not stylistic: front-load theses, descriptive headings, disciplined bolding, backticked identifiers, self-contained code, extractable takeaways.
 - Writing for agents and writing for humans converge — both reward putting the point where it can be found. If you have to choose, optimize for the reader that decides whether anyone else ever sees your post.

@@ -95,6 +95,25 @@ describe("sanitizeInput", () => {
     const result = sanitizeInput(longString, 4500)
     expect(result.length).toBe(4500)
   })
+
+  it("strips zero-width characters", () => {
+    expect(sanitizeInput("hello\u200Bworld")).toBe("helloworld")
+    expect(sanitizeInput("hello\u200Cworld")).toBe("helloworld")
+    expect(sanitizeInput("hello\u200Dworld")).toBe("helloworld")
+    expect(sanitizeInput("hello\uFEFFworld")).toBe("helloworld")
+  })
+
+  it("strips bidi control characters", () => {
+    expect(sanitizeInput("hello\u202Eworld")).toBe("helloworld")
+    expect(sanitizeInput("\u2066hello\u2069")).toBe("hello")
+  })
+
+  it("strips C0/C1 control characters except tab/newline", () => {
+    expect(sanitizeInput("hello\x07world")).toBe("helloworld")
+    expect(sanitizeInput("hello\x1Fworld")).toBe("helloworld")
+    expect(sanitizeInput("hello\tworld")).toBe("hello\tworld")
+    expect(sanitizeInput("hello\nworld")).toBe("hello\nworld")
+  })
 })
 
 describe("validateChatInput", () => {

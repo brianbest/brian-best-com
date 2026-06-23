@@ -63,6 +63,7 @@ export function CodeBlock({
             onClick={handleCopy}
             className="hover:text-term-fg transition-colors cursor-pointer"
             type="button"
+            aria-label={copied ? "Code copied to clipboard" : "Copy code to clipboard"}
           >
             {copied ? "copied!" : "copy"}
           </button>
@@ -91,7 +92,8 @@ export function CodeBlock({
           </div>
         )}
         <pre
-          className="m-0 flex-1 leading-[1.65] overflow-x-auto text-[13px]"
+          className="m-0 flex-1 leading-[1.65] overflow-x-auto text-[13px] focus:outline-none"
+          tabIndex={0}
           style={{ padding: showLineNumbers ? "18px 24px" : "18px 24px" }}
         >
           {highlight(code, "dark")}

@@ -16,6 +16,7 @@ function escapeXml(text: string): string {
 
 export async function GET() {
   const posts = await getPosts()
+  const lastBuildDate = posts[0] ? new Date(posts[0].date).toUTCString() : new Date().toUTCString()
 
   const items = posts
     .map(
@@ -24,6 +25,7 @@ export async function GET() {
       <link>${BASE_URL}/blog/${post.slug}</link>
       <guid isPermaLink="true">${BASE_URL}/blog/${post.slug}</guid>
       <description>${escapeXml(post.summary)}</description>
+      <author>brian.best.contact@pm.me (Brian Best)</author>
       <pubDate>${new Date(post.date).toUTCString()}</pubDate>
       ${post.tags.map((t) => `<category>${escapeXml(t)}</category>`).join("\n      ")}
     </item>`,
@@ -37,6 +39,8 @@ export async function GET() {
     <link>${BASE_URL}/blog</link>
     <description>Working notes on building with LLMs — patterns, harnesses, evals, the parts nobody puts in the demo.</description>
     <language>en-us</language>
+    <lastBuildDate>${lastBuildDate}</lastBuildDate>
+    <ttl>60</ttl>
     <atom:link href="${BASE_URL}/rss.xml" rel="self" type="application/rss+xml" />
 ${items}
   </channel>

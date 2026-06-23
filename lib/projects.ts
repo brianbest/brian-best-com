@@ -1,5 +1,6 @@
 import fs from "fs"
 import path from "path"
+import { cache } from "react"
 import matter from "gray-matter"
 
 // Projects are markdown files in content/projects/*.md — same content model as
@@ -23,19 +24,23 @@ function readProjectFile(filename: string): Project {
   const raw = fs.readFileSync(path.join(projectsDir, filename), "utf8")
   const { data, content } = matter(raw)
 
+  if (typeof data.title !== "string" || !data.title.trim()) {
+    throw new Error(`Project "${filename}" is missing required frontmatter: title`)
+  }
+
   return {
     id,
-    title: (data.title as string) ?? id,
-    description: (data.description as string) ?? "",
-    image: (data.image as string) ?? "",
-    tags: (data.tags as string[]) ?? [],
-    url: (data.url as string) ?? "",
-    featured: (data.featured as boolean) ?? false,
+    title: data.title,
+    description: typeof data.description === "string" ? data.description : "",
+    image: typeof data.image === "string" ? data.image : "",
+    tags: Array.isArray(data.tags) ? data.tags : [],
+    url: typeof data.url === "string" ? data.url : "",
+    featured: typeof data.featured === "boolean" ? data.featured : false,
     content,
   }
 }
 
-export async function getProjects(): Promise<Project[]> {
+export const getProjects = cache(async (): Promise<Project[]> => {
   if (!fs.existsSync(projectsDir)) return []
   const files = fs.readdirSync(projectsDir).filter((f) => f.endsWith(".md"))
   const projects = files.map(readProjectFile)
@@ -45,10 +50,10 @@ export async function getProjects(): Promise<Project[]> {
     if (a.featured !== b.featured) return a.featured ? -1 : 1
     return a.title.localeCompare(b.title)
   })
-}
+})
 
-export async function getProject(id: string): Promise<Project | null> {
+export const getProject = cache(async (id: string): Promise<Project | null> => {
   const fullPath = path.join(projectsDir, `${id}.md`)
   if (!fs.existsSync(fullPath)) return null
   return readProjectFile(`${id}.md`)
-}
+})

@@ -205,6 +205,12 @@ export function sanitizeInput(input: string, maxLength: number = 4000): string {
   // Remove null bytes
   let sanitized = input.replace(/\0/g, "")
 
+  // Remove zero-width and other invisible characters that can bypass injection detection
+  sanitized = sanitized.replace(/[\u200B\u200C\u200D\uFEFF\u200E\u200F\u202A-\u202E\u2066-\u2069]/g, "")
+
+  // Strip remaining C0/C1 control characters (except tab, newline, carriage return)
+  sanitized = sanitized.replace(/[\x01-\x08\x0B\x0C\x0E-\x1F\x7F-\x9F]/g, "")
+
   // Remove excessive whitespace
   sanitized = sanitized.replace(/\s{10,}/g, " ")
 

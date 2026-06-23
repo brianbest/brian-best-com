@@ -21,7 +21,7 @@ export function Prompt({ kind = "$", children }: PromptProps) {
 
   return (
     <div className="flex gap-[10px] font-mono text-term-fg-soft text-sm leading-[1.6]">
-      <span className={`${sigil} select-none`}>{kind}</span>
+      <span className={`${sigil} select-none`} aria-hidden="true">{kind}</span>
       <span>{children}</span>
     </div>
   )
