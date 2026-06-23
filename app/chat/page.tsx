@@ -9,12 +9,14 @@ export const metadata = {
 
 export default async function ChatPage() {
   // The "knowledge:" date in the chat header tracks the newest published post.
+  // Sources in the right rail are derived from actual posts, not hardcoded.
   const posts = await getPosts()
   const knowledgeDate = posts[0]?.date ?? "2026-05-25"
+  const sources = posts.slice(0, 4).map((p) => ({ slug: p.slug, date: p.date }))
 
   return (
     <main className="bg-term-bg text-term-fg">
-      <ChatExperience knowledgeDate={knowledgeDate} />
+      <ChatExperience knowledgeDate={knowledgeDate} sources={sources} />
     </main>
   )
 }

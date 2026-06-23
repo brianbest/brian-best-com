@@ -22,7 +22,7 @@ export function PostCard({ post, index, focused = false }: PostCardProps) {
       href={`/blog/${post.slug}`}
       className={cn(
         "group flex flex-col bg-term-bg md:min-h-[460px] h-full",
-        "hover:bg-term-bg-2 transition-colors duration-150",
+        "hover:bg-term-bg-2 active:bg-term-bg-3 transition-colors duration-150",
         focused && "ring-1 ring-inset ring-term-accent bg-term-bg-2",
       )}
       onClick={() =>
@@ -74,7 +74,7 @@ export function PostCard({ post, index, focused = false }: PostCardProps) {
         </div>
 
         {/* Title */}
-        <h2 className="font-sans font-bold text-term-fg text-[22px] leading-[1.15] tracking-[-0.02em] m-0">
+        <h2 className="font-sans font-bold text-term-fg text-[22px] leading-[1.15] tracking-[-0.02em] m-0 group-hover:text-term-accent transition-colors">
           {post.title}
         </h2>
 

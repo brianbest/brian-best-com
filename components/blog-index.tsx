@@ -1,6 +1,7 @@
 "use client"
 
 import { useEffect, useMemo, useRef, useState } from "react"
+import type { CSSProperties } from "react"
 import { useRouter } from "next/navigation"
 import { TagPill } from "@/components/terminal/tag-pill"
 import { Tilt } from "@/components/terminal/tilt"
@@ -78,19 +79,25 @@ export function BlogIndex({ posts }: BlogIndexProps) {
       {/* ── Header section ─────────────────────────────── */}
       <section className="px-5 md:px-14 pt-10 pb-8 border-b border-term-rule">
         {/* Command line */}
-        <div className="font-mono text-[12px] text-term-fg-muted flex items-baseline gap-4 mb-6">
+        <div className="boot-line font-mono text-[12px] text-term-fg-muted flex items-baseline gap-4 mb-6">
           <span>
             <span className="text-term-accent">$</span> cd ~/writing &amp;&amp; ls -lah --sort=date
           </span>
         </div>
 
         {/* Big headline */}
-        <h1 className="font-sans font-extrabold text-term-fg tracking-[-0.04em] leading-[0.95] mt-0 mb-3 text-[48px] md:text-[88px]">
+        <h1
+          className="boot-line font-sans font-extrabold text-term-fg tracking-[-0.04em] leading-[0.95] mt-0 mb-3 text-[48px] md:text-[88px]"
+          style={{ "--boot-delay": "100ms" } as CSSProperties}
+        >
           ~/writing<span className="text-term-accent">/</span>
         </h1>
 
         {/* Intro paragraph */}
-        <p className="font-sans text-term-fg-soft leading-relaxed font-normal mt-4 mb-0 max-w-[800px] text-[15px] md:text-[19px]">
+        <p
+          className="boot-line font-sans text-term-fg-soft leading-relaxed font-normal mt-4 mb-0 max-w-[800px] text-[15px] md:text-[19px]"
+          style={{ "--boot-delay": "200ms" } as CSSProperties}
+        >
           Working notes on building with LLMs — patterns, harnesses, evals, the parts nobody puts in
           the demo. Written primarily for future-me opening a fresh chat. You&rsquo;re welcome to read along.
         </p>
@@ -180,7 +187,7 @@ export function BlogIndex({ posts }: BlogIndexProps) {
 
         {/* Footer hint */}
         <div className="mt-10 pt-6 border-t border-term-rule flex flex-col md:flex-row justify-between gap-3 font-mono text-[12px] text-term-fg-muted">
-          <span>
+          <span className="hidden md:inline">
             <span className="text-term-accent">$</span> press{" "}
             <kbd className="text-term-fg bg-term-bg-2 px-[6px] py-[1px] border border-term-rule not-italic">
               j
@@ -194,6 +201,9 @@ export function BlogIndex({ posts }: BlogIndexProps) {
               ↵
             </kbd>{" "}
             to open
+          </span>
+          <span className="md:hidden">
+            {filtered.length} {filtered.length === 1 ? "post" : "posts"}
           </span>
           <span>
             showing 1–{filtered.length} of {posts.length}

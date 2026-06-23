@@ -1,3 +1,4 @@
+import type { CSSProperties } from "react"
 import Image from "next/image"
 import Link from "next/link"
 import { Prompt } from "@/components/terminal/prompt"
@@ -30,14 +31,21 @@ export default function AboutPage() {
     <div className="max-w-[1440px] mx-auto">
       {/* ─── WHOAMI + BIO ───────────────────────────────────────────── */}
       <section className="px-5 md:px-14 pt-10 md:pt-12 pb-10 border-b border-term-rule">
-        <Prompt>whoami</Prompt>
-        <div className="pl-6 text-term-fg-muted font-mono text-[13px] mt-1 mb-8">
+        <div className="boot-line">
+          <Prompt>whoami</Prompt>
+        </div>
+        <div
+          className="boot-line pl-6 text-term-fg-muted font-mono text-[13px] mt-1 mb-8"
+          style={{ "--boot-delay": "100ms" } as CSSProperties}
+        >
           {personal.name.toLowerCase().replace(" ", "-")} · {personal.title.toLowerCase()} ·{" "}
           {personal.location.toLowerCase().replace(", canada", "")}
         </div>
 
-        <Prompt>cat ./about.md</Prompt>
-        <div className="pl-6 mt-3">
+        <div className="boot-line" style={{ "--boot-delay": "200ms" } as CSSProperties}>
+          <Prompt>cat ./about.md</Prompt>
+        </div>
+        <div className="boot-line pl-6 mt-3" style={{ "--boot-delay": "300ms" } as CSSProperties}>
           <h1 className="font-sans font-extrabold text-term-fg leading-[0.95] tracking-[-0.04em] text-[48px] md:text-[88px] m-0">
             ~/about<span className="text-term-accent">/</span>
           </h1>

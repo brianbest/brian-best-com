@@ -35,7 +35,7 @@ export function TerminalProjectCard({ project, index }: TerminalProjectCardProps
 
       {/* Card body */}
       <div className="flex flex-col gap-[14px] flex-1 px-5 pt-5 pb-5">
-        <h2 className="font-sans font-bold text-term-fg text-[22px] leading-[1.15] tracking-[-0.02em] m-0">
+        <h2 className="font-sans font-bold text-term-fg text-[22px] leading-[1.15] tracking-[-0.02em] m-0 group-hover:text-term-accent transition-colors">
           {project.title}
         </h2>
 
@@ -53,8 +53,9 @@ export function TerminalProjectCard({ project, index }: TerminalProjectCardProps
             ))}
           </div>
           {hasUrl ? (
-            <span className="font-mono text-[12px] text-term-fg group-hover:text-term-accent transition-colors shrink-0">
-              open ›
+            <span className="font-mono text-[12px] text-term-fg group-hover:text-term-accent transition-colors shrink-0 inline-flex items-center gap-1">
+              open
+              <span className="transition-transform duration-150 group-hover:translate-x-0.5">›</span>
             </span>
           ) : (
             <span className="font-mono text-[11px] text-term-fg-muted shrink-0">
@@ -68,7 +69,7 @@ export function TerminalProjectCard({ project, index }: TerminalProjectCardProps
 
   const className = cn(
     "group flex flex-col bg-term-bg md:min-h-[420px] h-full",
-    "hover:bg-term-bg-2 transition-colors duration-150",
+    "hover:bg-term-bg-2 active:bg-term-bg-3 transition-colors duration-150",
   )
 
   if (hasUrl) {

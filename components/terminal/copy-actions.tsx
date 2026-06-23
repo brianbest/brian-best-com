@@ -43,7 +43,6 @@ export function CopyMarkdownButton({
         )}
       >
         <span>{copied ? "copied!" : "copy as md"}</span>
-        <span className="opacity-70">⌘M</span>
       </button>
     )
   }

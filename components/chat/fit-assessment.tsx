@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { cn } from "@/lib/utils"
 
 // ──────────────────────────────────────────────────────────────────────
@@ -142,6 +142,25 @@ export function FitAssessment({
   // The structured layout is only "clean" if we found at least one classified group.
   const structured = aligns.length > 0 || flags.length > 0
 
+  // Animate the score number from 0 to the target over ~700ms.
+  const targetScore = band?.score ?? 0
+  const [displayScore, setDisplayScore] = useState(0)
+  useEffect(() => {
+    if (!band) return
+    setDisplayScore(0)
+    const start = performance.now()
+    const duration = 700
+    let raf: number
+    const tick = (now: number) => {
+      const t = Math.min((now - start) / duration, 1)
+      const eased = 1 - (1 - t) * (1 - t)
+      setDisplayScore(targetScore * eased)
+      if (t < 1) raf = requestAnimationFrame(tick)
+    }
+    raf = requestAnimationFrame(tick)
+    return () => cancelAnimationFrame(raf)
+  }, [targetScore, band])
+
   const [copied, setCopied] = useState(false)
   const copyAssessment = async () => {
     try {
@@ -167,8 +186,8 @@ export function FitAssessment({
             Fit assessment
           </div>
           <div className="flex items-baseline justify-between md:block">
-            <div className="font-sans text-[32px] md:text-[36px] font-extrabold text-term-fg tracking-[-0.025em] leading-none">
-              {band ? band.score.toFixed(1) : "—"}
+            <div className="font-sans text-[32px] md:text-[36px] font-extrabold text-term-fg tracking-[-0.025em] leading-none tabular-nums">
+              {band ? displayScore.toFixed(1) : "—"}
               <span className="text-term-fg-muted text-[18px] md:text-[22px] font-medium">/10</span>
               {band && (
                 <span className="hidden md:inline-block ml-[14px] align-middle font-mono text-[13px] px-3 py-1 bg-term-accent text-term-bg font-bold tracking-[0.06em]">
@@ -186,9 +205,9 @@ export function FitAssessment({
 
         {/* Bar + scale (desktop full scale, mobile simple bar) */}
         <div className="mt-[10px] md:mt-0 md:flex-1 md:ml-6">
-          <div className="relative h-[6px] md:h-2 bg-term-bg border border-term-rule">
+          <div className="relative h-[6px] md:h-2 bg-term-bg border border-term-rule overflow-hidden">
             <div
-              className="absolute left-0 top-0 bottom-0 bg-term-accent"
+              className="absolute left-0 top-0 bottom-0 bg-term-accent transition-[width] duration-700 ease-out"
               style={{ width: `${band ? band.percent : 0}%` }}
             />
             {band && (

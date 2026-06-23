@@ -253,7 +253,7 @@ export function CommandPalette({ items }: { items: PaletteItem[] }) {
 
   return (
     <div
-      className="fixed inset-0 z-[100] bg-black/60 backdrop-blur-[2px] flex items-start justify-center px-4 pt-[16vh]"
+      className="fixed inset-0 z-[100] bg-black/60 backdrop-blur-[2px] flex items-start justify-center px-4 pt-[16vh] overlay-in"
       onClick={close}
       role="presentation"
     >
@@ -261,7 +261,7 @@ export function CommandPalette({ items }: { items: PaletteItem[] }) {
         role="dialog"
         aria-modal="true"
         aria-label="Command palette"
-        className="w-full max-w-[640px] bg-term-bg-2 border border-term-rule shadow-[0_24px_80px_rgba(0,0,0,0.6)]"
+        className="dialog-in w-full max-w-[640px] bg-term-bg-2 border border-term-rule shadow-[0_24px_80px_rgba(0,0,0,0.6)]"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Title bar */}
