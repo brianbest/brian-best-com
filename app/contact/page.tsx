@@ -1,3 +1,4 @@
+import type { CSSProperties } from "react"
 import Link from "next/link"
 import { ContactChannels } from "@/components/terminal/contact-channels"
 
@@ -12,17 +13,23 @@ export default function ContactPage() {
     <div className="max-w-[1440px] mx-auto">
       {/* ── Header section ─────────────────────────────── */}
       <section className="px-5 md:px-14 pt-10 pb-8 border-b border-term-rule">
-        <div className="font-mono text-[12px] text-term-fg-muted flex items-baseline gap-4 mb-6">
+        <div className="boot-line font-mono text-[12px] text-term-fg-muted flex items-baseline gap-4 mb-6">
           <span>
             <span className="text-term-accent">$</span> ./contact --list-channels
           </span>
         </div>
 
-        <h1 className="font-sans font-extrabold text-term-fg tracking-[-0.04em] leading-[0.95] mt-0 mb-3 text-[48px] md:text-[88px]">
+        <h1
+          className="boot-line font-sans font-extrabold text-term-fg tracking-[-0.04em] leading-[0.95] mt-0 mb-3 text-[48px] md:text-[88px]"
+          style={{ "--boot-delay": "100ms" } as CSSProperties}
+        >
           Get in touch<span className="text-term-accent cursor-blink">_</span>
         </h1>
 
-        <p className="font-sans text-term-fg-soft leading-relaxed font-normal mt-4 mb-0 max-w-[800px] text-[15px] md:text-[19px]">
+        <p
+          className="boot-line font-sans text-term-fg-soft leading-relaxed font-normal mt-4 mb-0 max-w-[800px] text-[15px] md:text-[19px]"
+          style={{ "--boot-delay": "200ms" } as CSSProperties}
+        >
           Have a question, a role worth discussing, or something you want to build?
           Pick a channel — LinkedIn gets the fastest response.
         </p>

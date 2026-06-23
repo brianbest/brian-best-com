@@ -191,13 +191,14 @@ export function TerminalNav({ active, postCount = 4 }: TerminalNavProps) {
           >
             <span className="block w-[18px] h-[1.5px] bg-term-fg" />
             <span className="block w-[18px] h-[1.5px] bg-term-fg" />
+            <span className="block w-[18px] h-[1.5px] bg-term-fg" />
           </button>
         </div>
       </nav>
 
       {/* ── Mobile full-screen menu overlay ── */}
       {mobileOpen && (
-        <div id="mobile-menu" className="md:hidden fixed inset-0 z-50 bg-term-bg flex flex-col">
+        <div id="mobile-menu" className="md:hidden fixed inset-0 z-50 bg-term-bg flex flex-col overlay-in">
           {/* Header */}
           <div className="px-[14px] h-[52px] flex items-center justify-between border-b border-term-rule bg-term-bg-2">
             <Link href="/" onClick={() => handleNavClick("brand", "/")} className="flex items-center gap-[10px]">
@@ -224,7 +225,7 @@ export function TerminalNav({ active, postCount = 4 }: TerminalNavProps) {
                 href={tab.href}
                 onClick={() => handleNavClick(tab.label, tab.href)}
                 className={cn(
-                  "font-mono text-[18px] py-4 border-b border-term-rule flex items-center justify-between",
+                  "font-mono text-[18px] py-4 border-b border-term-rule flex items-center justify-between active:bg-term-bg-2 transition-colors",
                   resolvedActive === tab.key ? "text-term-fg" : "text-term-fg-soft",
                 )}
               >
@@ -241,7 +242,7 @@ export function TerminalNav({ active, postCount = 4 }: TerminalNavProps) {
             <Link
               href="/chat"
               onClick={() => handleNavClick("chat", "/chat")}
-              className="font-mono text-[18px] py-4 border-b border-term-rule text-term-fg-soft flex items-center justify-between"
+              className="font-mono text-[18px] py-4 border-b border-term-rule text-term-fg-soft flex items-center justify-between active:bg-term-bg-2 transition-colors"
             >
               <span className="flex items-center gap-3">
                 <span className="text-term-accent w-[7px] h-[7px] rounded-full inline-block" />

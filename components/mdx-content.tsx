@@ -210,22 +210,23 @@ const components = {
   // ------------------------------------------------------------------
   ul: (props: any) => (
     <ul
-      className="my-4 pl-0 list-none space-y-1 font-sans text-[16px] md:text-[17px] leading-[1.7] text-term-fg-soft"
+      className="mdx-list mdx-list-ul my-4 pl-0 list-none space-y-1 font-sans text-[16px] md:text-[17px] leading-[1.7] text-term-fg-soft"
       {...props}
     />
   ),
 
   ol: (props: any) => (
     <ol
-      className="my-4 pl-0 list-none space-y-1 font-sans text-[16px] md:text-[17px] leading-[1.7] text-term-fg-soft"
+      className="mdx-list mdx-list-ol my-4 pl-0 list-none space-y-1 font-sans text-[16px] md:text-[17px] leading-[1.7] text-term-fg-soft"
+      style={{ counterReset: "step" }}
       {...props}
     />
   ),
 
   li: ({ children, ...rest }: any) => (
-    <li className="flex gap-2 items-start" {...rest}>
-      <span className="font-mono text-term-accent shrink-0 mt-[2px] select-none">—</span>
-      <span>{children}</span>
+    <li className="mdx-list-item flex gap-2 items-start" {...rest}>
+      <span className="mdx-marker font-mono text-term-accent shrink-0 mt-[2px] select-none" aria-hidden="true" />
+      <span className="flex-1">{children}</span>
     </li>
   ),
 

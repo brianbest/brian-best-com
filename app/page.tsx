@@ -169,7 +169,7 @@ export default async function Home() {
                 <Link
                   key={post.slug}
                   href={`/blog/${post.slug}`}
-                  className={`block py-[18px] border-b border-term-rule hover:bg-term-bg-2 transition-colors -mx-1 px-1 ${i === 0 ? "border-t border-term-rule" : ""}`}
+                  className={`block py-[18px] border-b border-term-rule hover:bg-term-bg-2 active:bg-term-bg-3 transition-colors -mx-1 px-1 ${i === 0 ? "border-t border-term-rule" : ""}`}
                 >
                   <div className="flex justify-between font-mono text-[11px] text-term-fg-muted mb-2">
                     <span>{formatTerminalDate(post.date)}</span>
@@ -351,7 +351,7 @@ export default async function Home() {
       <section className="px-5 md:px-14 pt-6 pb-14">
         {/* Mobile: compact CTA card (BHomeMobile style) */}
         <div className="md:hidden">
-          <Link href="/chat" className="block bg-term-bg-2 border border-term-rule p-[18px] hover:border-term-accent transition-colors">
+          <Link href="/chat" className="block bg-term-bg-2 border border-term-rule p-[18px] hover:border-term-accent active:bg-term-bg-3 transition-colors">
             <div className="font-mono text-[11px] text-term-accent uppercase tracking-[0.05em] mb-2">
               Brian&rsquo;s AI
             </div>

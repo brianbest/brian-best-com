@@ -36,14 +36,6 @@ const ASK_FOLLOW_UPS = [
   "Where is he based?",
 ]
 
-// Static-but-real source references (actual post slugs live on the site).
-const RAIL_SOURCES = [
-  { slug: "shipping-with-agents-not-instead-of-them", sub: "essay · 2026-03" },
-  { slug: "context-engineering-over-prompt-engineering", sub: "essay · 2026-04" },
-  { slug: "mcp-is-the-real-unlock", sub: "essay · 2026-05" },
-  { slug: "writing-for-agent-readers", sub: "essay · 2026-05" },
-]
-
 function timeLabel(d = new Date()) {
   return d
     .toLocaleTimeString("en-US", { hour: "numeric", minute: "2-digit" })
@@ -56,9 +48,18 @@ function textFromMessage(m: UIMessage) {
     .join("")
 }
 
+export interface ChatSource {
+  slug: string
+  date: string
+}
+
 export function ChatExperience({
   knowledgeDate = KNOWLEDGE_DATE,
-}: { knowledgeDate?: string } = {}) {
+  sources = [],
+}: {
+  knowledgeDate?: string
+  sources?: ChatSource[]
+} = {}) {
   const [mode, setMode] = useState<Mode>("ask")
 
   // ── Ask mode (general chat) ─────────────────────────────────────────
@@ -230,7 +231,7 @@ export function ChatExperience({
         </div>
 
         {/* ── Thread ── */}
-        <div ref={threadRef} className="flex-1 overflow-y-auto">
+        <div ref={threadRef} className="flex-1 overflow-y-auto" aria-busy={askLoading || jdLoading}>
           <div className="px-4 py-5 md:px-12 md:py-8 flex flex-col gap-6 md:gap-8 max-w-[900px] w-full md:self-center">
             {mode === "ask" ? (
               <AskThread
@@ -273,7 +274,7 @@ export function ChatExperience({
       </main>
 
       {/* ════════════ RIGHT RAIL (desktop only) ════════════ */}
-      <RightRail />
+      <RightRail sources={sources} />
     </div>
   )
 }
@@ -393,12 +394,13 @@ function AskThread({
 }
 
 function UserBubble({ text }: { text: string }) {
+  const [timestamp] = useState(() => timeLabel())
   return (
     <div className="flex flex-col gap-[6px] md:gap-2 items-end">
       <div className="flex items-center gap-2 font-mono text-[10px] md:text-[11px] text-term-fg-muted">
         <span>you</span>
         <span>·</span>
-        <span>{timeLabel()}</span>
+        <span>{timestamp}</span>
       </div>
       <div className="max-w-[90%] md:max-w-[720px] bg-term-bg-2 border border-term-rule px-4 py-[14px]">
         <p className="font-sans text-[15px] text-term-fg leading-[1.6] whitespace-pre-wrap break-words">
@@ -410,6 +412,7 @@ function UserBubble({ text }: { text: string }) {
 }
 
 function AssistantBubble({ text }: { text: string }) {
+  const [timestamp] = useState(() => timeLabel())
   return (
     <div className="flex flex-col gap-2 items-start">
       <div className="flex items-center gap-2 font-mono text-[10px] md:text-[11px] text-term-fg-muted">
@@ -420,7 +423,7 @@ function AssistantBubble({ text }: { text: string }) {
           Brian&rsquo;s AI
         </span>
         <span>·</span>
-        <span>{timeLabel()}</span>
+        <span>{timestamp}</span>
       </div>
       <div className="w-full md:max-w-[720px] bg-term-bg-2 border border-term-rule border-l-[3px] border-l-term-accent px-4 py-[14px]">
         <p className="font-sans text-[15px] text-term-fg-soft leading-[1.6] whitespace-pre-wrap break-words">
@@ -746,7 +749,6 @@ function LeftSidebar({ onNewChat }: { onNewChat: () => void }) {
         className="font-mono text-[13px] px-[14px] py-3 bg-term-accent text-term-bg font-semibold cursor-pointer flex justify-between items-center hover:opacity-90 transition-opacity"
       >
         <span>+ New chat</span>
-        <span className="text-[11px] opacity-70">⌘N</span>
       </button>
 
       <div className="mt-7 font-mono text-[11px] text-term-fg-muted tracking-[0.08em] uppercase mb-3">
@@ -799,7 +801,11 @@ function LeftSidebar({ onNewChat }: { onNewChat: () => void }) {
 // ──────────────────────────────────────────────────────────────────────
 // Right rail (desktop only)
 // ──────────────────────────────────────────────────────────────────────
-function RightRail() {
+function RightRail({ sources }: { sources: ChatSource[] }) {
+  const railSources = sources.slice(0, 4).map((s) => ({
+    slug: s.slug,
+    sub: `essay · ${s.date.slice(0, 7)}`,
+  }))
   return (
     <aside className="hidden md:block bg-term-bg-2 border-l border-term-rule px-5 py-6 text-[12px]">
       <div className="font-mono text-[11px] text-term-fg-muted tracking-[0.08em] uppercase mb-[14px]">
@@ -814,19 +820,24 @@ function RightRail() {
       <div className="mt-6 font-mono text-[11px] text-term-fg-muted tracking-[0.08em] uppercase mb-3">
         Sources it can draw on
       </div>
-      {RAIL_SOURCES.map((s, i) => (
+      {railSources.map((s, i) => (
         <a
           key={s.slug}
           href={`/blog/${s.slug}`}
           className={cn(
             "block py-[10px] no-underline",
-            i < RAIL_SOURCES.length - 1 && "border-b border-term-rule-soft",
+            i < railSources.length - 1 && "border-b border-term-rule-soft",
           )}
         >
           <div className="font-mono text-[12px] text-term-accent">↗ {s.slug}</div>
           <div className="font-mono text-[11px] text-term-fg-muted mt-[2px]">{s.sub}</div>
         </a>
       ))}
+      {railSources.length === 0 && (
+        <div className="font-mono text-[11px] text-term-fg-muted py-[10px]">
+          No posts published yet.
+        </div>
+      )}
 
       <div className="mt-7 px-[14px] py-[14px] border border-dashed border-term-rule font-mono text-[11px] text-term-fg-muted leading-[1.6]">
         <div className="text-term-fg-soft mb-1"># PRIVACY</div>
