@@ -115,6 +115,8 @@ async function ensureSchema(): Promise<void> {
         ON ai_interactions (endpoint)
       `
     } catch (error) {
+      // Reset so a transient failure doesn't permanently block persistence
+      schemaReadyPromise = null
       logPersistenceIssue({
         event: "schema_failed",
         endpoint: "chat",

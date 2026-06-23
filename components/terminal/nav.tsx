@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { track } from "@vercel/analytics"
@@ -85,6 +85,15 @@ export function TerminalNav({ active, postCount = 4 }: TerminalNavProps) {
   const pathname = usePathname()
   const resolvedActive = active ?? deriveActive(pathname)
 
+  useEffect(() => {
+    if (!mobileOpen) return
+    const handleEscape = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setMobileOpen(false)
+    }
+    document.addEventListener("keydown", handleEscape)
+    return () => document.removeEventListener("keydown", handleEscape)
+  }, [mobileOpen])
+
   const handleNavClick = (label: string, href: string) => {
     track("cta_click", { location: "nav", label, destination: href })
     setMobileOpen(false)
@@ -93,7 +102,7 @@ export function TerminalNav({ active, postCount = 4 }: TerminalNavProps) {
   return (
     <>
       {/* ── Desktop nav (md+) ── */}
-      <nav className="hidden md:flex bg-term-bg-2 border-b border-term-rule items-stretch pl-4">
+      <nav aria-label="Primary" className="hidden md:flex bg-term-bg-2 border-b border-term-rule items-stretch pl-4">
         {/* Monogram + brand */}
         <div className="flex items-center gap-3 px-6 border-r border-term-rule">
           <Link
@@ -101,7 +110,7 @@ export function TerminalNav({ active, postCount = 4 }: TerminalNavProps) {
             onClick={() => handleNavClick("brand", "/")}
             className="flex items-center gap-3 no-underline"
           >
-            <div className="w-8 h-8 bg-term-accent text-term-bg font-mono font-bold text-[15px] grid place-items-center flex-shrink-0">
+            <div className="w-8 h-8 bg-term-accent text-term-bg font-mono font-bold text-[15px] grid place-items-center flex-shrink-0" aria-hidden="true">
               $
             </div>
             <span className="font-mono font-semibold text-term-fg text-[14px]">brianbest.com</span>
@@ -140,7 +149,7 @@ export function TerminalNav({ active, postCount = 4 }: TerminalNavProps) {
           onClick={() => handleNavClick("chat", "/chat")}
           className="flex items-center gap-2 px-[18px] font-mono text-[13px] text-term-fg hover:text-term-accent transition-colors no-underline"
         >
-          <span className="w-[7px] h-[7px] bg-term-accent rounded-full pulse-soft" />
+          <span className="w-[7px] h-[7px] bg-term-accent rounded-full pulse-soft" aria-hidden="true" />
           <span>Chat with Brian&rsquo;s AI</span>
           <span className="ml-2 px-2 py-0.5 bg-term-accent text-term-bg text-[10px] font-bold tracking-[0.06em]">
             LIVE
@@ -149,11 +158,11 @@ export function TerminalNav({ active, postCount = 4 }: TerminalNavProps) {
       </nav>
 
       {/* ── Mobile nav (< md) ── */}
-      <nav className="md:hidden bg-term-bg-2 border-b border-term-rule px-[14px] h-[52px] flex items-center justify-between gap-[10px]">
+      <nav aria-label="Primary" className="md:hidden bg-term-bg-2 border-b border-term-rule px-[14px] h-[52px] flex items-center justify-between gap-[10px]">
         {/* Left: monogram + brand */}
         <div className="flex items-center gap-[10px]">
           <Link href="/" onClick={() => handleNavClick("brand", "/")} className="flex items-center gap-[10px]">
-            <div className="w-7 h-7 bg-term-accent text-term-bg font-mono font-bold text-[14px] grid place-items-center">
+            <div className="w-7 h-7 bg-term-accent text-term-bg font-mono font-bold text-[14px] grid place-items-center" aria-hidden="true">
               $
             </div>
             <span className="font-mono font-semibold text-term-fg text-[13px]">brianbest.com</span>
@@ -167,7 +176,7 @@ export function TerminalNav({ active, postCount = 4 }: TerminalNavProps) {
             onClick={() => handleNavClick("chat", "/chat")}
             className="inline-flex items-center gap-[6px] px-[11px] py-[7px] bg-term-accent text-term-bg font-mono text-[12px] font-semibold no-underline glow-accent"
           >
-            <span className="w-[5px] h-[5px] bg-term-bg rounded-full pulse-soft" />
+            <span className="w-[5px] h-[5px] bg-term-bg rounded-full pulse-soft" aria-hidden="true" />
             Chat with Brian&rsquo;s AI
           </Link>
 
@@ -176,6 +185,8 @@ export function TerminalNav({ active, postCount = 4 }: TerminalNavProps) {
             type="button"
             onClick={() => setMobileOpen(true)}
             aria-label="Open menu"
+            aria-expanded={mobileOpen}
+            aria-controls="mobile-menu"
             className="flex flex-col gap-[4px] p-[10px_4px] cursor-pointer"
           >
             <span className="block w-[18px] h-[1.5px] bg-term-fg" />
@@ -186,11 +197,11 @@ export function TerminalNav({ active, postCount = 4 }: TerminalNavProps) {
 
       {/* ── Mobile full-screen menu overlay ── */}
       {mobileOpen && (
-        <div className="md:hidden fixed inset-0 z-50 bg-term-bg flex flex-col">
+        <div id="mobile-menu" className="md:hidden fixed inset-0 z-50 bg-term-bg flex flex-col">
           {/* Header */}
           <div className="px-[14px] h-[52px] flex items-center justify-between border-b border-term-rule bg-term-bg-2">
             <Link href="/" onClick={() => handleNavClick("brand", "/")} className="flex items-center gap-[10px]">
-              <div className="w-7 h-7 bg-term-accent text-term-bg font-mono font-bold text-[14px] grid place-items-center">
+              <div className="w-7 h-7 bg-term-accent text-term-bg font-mono font-bold text-[14px] grid place-items-center" aria-hidden="true">
                 $
               </div>
               <span className="font-mono font-semibold text-term-fg text-[13px]">brianbest.com</span>

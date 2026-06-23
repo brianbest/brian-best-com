@@ -10,6 +10,12 @@
     @apply bg-term-bg text-term-fg;
   }
 
+  /* Visible keyboard focus indicator across the whole site. */
+  :focus-visible {
+    outline: 2px solid theme("colors.term.accent");
+    outline-offset: 2px;
+  }
+
   /* Text selection in the accent red — small, everywhere, unmistakably ours. */
   ::selection {
     background: #ef4444; /* term-accent */

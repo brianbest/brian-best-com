@@ -106,6 +106,13 @@ dist
 .env.local
 local-dashboard/
 
+# Claude Code / opencode local config
+.claude/
+.opencode/
+
+# Personal reference files (not part of the site)
+spec/Profile-1.pdf
+
 # Playwright artifacts
 playwright-report/
 test-results/

@@ -234,13 +234,16 @@ Model IDs are configured in the route files (`app/api/chat/route.ts`, `app/api/j
 
 ## Testing
 
-- **Vitest** — `lib/ai/validation.test.ts` (input validation + injection detection).
+- **Vitest** — `lib/ai/validation.test.ts` (input validation + injection detection),
+  `lib/utils.test.ts` (slugify, date formatting, cn).
 - **Playwright** (`e2e/`):
   - `smoke.spec.ts` — every route renders, terminal nav/footer present, **zero legacy
     Persona-era classes**, no console errors.
   - `seo.spec.ts` — `/job-fit` 308 redirect, og:image works, sitemap/robots/rss/llms-full.txt.
   - `chat.spec.ts` — chat + JD-mode interactions with `/api/chat` and `/api/job-fit` mocked
     via `page.route` (no live OpenAI calls).
+  - `interactions.spec.ts` — command palette (⌘K, fuzzy-find, shell commands, easter eggs),
+    blog j/k keyboard navigation, 404 page.
 
 ---
 
@@ -292,8 +295,8 @@ e2e/                      # Playwright specs (smoke, seo, chat)
 - **Use `term-*` tokens** for all colors and the shared terminal components for new UI.
 - **postcss override.** `package.json` overrides Next's bundled `postcss` to `^8.5.10` to clear a
   stringify-XSS advisory (Next pins `8.4.31`). Keep this until Next ships a newer postcss.
-- `next.config.mjs` sets `typescript.ignoreBuildErrors` — run `npx tsc --noEmit` to typecheck;
-  `next build` alone won't catch type errors.
+- `next build` enforces both TypeScript and ESLint — type errors or lint errors will fail
+  the build. Run `npx tsc --noEmit` and `npm run lint` locally before pushing.
 
 ## Deployment
 

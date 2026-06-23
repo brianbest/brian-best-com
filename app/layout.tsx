@@ -23,14 +23,46 @@ export const metadata: Metadata = {
   },
   description:
     "Personal website and blog of Brian Best — Principal Software Developer building agentic AI, MCP integrations, and production LLM systems.",
+  authors: [{ name: "Brian Best", url: "https://brianbest.com" }],
+  creator: "Brian Best",
+  publisher: "Brian Best",
+  keywords: [
+    "Brian Best",
+    "Principal Software Developer",
+    "Agentic AI",
+    "LLM",
+    "MCP",
+    "Model Context Protocol",
+    "AI engineering",
+    "TypeScript",
+    "Next.js",
+  ],
+  alternates: {
+    canonical: "/",
+    types: {
+      "application/rss+xml": [{ url: "/rss.xml", title: "RSS Feed" }],
+    },
+  },
   openGraph: {
     type: "website",
     siteName: "Brian Best",
     locale: "en_US",
+    url: "https://brianbest.com",
   },
   twitter: {
     card: "summary_large_image",
+    creator: "@brianbest",
+    site: "@brianbest",
   },
+  robots: {
+    index: true,
+    follow: true,
+  },
+}
+
+export const viewport = {
+  themeColor: "#0f0d0c",
+  colorScheme: "dark",
 }
 
 export default function RootLayout({
