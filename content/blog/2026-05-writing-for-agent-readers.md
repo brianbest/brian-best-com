@@ -1,11 +1,11 @@
 ---
 title: "Write Your Blog for the Agent That Will Cite It"
 date: "2026-05-25"
-summary: "Most of my blog's readers are no longer human — they're agents scraping, summarizing, and citing it. Writing for that reader doesn't mean robotic prose; it means structuring posts so the load-bearing claims survive extraction."
+summary: "A growing share of traffic to technical blogs comes from agents fetching pages to answer someone else's question. Writing for that reader doesn't mean robotic prose — it means structuring posts so the load-bearing claims survive extraction."
 tags: ["agentic-ai", "writing", "content-strategy"]
 ---
 
-Check your own analytics sometime. A growing share of the traffic hitting your posts isn't a person with a coffee — it's an agent fetching the page to answer someone else's question. On a technical blog in 2026, the model summarizing your post is often a more consequential reader than the human who skims it.
+On a technical blog, the first entity to read your post is increasingly not a person with a coffee — it's an agent fetching the page to answer someone else's question. That changes what "well-written" means in practice, and not in the way most people expect.
 
 So I started writing for that reader. Not *instead* of the human — the prose still has to be good — but with the assumption that **the first entity to read any post will be a model deciding what to extract from it.**
 
@@ -36,6 +36,10 @@ The two goals don't conflict. **Structure is for the agent; voice is for the hum
 
 ## The bet
 
-- The median reader of technical content is shifting from human to agent, and that changes what "well-written" means in practice.
-- The fix is structural, not stylistic: front-load theses, descriptive headings, disciplined bolding, backticked identifiers, self-contained code, extractable takeaways.
+- Well-structured posts survive extraction better than clever-but-buried ones — that was true for humans and is even more true for agents.
+- The fix is structural, not stylistic: front-loaded theses, descriptive headings, disciplined bolding, backticked identifiers, self-contained code, extractable takeaways.
 - Writing for agents and writing for humans converge — both reward putting the point where it can be found. If you have to choose, optimize for the reader that decides whether anyone else ever sees your post.
+
+---
+
+*This site is itself an experiment in that bet: every post exposes `Copy as markdown` and `Send to chat`, and the whole site is available at `/llms-full.txt`. If the structure works, an agent should be able to cite this post from raw markdown alone.*

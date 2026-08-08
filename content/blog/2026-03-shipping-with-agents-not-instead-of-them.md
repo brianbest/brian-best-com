@@ -27,8 +27,26 @@ Three rules of thumb that have held up across about 18 months of agent-assisted 
 2. **Use agents for the parts you find boring.** Boilerplate, migrations, test scaffolding, refactors with clear acceptance criteria. Don't use them for the parts you find interesting — that's where you build the taste that makes you valuable.
 3. **Treat agent output like a junior dev's PR.** It deserves the same review rigor, the same "why did you choose this approach?" pushback, and the same expectation that you'll catch and explain the mistakes.
 
+Every agent PR on our team goes through the same checklist we use for human PRs:
+
+```text
+review-checklist.md — applied to every agent PR
+- [ ] Can I explain this diff without re-reading the prompt?
+- [ ] Do tests encode the constraint, not just the happy path?
+- [ ] Is there a simpler shape that passes the same tests?
+- [ ] Would I be comfortable owning this code after the agent is gone?
+```
+
+If the answer to any of those is no, the PR doesn't ship — no matter how green the CI is.
+
 ## What I don't tell my team (but should)
 
 The senior devs on my team got more valuable, not less, when we adopted agents. The juniors had a harder time, because the gap between "I can prompt my way to working code" and "I can tell when working code is wrong" is the gap that experience used to be.
 
-I don't have a clean answer for how we close that gap. But I'm sure the answer is not "agents will figure it out."
+I don't have a clean answer for closing that gap, but we have a working hypothesis we're iterating on:
+
+- **Paired review on every agent PR** — a junior authors the prompt and the senior reviews the output with them, narrating what they're checking and why. The point isn't gatekeeping; it's transferring the taste for what's wrong.
+- **A shared review rubric** (like the checklist above) so "good" isn't vibes — it's four checkable boxes.
+- **Guardrails, not freedom** — juniors start with agents scoped to well-tested areas (migrations, test scaffolding, mechanical refactors) before they get the keys to ambiguous product work.
+
+It doesn't fully close the gap. But "agents will figure it out" definitely won't either.

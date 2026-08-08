@@ -75,13 +75,11 @@ export default function AboutPage() {
 
             <div className="flex flex-col gap-5 max-w-[720px]">
               <p className="font-sans font-normal text-term-fg-soft leading-[1.55] text-[16px] md:text-[17px] m-0">
-                I&rsquo;m a Principal Software Developer at Axonify with 12+ years of full-stack
-                engineering behind me and the last 3+ spent architecting production AI systems.
-                These days I co-lead an in-house agentic AI &ldquo;code factory&rdquo; — LLM-powered
-                agents that implement, test, and review changes against our production codebase —
-                and drive LLM capabilities into the customer-facing platform: RAG and retrieval
-                pipelines, secure MCP tool-calling, and conversational interfaces that hold up
-                inside enterprise compliance boundaries.
+                I&rsquo;m a Principal Software Developer at Axonify — 12+ years full-stack, last
+                3+ in production AI. My current work is owning technical strategy for AI-driven
+                automation across the platform: an internal platform of LLM coding agents and
+                customer-facing LLM features that have to survive enterprise compliance, evals, and
+                on-call — not just a demo.
               </p>
               <p className="font-sans font-normal text-term-fg-soft leading-[1.55] text-[16px] md:text-[17px] m-0">
                 My path here was not the usual one: radio broadcasting, then web development, then

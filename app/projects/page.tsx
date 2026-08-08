@@ -38,8 +38,9 @@ export default async function ProjectsPage() {
           style={{ "--boot-delay": "200ms" } as CSSProperties}
         >
           Things I build off the clock — agentic AI tooling, MCP servers, and the
-          self-hosted infrastructure they run on. Most of it exists to answer a
-          question I couldn&rsquo;t stop thinking about.
+          self-hosted infrastructure they run on. Each one exists to answer a specific
+          question: can agents share a box without leaking state? can email be an MCP
+          tool? can a prompt improve itself without a human in the loop?
         </p>
       </section>
 

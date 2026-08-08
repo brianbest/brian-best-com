@@ -109,34 +109,28 @@ export const careerProfile: CareerProfile = {
     linkedin: "https://linkedin.com/in/brianbest101",
     github: "https://github.com/brianbest",
     website: "https://brianbest.com",
-    summary: `Principal Software Developer at Axonify with 12+ years of full-stack engineering experience and 3+ years architecting production AI systems —
-agentic AI, LLM-powered applications, multi-agent orchestration, and Model Context Protocol (MCP) integrations. Currently co-leads an internal agentic AI
-"code factory" and drives LLM-powered capabilities into the customer-facing Axonify platform, spanning RAG and retrieval pipelines, secure tool-calling for
-AI agents, and conversational interfaces that operate within enterprise compliance boundaries. Advanced from Software Developer to Principal in six years.
-Former startup co-founder (raised CAD $75k, Propel ICT accelerator) with a non-traditional path from radio broadcasting into AI/LLM engineering.`,
-    tagline: "Agentic engineering — Building the system that builds the system",
+    summary: `Principal Software Developer at Axonify — 12+ years full-stack, last 3+ in production AI. I co-lead an internal platform of LLM coding agents and ship LLM features into the customer-facing product (retrieval pipelines, MCP tool-calling, conversational interfaces) under enterprise compliance constraints: credential isolation, audit logging, and evals before rollout. Grew from Developer to Principal in six years. Previously co-founded Phased.io (CAD $75k angel, Propel ICT Build) and came up through radio broadcasting — live, unscripted comms that still shapes how I explain systems.`,
+    tagline: "Production AI that holds up after the demo",
   },
 
   personality: {
     communicationStyle: [
-      "Clear and articulate - honed through years of live radio broadcasting",
-      "Comfortable presenting to diverse audiences from technical teams to executives",
-      "Skilled at translating complex technical concepts into accessible explanations",
-      "Experience with live, unscripted communication under pressure",
-      "Has proven experience in effective communication that other engineers struggle with"
+      "Clear and direct — years of live, unscripted radio taught me to land a point without slides",
+      "Comfortable presenting to mixed audiences: engineers, execs, and customers in the same room",
+      "Translate system constraints into plain language so non-technical stakeholders can make real decisions",
+      "Default to writing it down — docs and ADRs over hallway knowledge",
     ],
     workingStyle: [
-      "Collaborative problem solver who values diverse perspectives",
-      "Iterative approach - ship early, learn fast, improve continuously",
-      "Strong documentation practices for knowledge sharing",
-      "Comfortable leading or contributing as individual contributor",
+      "Ship early, instrument it, then iterate — I’d rather learn from production than debate in a doc",
+      "Review-heavy: if I can’t explain a diff in review, it doesn’t ship",
+      "Build the thinnest thing that proves the constraint, then harden it",
+      "Comfortable leading a workstream or pairing as an IC — whichever unblocks the team",
     ],
     values: [
-      "Is a builder at heart - he loves to build things and see them come to life",
-      "Technical excellence balanced with pragmatism",
-      "Continuous learning and growth mindset",
-      "Transparency and honest communication",
-      "Building meaningful products that make a difference",
+      "Craft over cleverness — software should hold up when the demo ends",
+      "Honesty about gaps beats keyword-stuffing a résumé",
+      "Docs are part of the feature, not follow-up",
+      "Build tools that make the next person faster, not just the current task",
     ],
   },
 
@@ -160,19 +154,19 @@ Former startup co-founder (raised CAD $75k, Propel ICT accelerator) with a non-t
   ],
 
   currentFocus: {
-    tagline: "Agentic engineering — Building the system that builds the system",
+    tagline: "Production AI that holds up after the demo",
     areas: [
-      "Co-leading an internal agentic AI development platform — an in-house \"code factory\" of LLM-powered coding agents",
-      "Productizing LLM capabilities into customer-facing enterprise features",
-      "MCP (Model Context Protocol) integrations for secure, compliant agent access to production systems",
-      "Multi-agent orchestration and agent-augmented workflows",
-      "RAG and retrieval pipelines for support automation",
-      "System-health ownership and observability across the engineering org",
+      "Internal agentic AI platform — LLM agents that implement, test, and review changes against the production codebase",
+      "Customer-facing LLM features: retrieval pipelines, secure tool-calling, and conversational interfaces under enterprise compliance",
+      "MCP integrations with credential isolation, scoped tool access, and audit logging",
+      "Multi-agent orchestration and agent-augmented engineering workflows",
+      "Support automation: pre-emptive investigation at ticket creation (logs, error extraction, RAG over past issues)",
+      "System-health and observability tooling shared across the engineering org",
     ],
   },
 
   aiExperience: {
-    current: "Co-leads an internal agentic AI \"code factory\" of LLM-powered agents and drives LLM capabilities into the customer-facing Axonify platform. Shipped LLM support automation that runs pre-emptive investigation at ticket creation (log analysis, error extraction, RAG retrieval of similar past issues), cutting average time from issue reported to fix deployed from roughly 14 days to 3 days.",
+    current: "Co-leads an internal agentic AI platform of LLM-powered coding agents and ships LLM capabilities into the customer-facing Axonify product. Most visible outcome so far: support automation that runs pre-emptive investigation at ticket creation (log analysis, error extraction, RAG over similar past issues), cutting average time from issue reported to fix deployed from ~14 days to ~3 days.",
     tools: [
       "MCP (Model Context Protocol) servers & clients",
       "Agentic AI & multi-agent orchestration",
@@ -186,15 +180,13 @@ Former startup co-founder (raised CAD $75k, Propel ICT accelerator) with a non-t
   },
 
   leadershipStyle: {
-    philosophy: `I believe in leading through technical excellence and mentorship. My approach focuses on
-empowering team members to grow while maintaining high standards for code quality and system design.
-I prefer collaborative decision-making and believe the best solutions emerge from diverse perspectives.`,
+    philosophy: `I lead by writing the code I want to see and reviewing the code others write — with enough candor that a bad diff gets a clear "why not" and a good diff gets shipped. I keep the bar high on correctness and observability, and low on ceremony: short ADRs, reviewable PRs, and retros that actually change the next sprint.`,
     principles: [
-      "Lead by example - write the code you want to see",
-      "Create psychological safety for honest technical discussions",
-      "Balance pragmatism with technical excellence",
-      "Invest in documentation and knowledge sharing",
-      "Ship iteratively, learn continuously",
+      "Review is the real work — if you can’t defend a diff, it doesn’t ship",
+      "Write the doc you wish you’d had on day one",
+      "Instrument first, debate second",
+      "Leave the codebase easier to delete from than you found it",
+      "Ship thin, learn in production, harden what survived",
     ],
   },
 
@@ -213,20 +205,18 @@ ecosystem with Java and Python alongside it, and experience across the stack fro
   },
 
   careerGoals: {
-    shortTerm: "Continue building impactful AI/LLM systems while growing as a technical leader",
-    longTerm: "Lead engineering organizations building AI-powered products, potentially exploring startup opportunities again",
+    shortTerm: "Ship production AI systems where I still write and review code — platform + product, not just research demos",
+    longTerm: "Lead an engineering org building AI-powered products; open to founding again when the problem is sharp enough",
     preferences: [
-      "Remote or hybrid work environment",
-      "Willing to work from an office in Kitchener-Waterloo, ON",
-      "AI/LLM focused engineering work",
-      "Product-focused engineering culture",
-      "Opportunities for technical leadership",
-      "Companies solving meaningful problems",
+      "Remote or hybrid — available on-site in Kitchener-Waterloo, ON",
+      "AI/LLM work that reaches customers, not just internal benchmarks",
+      "Product-minded eng culture with short feedback loops",
+      "Scope to own architecture and mentor while staying hands-on",
     ],
     dealbreakers: [
-      "Purely management roles with no coding",
-      "Toxic work cultures",
-      "Companies without clear product vision",
+      "Management-only track with no code or review responsibility",
+      "Roadmap by committee with no written decisions or accountable owner",
+      "AI strategy that stops at a demo — no evals, no observability, no compliance plan",
     ],
   },
 
@@ -238,21 +228,21 @@ ecosystem with Java and Python alongside it, and experience across the stack fro
       location: "Waterloo, ON (Remote)",
       startDate: "Feb 2026",
       endDate: null,
-      summary: "Co-leads an internal agentic AI \"code factory\" and drives LLM-powered capabilities into the customer-facing Axonify platform, owning technical strategy for AI-driven automation across the product.",
+      summary: "Own technical strategy for AI-driven automation across the Axonify platform — internal agent platform and customer-facing LLM features — with compliance, observability, and rollout as first-class concerns.",
       highlights: [
-        "Co-lead an internal agentic AI development platform — an in-house \"code factory\" of LLM-powered agents that autonomously implements, tests, and reviews changes against the production codebase to accelerate feature delivery",
-        "Drive integration of LLM-powered capabilities into the customer-facing Axonify application across multiple learner- and admin-facing workflows",
-        "Architect MCP integrations that let agents securely query the production codebase and internal tooling within enterprise compliance boundaries — credential isolation, scoped tool access, and audit logging",
-        "Shipped LLM-powered support automation that runs pre-emptive investigation at ticket creation (log analysis, error extraction, reproduction-context capture, RAG retrieval of similar past issues), cutting average time from issue reported to fix deployed from ~14 days to ~3 days",
-        "Own technical strategy for AI-driven automation across the platform and serve as in-house productizer translating LLM research into shipped, customer-visible features",
-        "Technical owner for system-health and observability tooling consumed across the engineering organization",
+        "Co-lead an internal platform of LLM coding agents that implement, test, and review changes against the production codebase — agents run behind scoped MCP tool access with credential isolation and full audit logging",
+        "Ship LLM capabilities into customer-facing learner and admin workflows (retrieval pipelines, tool-calling, conversational UX) gated by evals and compliance review",
+        "Architect MCP integrations so agents can query codebase and internal tooling without broad credential exposure — least-privilege tool scopes, per-tool approval, structured audit trails",
+        "Shipped pre-emptive support investigation at ticket creation — log analysis, error extraction, reproduction-context capture, and RAG over similar past issues (durable fix vs. workaround) — cutting mean time from report to fix deployed from ~14 days to ~3 days",
+        "Serve as in-house productizer: translate LLM research into shippable, observable, supportable features rather than demos",
+        "Technical owner for system-health and observability tooling used across the engineering org",
       ],
       starNarratives: [
         {
-          situation: "Support turnaround was slow — average time from a customer reporting an issue to a fix being deployed was roughly 14 days, hurting customer satisfaction and the team's ability to scale.",
-          action: "Designed and shipped LLM-powered support automation that runs pre-emptive investigation the moment a ticket is created: log analysis, error extraction, reproduction-context capture, and RAG-based retrieval of similar past issues and their resolution status (durable fixes vs. manual workarounds). Built it to operate within enterprise compliance boundaries with proper data handling and audit logging.",
-          result: "Cut average time from issue reported to fix deployed from ~14 days to ~3 days, enabling scalable customer care without proportional team growth.",
-          learning: "Production AI requires enterprise compliance, not just cool demos. Success depends on reliability, observability, and tight integration with the workflows people already use.",
+          situation: "Support turnaround averaged ~14 days from customer report to fix deployed — too slow for enterprise SLAs and growing ticket volume.",
+          action: "Designed pre-emptive investigation that fires at ticket creation: structured log analysis, error extraction, reproduction-context capture, and RAG over similar past issues distinguishing durable fixes from manual workarounds. Built with PII-aware data handling, per-tool credential scoping, and an audit trail so every agent action is attributable.",
+          result: "Mean time from report to fix deployed dropped from ~14 days to ~3 days, without proportional headcount growth — and with a reviewable trail for compliance.",
+          learning: "Production AI lives or dies on the boring parts: data handling, observability, and fitting into the workflow people already use — not model cleverness.",
         },
       ],
       technologies: ["LLM/AI", "Agentic AI", "MCP", "RAG", "Vector Search", "TypeScript", "Node.js", "Java", "Python", "GCP", "SQL"],

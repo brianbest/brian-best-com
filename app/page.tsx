@@ -69,11 +69,11 @@ export default async function Home() {
             {careerProfile.personal.title.toLowerCase()} · agentic AI &amp; LLM systems · kitchener, ontario
           </div>
 
-          {/* Intro paragraph */}
+          {/* Intro paragraph — home slice: the outcome, not the org chart */}
           <p className="mt-6 md:mt-8 font-sans font-normal text-term-fg-soft leading-[1.45] text-[17px] md:text-[22px] max-w-[880px]">
-            I build resilient software with a craftsman&rsquo;s care — the kind that holds up
-            when the demo ends. Lately: an in-house agentic AI &ldquo;code factory,&rdquo; MCP
-            integrations, and the plumbing that makes AI reliable in production.
+            I build software that holds up when the demo ends. Lately that means turning LLM
+            research into shipped product — most visibly a support workflow that went from ~14
+            days to ~3 days from report to fix deployed, without adding headcount.
           </p>
         </div>
 
@@ -101,12 +101,12 @@ export default async function Home() {
               <div>
                 <span className="text-term-accent mr-2">●</span>
                 <span className="text-term-fg-muted">shipping </span>
-                <span className="text-term-fg">agentic AI platform + MCP tooling at Axonify</span>
+                <span className="text-term-fg">support automation + MCP tooling at Axonify</span>
               </div>
               <div>
                 <span className="text-term-yellow mr-2">●</span>
                 <span className="text-term-fg-muted">reading </span>
-                <span className="text-term-fg">A Philosophy of Software Design</span>
+                <span className="text-term-fg">Working in Public</span>
               </div>
             </div>
           </div>
@@ -126,13 +126,13 @@ export default async function Home() {
             <span className="text-term-accent">●</span>
             <span>
               <span className="text-term-fg-muted">shipping     </span>
-              <span className="text-term-fg">= &quot;agentic AI platform + MCP tooling at Axonify&quot;</span>
+              <span className="text-term-fg">= &quot;support automation + MCP tooling at Axonify&quot;</span>
             </span>
 
             <span className="text-term-yellow">●</span>
             <span>
               <span className="text-term-fg-muted">reading      </span>
-              <span className="text-term-fg">= &quot;A Philosophy of Software Design&quot;</span>
+              <span className="text-term-fg">= &quot;Working in Public&quot;</span>
             </span>
 
             <span className="text-term-blue">●</span>
@@ -244,8 +244,8 @@ export default async function Home() {
           </span>
         </div>
         <p className="font-sans font-normal text-term-fg-soft text-[15px] leading-[1.5] max-w-[720px] mt-2 mb-7">
-          Six years at Axonify — developer to principal, now leading AI initiatives — plus
-          a healthcare-frontend stint and a startup I co-founded. Full résumé on request.
+          Six years at Axonify — developer to principal — plus a healthcare-frontend stint and
+          a startup I co-founded. The full timeline is on <Link href="/about" className="text-term-accent hover:underline">~/about</Link>.
         </p>
 
         {/* Roles panel */}
